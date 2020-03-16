@@ -1,0 +1,19 @@
+<% if @user.skills.length == 0 %>
+
+	<%= form_tag(user_skill_setups_path(@user.id), :action => "create", :method => "post") do %>
+		<%= hidden_field_tag :primary, true %>
+		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true )%>
+		<%= submit_tag "Enregistrer les modifications", class: "btn btn-dark"%>
+	<%end%>
+
+<% else %>
+
+<p>Vous avez défini la compétence principale suivante : <%= @skill_setup_primary.skill.title %></p>
+
+	<%= form_tag(user_skill_setup_path(@user.id, @skill_setup_primary.id), :action => "update", :method => "patch") do %>
+		<%= hidden_field_tag :primary, true %>
+		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true)%>
+		<%= submit_tag "Enregistrer les modifications", class: "btn btn-dark"%>
+	<%end%>
+
+<% end %>
