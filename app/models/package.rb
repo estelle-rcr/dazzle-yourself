@@ -3,7 +3,7 @@ class Package < ApplicationRecord
 
   validates :title,
   presence: true,
-  length: { in: 5..50}
+  length: { in: 3..50}
 
   validates :price_attendee,
   presence: true,
