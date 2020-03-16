@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>DazzleYourself</title>
+    <html lang="fr">
     <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,6 +12,9 @@
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash'%>
+  <%= yield %>
+  <%= render 'layouts/footer'%>
   </body>
 </html>
