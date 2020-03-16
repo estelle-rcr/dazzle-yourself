@@ -2,14 +2,28 @@
 <html>
   <head>
     <title>DazzleYourself</title>
+    <html lang="fr">
     <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
 
   <body>
-    <%= yield %>
+  <%= render 'layouts/header' %>
+  <%= render 'layouts/flash'%>
+  <%= render 'layouts/heroimage'%>
+  <%= yield %>
+  <%= render 'layouts/footer'%>
   </body>
+  <script src="https://kit.fontawesome.com/d714c2541d.js" crossorigin="anonymous"></script>
 </html>
