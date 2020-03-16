@@ -1,7 +1,7 @@
 class CreateProjects < ActiveRecord::Migration[5.2]
   def change
     create_table :projects do |t|
-      t.references :package_id, index: true
+      t.references :package, index: true
       t.references :owner, index: true
       t.string :title
       t.string :short_description

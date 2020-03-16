@@ -1,17 +1,13 @@
 class Project < ApplicationRecord
-    belongs_to :owner, class_name: "User"
-    belongs_to :package_id
+    belongs_to :owner, foreign_key: 'owner_id', class_name: "User"
+    belongs_to :package
     has_many :attendances
-    has_many :attendees, foreign_key: 'attendee_id', class_name: "User", through: :attendances
+    has_many :attendees, class_name: "User", through: :attendances
 
 
     validates :title,
     presence: true,
-    length: { 
-      maximum: 5,
-      tokenizer: lambda { |str| str.split(/\s+/) },
-      too_long: "Le titre est limité à 7 mots"
-    }
+    length: { in: 5..100}
 
     validates :short_description,
     presence: true,
@@ -23,8 +19,7 @@ class Project < ApplicationRecord
 
     validates :attendees_goal,
     presence: true,
-    numericality: { greater_than: 1 },
-    numericality: { less_than: 6 }
+    numericality: { greater_than: 1, less_than: 6 }
 
 
 
