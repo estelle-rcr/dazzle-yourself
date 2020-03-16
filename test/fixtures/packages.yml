@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  price_attendee: 1
+  price_owner: 1
+  number_of_days: 1
+
+two:
+  title: MyString
+  price_attendee: 1
+  price_owner: 1
+  number_of_days: 1
