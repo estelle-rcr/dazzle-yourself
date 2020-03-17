@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+
+ActiveRecord::Schema.define(version: 2020_03_16_114245) do
+=======
 ActiveRecord::Schema.define(version: 2020_03_16_144952) do
+>>>>>>> 19094ce5203aec8c8dff7575b504dd35dfb8d14d
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
 
   create_table "attendances", force: :cascade do |t|
     t.bigint "project_id"
@@ -84,5 +91,6 @@ ActiveRecord::Schema.define(version: 2020_03_16_144952) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
 
 end
