@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  primary: false
+  secondary: false
+
+two:
+  primary: false
+  secondary: false

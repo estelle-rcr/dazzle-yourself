@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  short_description: MyString
+  long_description: MyText
+  state: MyString
+  submit_date: 2020-03-16 11:12:57
+  publication_date: 2020-03-16 11:12:57
+  start_date: 2020-03-16 11:12:57
+  end_date: 2020-03-16 11:12:57
+  attendees_goal: 1
+  attendees_subscribed: 1
+
+two:
+  title: MyString
+  short_description: MyString
+  long_description: MyText
+  state: MyString
+  submit_date: 2020-03-16 11:12:57
+  publication_date: 2020-03-16 11:12:57
+  start_date: 2020-03-16 11:12:57
+  end_date: 2020-03-16 11:12:57
+  attendees_goal: 1
+  attendees_subscribed: 1
