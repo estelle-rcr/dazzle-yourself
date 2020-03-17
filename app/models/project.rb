@@ -7,7 +7,7 @@ class Project < ApplicationRecord
 
     validates :title,
     presence: true,
-    length: { in: 5..100}
+    length: { in: 3..100}
 
     validates :short_description,
     presence: true,

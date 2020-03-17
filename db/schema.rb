@@ -10,8 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 
 ActiveRecord::Schema.define(version: 2020_03_16_114245) do
+=======
+ActiveRecord::Schema.define(version: 2020_03_16_144952) do
+>>>>>>> 19094ce5203aec8c8dff7575b504dd35dfb8d14d
 
 
   # These are extensions that must be enabled in order to support this database
@@ -62,10 +66,9 @@ ActiveRecord::Schema.define(version: 2020_03_16_114245) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "primary_skill_id"
-    t.bigint "secondary_skill_id"
-    t.index ["primary_skill_id"], name: "index_skill_setups_on_primary_skill_id"
-    t.index ["secondary_skill_id"], name: "index_skill_setups_on_secondary_skill_id"
+    t.bigint "skill_id"
+    t.boolean "primary"
+    t.index ["skill_id"], name: "index_skill_setups_on_skill_id"
     t.index ["user_id"], name: "index_skill_setups_on_user_id"
   end
 
