@@ -10,8 +10,9 @@ Project.destroy_all
 User.destroy_all
 Package.destroy_all
 Skill.destroy_all
+Attendance.destroy_all
 
-state_list = ["draft", "submitted", "online", "finished"]
+state_list = ["draft", "submitted", "paid", "published", "finished"]
 
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
@@ -52,3 +53,11 @@ Skill.create!(title:"Growth Hacker")
 Skill.create!(title:"SEO Specialist")
 Skill.create!(title:"Communication et marketing")
 Skill.create!(title:"Autre")
+
+30.times do
+    Attendance.create!(
+        attendee: User.all.sample,
+        project: Project.all.sample,
+        price_attendee: rand(1000..5000),
+        state: ["paid","pending","cancelled"].sample)
+end

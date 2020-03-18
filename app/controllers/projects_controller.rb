@@ -1,9 +1,14 @@
 class ProjectsController < ApplicationController
 
-  def index
 
+  def index
+@projects = Project.all
   end
 
+      def show
+    @projects = Project.find(params[:id])
+  end
+  
   def new
     @packages = Package.all
   end

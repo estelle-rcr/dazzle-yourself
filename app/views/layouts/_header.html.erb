@@ -6,23 +6,43 @@
     <i class="fas fa-bars"></i>
   </button>
   <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav text-uppercase ml-auto">
+    <ul class="navbar-nav text-uppercase mr-auto">
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#services">Services</a>
+        <a class="nav-link" href="#services">Services</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#portfolio">Portfolio</a>
+        <a class="nav-link" href="#portfolio">Portfolio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#about">About</a>
+        <a class="nav-link " href="#about">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#team">Team</a>
+        <a class="nav-link" href="#team">Team</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link js-scroll-trigger" href="#contact">Contact</a>
-      </li>
     </ul>
+    <span class="navbar-nav ml-auto">
+      <% if user_signed_in? %>
+            <li class="mx-5 nav-item dropdown" style="color: white; font-weight: 700; font-size: 14px;"><i class="fas fa-user", style="margin-right: 8px; color: white;"></i>
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MON ESPACE</a>
+            <ul class="dropdown">
+              <li><%= link_to "Mon profil", user_path(current_user.id)%></li>
+              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete%></li>
+            </ul>
+            </li>
+            <%else%>
+            <li class="mx-5" style="color: white; font-weight: 600;"><i class="fa fa-user", style="margin-right: 8px;"></i>SE CONNECTER</a>
+              <ul class="dropdown">
+                <li><%= link_to "S'inscrire", new_user_registration_path %></li>
+                <li><%= link_to "J'ai déjà un compte", new_user_session_path %></li>
+              </ul>
+            </li>
+          </div>
+          <%end%>
+    </span>
   </div>
 </div>
 </nav>
+
+
+
