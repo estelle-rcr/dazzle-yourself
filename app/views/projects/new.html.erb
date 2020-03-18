@@ -26,13 +26,13 @@
       </div>   
       <div class="my-4">
         <%= label_tag "Date de début souhaitée :" %>
-        <%= datetime_field_tag :start_date, 'ta date', class:"form-control" %>
+        <%= datetime_select("project", "start_date", order: [:day, :month, :year], start_year: 2020, default: 10.days.from_now) %>
       </div>
       <div class="my-4">
         <%= label_tag "Nombre maximum de participants souhaité :" %>
         <%= select_tag(:attendees_goal, options_for_select([['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5]], 5 ))%>
       </div>
-
+      
       <div class="d-flex justify-content-center">
         <%= submit_tag "Enregistrer mon ébauche", class: "btn btn-dark"%>
         <%end%>

@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
 
   def create
     @packages = Package.all
-    @start_date = Time.parse(params[:start_date].to_s)
+    @start_date = Time.parse(params[:project].to_s)
     
     @project = Project.new(
       owner: current_user,
@@ -19,7 +19,8 @@ class ProjectsController < ApplicationController
       short_description: params[:short_description],
       long_description: params[:long_description],
       start_date: @start_date,
-      attendees_goal: params[:attendees_goal])
+      attendees_goal: params[:attendees_goal],
+      state: "draft")
 
     if @project.save
       flash[:success] = "Le projet a été créé !"
@@ -30,6 +31,6 @@ class ProjectsController < ApplicationController
    end
  end
 
- private 
+ 
 
 end
