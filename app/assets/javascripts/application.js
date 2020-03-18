@@ -12,6 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
 //= require agency
 //= require_tree .
+ 
