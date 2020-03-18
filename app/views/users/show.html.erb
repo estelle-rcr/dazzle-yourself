@@ -1,3 +1,1 @@
-<p>page profil de l'utilisateur</p>
-
-<%= link_to "Modifier mon profil", edit_user_path(@user.id) %>
+<%= render 'profile_page', user: @user %>
