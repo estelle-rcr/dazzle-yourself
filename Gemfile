@@ -68,4 +68,5 @@ gem 'faker'
 
 gem 'letter_opener'
 gem 'dotenv-rails'
+gem 'stripe'
 

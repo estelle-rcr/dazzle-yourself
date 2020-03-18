@@ -2,10 +2,10 @@ class ProjectsController < ApplicationController
 
 
   def index
-@projects = Project.all
+    @projects = Project.all
   end
 
-      def show
+  def show
     @projects = Project.find(params[:id])
   end
   
@@ -41,11 +41,16 @@ def update
   @start_date = Time.parse(params[:project].to_s)
 
   if params[:publish] == "Soumettre mon projet"
-    @project.update(start_date: @start_date, state: "submitted")
-  else
-    @project.update(start_date: @start_date)
-  end
-
+    @project.update(start_date: @start_date, state: "submitted", submit_date: Time.now)
+    if @project.save
+      flash[:danger] = "Pour que le projet soit publié, le paiement doit être effectué"
+      redirect_to new_project_charge_path(@project.id)
+    else
+     flash.now[:error] = @project.errors.full_messages.to_sentence
+     render :new
+   end
+ else
+  @project.update(start_date: @start_date)
   if @project.save
     flash[:success] = "Le projet a été modifié !"
     redirect_to projects_path
@@ -53,6 +58,9 @@ def update
    flash.now[:error] = @project.errors.full_messages.to_sentence
    render :new
  end
+end
+
+
 
 end
 
