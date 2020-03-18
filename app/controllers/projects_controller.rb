@@ -7,8 +7,10 @@ class ProjectsController < ApplicationController
 
   def show
     @projects = Project.find(params[:id])
+
   end
 
+  
   def new
     @packages = Package.all
   end
@@ -61,8 +63,6 @@ private
 def project_params
   params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
 end
-
-
 
 
 end
