@@ -1,59 +1,22 @@
 <!-- Projects Grid -->
-  <section class="bg-light page-section" id="portfolio">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase"> C'est parti pour une aventure ! </h2>
-          
-          <a href="/new_project_attendance" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Je m inscris à un projet</a>
-          <hr>
-          <h3 class="section-subheading text-muted">Je choisis mon type de projets selon mes préférences </h3>
-        </div>
+<section class="bg-light page-section" id="portfolio">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2 class="section-heading text-uppercase"> C'est parti pour une aventure ! </h2>
+
+        <%button_to 'Voir tous les projets', projects_path, method: 'get', class:"btn btn-info btn-lg active" %>
+        <hr>
+        <h3 class="section-subheading text-muted">Quelques exemples de projets</h3>
       </div>
-
-      <div class="row">
-        <div class="col-lg-12 text-center">
-          <a href="/projects" class="btn btn-white btn-lg active" role="button" aria-pressed="true">Voir plus de projets</a> 
-        </div>
-      </div>
-
-      <div class="row">
-      <% @projects.each do |project| %>
-
-        <div class="col-md-4"> 
-      
-          <div class="card mb-4 shadow-sm ">
-      
-            <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 348, height: 224 %>   
-      
-            <div class="card-body">
-      
-                <h5 class="card-title"><%= project.title%></h5>
-      
-                <h6 class="card-title"><%= project.start_date.strftime("%d. %B")%></h6>
-      
-                <p class="card-text"><%= project.short_description %></p>
-      
-                <div class="d-flex justify-content-between align-items-center">
-      
-                <%= link_to "En savoir plus", root_path, :class =>"btn btn-sm btn-dark" %>
-      
-                <div class="text-muted"> 
-      
-                <small><%= project.attendees.count%></small>
-      
-                </div>
-      
-                </div>
-      
-            </div>
-      
-          </div>
-      
-        </div>
-      
-      <%end %>
-
     </div>
+
+    <div class="row">
+      <% @projects[0...3].each do |project| %>
+        <% if project.state == "published" %>
+          <%= render 'projects/project_card', project: project %>
+        <% end %>
+      <% end %>
     </div>
-  </section>
+  </div>
+</section>
