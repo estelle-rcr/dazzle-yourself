@@ -1,3 +1,9 @@
-<%= render 'layouts/heroimage' %>
+
+<%= render 'heroimagehome' %>
+
 <%= render 'services' %>
-<%= render 'pagelist' %>
+<%= render 'pagelist', projects: @projects %>
+
+<%=button_to 'Voir tous les projets', projects_path, method:'get', class:"btn btn-primary btn-lg" %>
+
+<%=button_to 'Proposer un projet', new_project_path, method:'get', class:"btn btn-secondary btn-lg" %>

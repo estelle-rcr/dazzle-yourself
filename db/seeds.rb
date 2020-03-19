@@ -37,7 +37,7 @@ Package.create!(title: "Long : 7 jours", price_attendee: 4000, price_owner: 5300
     owner: User.all.sample,
     title: Faker::Marketing.buzzwords,
     short_description: Faker::Lorem.paragraph_by_chars(number: 140, supplemental: false),
-    long_description: Faker::Lorem.paragraph(sentence_count: 10, supplemental: true, random_sentences_to_add: 3),
+    long_description: Faker::Lorem.paragraph_by_chars(number: 1400, supplemental: false),
     start_date:Faker::Time.forward(days: 23, period: :morning),
     state: state_list.sample
     )

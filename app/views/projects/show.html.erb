@@ -21,7 +21,7 @@
 
 							<div class="pd-desc">
 								<% if user_signed_in?%>
-								<% if @project.state == "published" || "finished" %>
+								<% if @project.state == "published" ||  @project.state == "finished" %>
 								<h6>Le projet en 2 mots </h6>
 								<p><%= @project.short_description %> </p>
 								<br>
@@ -46,10 +46,10 @@
 								<h6>Prix </h6>
 								<p><%= @project.package.price_attendee %>€</p>
 								<br>
-								<a class="btn btn-primary btn-small text-uppercase js-scroll-trigger" href="<%=new_project_attendance_path(@project.id)%>">Participer</a>
+								<%= button_to "Participer", new_project_attendance_path(@project.id), class:"btn btn-primary btn-small text-uppercase js-scroll-trigger"%>
 								<br>
 								<br>
-								<p><%= link_to "Voir les autres projets", projects_path %></p>
+								<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
 								<% end %> 
 
 								<% if current_user == @project.owner%>
@@ -71,8 +71,8 @@
 								<h6>Prix </h6>
 								<p><%= @project.package.price_attendee %>€</p>
 								<br>
-								<p><%= link_to " Pour en savoir plus, connectez-vous", user_session_path %></p>
-								<p><%= link_to "Voir les autres projets", projects_path %></p>
+								<p><%= button_to " Pour en savoir plus ou vous inscrire, connectez-vous", user_session_path, method: 'get', class:"btn btn-primary" %></p>
+								<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
 								<% end %>
 
 
