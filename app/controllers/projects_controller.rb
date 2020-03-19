@@ -2,11 +2,12 @@ class ProjectsController < ApplicationController
 
 
   def index
-@projects = Project.all
+    @project = Project.all
   end
 
-      def show
-    @projects = Project.find(params[:id])
+  def show
+    @project = Project.all
+    @project = Project.find(params[:id])
   end
   
   def new

@@ -1,0 +1,79 @@
+
+<section class="product-shop spad page-details">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-9">
+
+				<div class="row">
+
+					<div class="col-lg-6">
+
+						<div class="product-pic-zoom">
+							<img src="project_image.jpg">
+						</div>
+					</div>
+					<div class="col-lg-6">
+						<div class="product-details">
+							<div class="pd-title">
+								<h3> Projet : <%= @project.title.capitalize %> </h3>
+								<br>
+							</div>
+
+							<div class="pd-desc">
+								<% if user_signed_in?%>
+								<h6>Le projet en 2 mots </h6>
+								<p><%= @project.short_description %> </p>
+								<br>
+								<h6>Description du project </h6>
+								<p><%= @project.long_description %> </p>
+								<br>
+								<h6>Projet proposé par : </h6>
+								<p><%= @project.owner.first_name %> <%= @project.owner.last_name %> </p>
+								<br>
+								<h6>Date </h6>
+								<p>Début : <%= @project.start_date %> </p>
+								<p>Fin : <%= @project.end_date %> </p>
+								<h6>Nombre de place disponibles :  <%= @project.attendees_goal %></h6>
+								<h6>Participants : </h6>
+								<p><ul><%= @project.attendees.each do |participant|%>
+										<li><%=participant.first_name %> <%=participant.last_name %> 
+										</li>
+										<% end %> 
+									</ul>
+								</p>
+
+							<br>
+
+							<h6>Prix </h6>
+							<p><%= @project.package.price_attendee %>€</p>
+							<br>
+							
+							<p><%= link_to "Voir les autres projets", projects_path %></p>
+							<% if current_user == @project.owner%>
+							<%= link_to "Créer un nouveau projet", new_project_path, class: "btn btn-success"%>
+
+							<% end %>
+							<% else %>
+							<h6>Le projet en 2 mots </h6>
+							<p><%= @project.short_description %> </p>
+							<br>
+							<h6>Date </h6>
+							<p>Début : <%= @project.start_date %> </p>
+							<p>Fin : <%= @project.end_date %> </p>
+							<h6>Prix </h6>
+							<p><%= @project.package.price_attendee %>€</p>
+							<br>
+							<p><%= link_to " Pour en savoir plus, connectez-vous", user_session_path %></p>
+							<p><%= link_to "Voir les autres projets", projects_path %></p>
+							<% end %>
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+</section>
