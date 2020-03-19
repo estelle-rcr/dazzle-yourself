@@ -1,0 +1,45 @@
+<div class="container bootstrap snippet m-5">
+  <div class="row m-5">
+    <div class="col-sm-12"><h1>Bienvenue sur votre page de profil <%= @user.first_name %></h1></div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-4"><!--left col-->
+      <div class="text-center m-4 p-3">
+        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6 class='my-4'>Changer votre photo :</h6>
+        <input type="file" class="text-center center-block file-upload">
+      </div>
+    </div><!--/col-3-->
+    <div class="col-sm-8"><!--right col--><!--nav items-->
+        <ul class="nav mb-5">
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#settings">Mes informations</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myprojects">Mes projets</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myattendances">Mes sessions</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myorders">Mes paiements</a></li>
+        </ul>
+        <div class="tab-content"><!--first tab pane-->
+           <div class="tab-pane active" id="settings">
+            <%= render 'edit', user: @user %>
+           </div><!--/tab-pane-->
+
+           <div class="tab-pane active" id="myprojects"> 
+            <%= render 'project_user', projects: @projects %>
+             
+           </div><!--/tab-pane-->
+
+           <div class="tab-pane active" id="myattendances">
+           <%= render 'attendance_user', attendances: @attendances %>
+           
+           </div><!--/tab-pane-->
+
+           <div class="tab-pane active" id="myorders">
+            <h2>Mes paiements Coming soon </h2> <!--/ici mettre le render des paiements-->
+            
+           </div><!--/tab-pane-->
+
+        </div><!--/tab-content-->
+      </div><!--/col-9-->
+  </div><!--/row-->
+
+</div>
+

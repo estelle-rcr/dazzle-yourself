@@ -1,6 +1,6 @@
+<div class="container bootstrap snippet m-5">
+<p>Compétence secondaire : Il faut choisir une compétence principale avant d'en choisir une seconde !</p>
 <% if @user.skills.length < 1 %>
-
-<p>Il faut choisir une compétence principale avant d'en choisir une seconde ! </p>
 
 <% elsif @user.skills.length == 1 %>
 
@@ -21,3 +21,5 @@
 	<%end%>
 
 <% end %>
+
+</div>
