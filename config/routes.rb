@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :charges, path: 'paiement'
+    resources :attendances, path: 'inscription'
   end
 
   root to: 'static#home'

@@ -7,7 +7,9 @@ before_action :my_project, only: [:edit, :update]
 
   def show
     @projects = Project.find(params[:id])
+
   end
+
   
   def new
     @packages = Package.all
@@ -77,7 +79,6 @@ def my_project
       redirect_to root_path
   end
 end
-
 
 
 end
