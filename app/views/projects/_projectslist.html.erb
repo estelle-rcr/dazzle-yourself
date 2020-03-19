@@ -1,0 +1,38 @@
+
+<div class="album py-5 mt-5 bg-light">
+    <div class="text-center">
+        <h3>- Projets à venir -<h3>
+    </div>
+    <hr>
+    <div class="container">
+        <div class="row">
+          <% @projects.each do |project| %>
+            <% if project.state == "published" %>
+              <%= render 'project_card', project: project %>
+            <%end %>
+          <%end %>
+        </div>
+    </div>
+
+
+
+    <div class="text-center">
+      <h3>- Projets passés -<h3>
+    </div>
+    <hr>
+    <div class="container">
+      <div class="row">
+        <% @projects.each do |project| %>
+          <% if project.start_date && project.start_date < Time.now && project.state == "finished"%>
+            <%= render 'project_card', project: @project %>
+          <%end %>
+        <%end %>
+      </div>
+    </div> 
+</div>
+
+
+
+
+
+

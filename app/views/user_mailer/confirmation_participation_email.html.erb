@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Votre inscription pour le projet <%= @project.title %> est confirmée !</h1>
+    <p>Rendez-vous le <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M")  %> pour le début de l'aventure !</p>
+    <p>Tu retrouveras toutes les informations sur ton profil <%= link_to "en cliquant ici", user_url(@user.id) %>.</p>
+
+    <p>À très vite ! </p>
+  </body>
+</html>

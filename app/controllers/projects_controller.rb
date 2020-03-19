@@ -1,13 +1,14 @@
 class ProjectsController < ApplicationController
-before_action :my_project, only: [:edit, :update]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update]
+  before_action :my_project, only: [:edit, :update]
 
-  def index
-    @projects = Project.all
-  end
+    def index
+       @projects = Project.all   
+    end
+
 
   def show
-    @projects = Project.find(params[:id])
-
+    @project = Project.find(params[:id])
   end
 
   
@@ -79,6 +80,5 @@ def my_project
       redirect_to root_path
   end
 end
-
 
 end

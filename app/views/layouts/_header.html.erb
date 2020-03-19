@@ -8,20 +8,18 @@
   <div class="collapse navbar-collapse" id="navbarResponsive">
     <ul class="navbar-nav text-uppercase mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#services">Services</a>
+        <li><%= link_to "Participer à un projet", projects_path, class:"nav-link" %></li>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#portfolio">Portfolio</a>
+        <li><%= link_to "Proposer un projet", new_project_path, class:"nav-link"%></li>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#about">About</a>
+        <li><%= link_to "Contact", root_path, class:"nav-link"%></li>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#team">Team</a>
-      </li>
-      <li class="nav-item">
     </ul>
+
     <span class="navbar-nav ml-auto">
+
       <% if user_signed_in? %>
             <li class="mx-5 nav-item dropdown" style="color: white; font-weight: 700; font-size: 14px;"><i class="fas fa-user", style="margin-right: 8px; color: white;"></i>
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MON ESPACE</a>
@@ -40,6 +38,7 @@
           </div>
           <%end%>
     </span>
+
   </div>
 </div>
 </nav>
