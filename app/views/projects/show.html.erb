@@ -9,7 +9,7 @@
 					<div class="col-lg-6">
 
 						<div class="product-pic-zoom">
-							<img src="project_image.jpg">
+							<img src="#">
 						</div>
 					</div>
 					<div class="col-lg-6">
@@ -21,6 +21,7 @@
 
 							<div class="pd-desc">
 								<% if user_signed_in?%>
+								<% if @project.state == "published" || "finished" %>
 								<h6>Le projet en 2 mots </h6>
 								<p><%= @project.short_description %> </p>
 								<br>
@@ -35,45 +36,54 @@
 								<p>Fin : <%= @project.end_date %> </p>
 								<h6>Nombre de place disponibles :  <%= @project.attendees_goal %></h6>
 								<h6>Participants : </h6>
-								<p><ul><%= @project.attendees.each do |participant|%>
-										<li><%=participant.first_name %> <%=participant.last_name %> 
-										</li>
-										<% end %> 
-									</ul>
-								</p>
+								<ul><% @project.attendees.each do |participant|%>
+									<p><li><%= participant.first_name %> <%=participant.last_name %> </li></p>
+									<% end %> 
+								</ul>
 
-							<br>
+								<br>
 
-							<h6>Prix </h6>
-							<p><%= @project.package.price_attendee %>€</p>
-							<br>
-							
-							<p><%= link_to "Voir les autres projets", projects_path %></p>
-							<% if current_user == @project.owner%>
-							<%= link_to "Créer un nouveau projet", new_project_path, class: "btn btn-success"%>
+								<h6>Prix </h6>
+								<p><%= @project.package.price_attendee %>€</p>
+								<br>
+								<a class="btn btn-primary btn-small text-uppercase js-scroll-trigger" href="<%=new_project_attendance_path(@project.id)%>">Participer</a>
+								<br>
+								<br>
+								<p><%= link_to "Voir les autres projets", projects_path %></p>
+								<% end %> 
 
-							<% end %>
-							<% else %>
-							<h6>Le projet en 2 mots </h6>
-							<p><%= @project.short_description %> </p>
-							<br>
-							<h6>Date </h6>
-							<p>Début : <%= @project.start_date %> </p>
-							<p>Fin : <%= @project.end_date %> </p>
-							<h6>Prix </h6>
-							<p><%= @project.package.price_attendee %>€</p>
-							<br>
-							<p><%= link_to " Pour en savoir plus, connectez-vous", user_session_path %></p>
-							<p><%= link_to "Voir les autres projets", projects_path %></p>
-							<% end %>
+								<% if current_user == @project.owner%>
+								<p> État du projet : <%= @project.state %></p>
+								<% if @project.state == "draft" %>
+								<%= link_to "Modifier le projet", edit_project[:id]%>
+								<% end %> 
+								<%= link_to "Créer un nouveau projet", new_project_path%>
+
+								<% end %>
+
+								<% else %>
+								<h6>Le projet en 2 mots </h6>
+								<p><%= @project.short_description %> </p>
+								<br>
+								<h6>Date </h6>
+								<p>Début : <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M") %> </p>
+								<p>Fin : <%= @project.end_date.strftime("le %d/%m/%Y à %I:%M") %> </p>
+								<h6>Prix </h6>
+								<p><%= @project.package.price_attendee %>€</p>
+								<br>
+								<p><%= link_to " Pour en savoir plus, connectez-vous", user_session_path %></p>
+								<p><%= link_to "Voir les autres projets", projects_path %></p>
+								<% end %>
+
+
+							</div>
+
 						</div>
-
 					</div>
+
 				</div>
 
 			</div>
-
 		</div>
 	</div>
-</div>
 </section>

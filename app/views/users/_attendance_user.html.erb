@@ -1,0 +1,22 @@
+<div class="container bootstrap snippet m-5">
+<h2>Les sessions auxquelles je suis inscrit :</h2>
+<% if @attendances != nil %>
+    <div class="row">
+        <% @attendances.all.each do |attendance| %>
+        <div class="col-sm-3">
+            <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                <div class="card-header"><%= attendance.project.title%><br></div>
+                <div class="card-body">
+                    <h4 class="card-title"><%= attendance.project.start_date%></h4>
+                </div>
+            </div>
+        </div>
+        <% end %>
+    </div>
+
+<% else %>
+<p>Vous n'êtes inscrit à aucune session pour le moment</p>
+<%end%>
+
+</div>
+

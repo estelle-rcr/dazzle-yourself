@@ -1,10 +1,13 @@
+<div class="container bootstrap snippet m-5">
+<p>Compétence principale : A quel métier vos compétences correspondent-elles le plus ? </p>
+
 <% if @user.skills.length == 0 %>
 
 	<%= form_tag(user_skill_setups_path(@user.id), :action => "create", :method => "post") do %>
 		<%= hidden_field_tag :primary, true %>
 		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true )%>
 		<%= submit_tag "Enregistrer les modifications", class: "btn btn-dark"%>
-	<%end%>
+	<%end%>	
 
 <% else %>
 
@@ -17,3 +20,5 @@
 	<%end%>
 
 <% end %>
+
+</div>

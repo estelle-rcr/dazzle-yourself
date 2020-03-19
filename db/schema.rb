@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
+
 ActiveRecord::Schema.define(version: 2020_03_18_094252) do
-=======
+
 
 
 
 ActiveRecord::Schema.define(version: 2020_03_18_093337) do
 
->>>>>>> master
+
 
 
   # These are extensions that must be enabled in order to support this database

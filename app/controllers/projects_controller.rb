@@ -2,21 +2,11 @@ class ProjectsController < ApplicationController
 before_action :my_project, only: [:edit, :update]
 
   def index
-<<<<<<< HEAD
     @project = Project.all
   end
 
   def show
-    @project = Project.all
     @project = Project.find(params[:id])
-=======
-    @projects = Project.all
-  end
-
-  def show
-    @projects = Project.find(params[:id])
-
->>>>>>> master
   end
 
   
