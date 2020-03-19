@@ -22,7 +22,13 @@
         <div class="form-group">
             <div class="col-xs-6">
               <%= label_tag 'Mes compétences :' %>
-              <%= text_field_tag :skills, @skill_setup_primary, class:'form-control' %>
+              <%= text_field_tag :skill, @skill_setup_primary.skill.title, class:'form-control' %>
+            </div>
+        </div>
+          <div class="form-group">
+            <div class="col-xs-6">
+              <%= label_tag 'Mes compétences :' %>
+              <%= text_field_tag :skill, @skill_setup_secondary.skill.title, class:'form-control' %>
             </div>
         </div>
         <div class="form-group">
