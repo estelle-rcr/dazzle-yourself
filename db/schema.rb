@@ -11,12 +11,18 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_03_16_144952) do
+ActiveRecord::Schema.define(version: 2020_03_18_094252) do
+
+
+
+
+ActiveRecord::Schema.define(version: 2020_03_18_093337) do
+
+
 
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
 
   create_table "attendances", force: :cascade do |t|
     t.bigint "project_id"
@@ -49,9 +55,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_144952) do
     t.datetime "submit_date"
     t.datetime "publication_date"
     t.datetime "start_date"
-    t.datetime "end_date"
     t.integer "attendees_goal", default: 5
-    t.integer "attendees_subscribed", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_projects_on_owner_id"
@@ -73,7 +77,6 @@ ActiveRecord::Schema.define(version: 2020_03_16_144952) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

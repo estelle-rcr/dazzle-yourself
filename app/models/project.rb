@@ -13,14 +13,17 @@ class Project < ApplicationRecord
     presence: true,
     length: { in: 5..140}
 
-    validates :long_description,
-    presence: true,
-    length: { in: 200..1500}
+    # validates :long_description,
+    # presence: true,
+    # length: { in: 200..1500}
 
     validates :attendees_goal,
     presence: true,
     numericality: { greater_than: 1, less_than: 6 }
 
 
+    def end_date
+        self.start_date + (self.package.number_of_days * 86400)
+    end
 
-  end
+end
