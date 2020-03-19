@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Ton paiement pour le projet <%= @project.title %> est confirmé !</h1>
+    <p>Notre équipe l'a reçu et le validera sous 48h, tu recevras un email pour te prévenir de sa mise en ligne.</p>
+    <p>Tu retrouveras toutes les informations sur ton profil <%= link_to "en cliquant ici", user_url(@user.id) %>.</p>
+ 
+    <p>À très vite ! </p>
+  </body>
+</html>
