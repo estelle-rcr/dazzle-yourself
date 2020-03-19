@@ -3,62 +3,57 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h2 class="section-heading text-uppercase">Exemples de projets auxquels vous pouvez participer</h2>
-          <h3 class="section-subheading text-muted">Choisissez vos projets selon vos préférences !</h3>
-        </div>
-      </div>
-
-      <div class="row">
-
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal1">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fas fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img class="img-fluid" src="https://images.unsplash.com/photo-1581094653498-74588207dcdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4> Projet dans le Virtuel </h4>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fas fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img class="img-fluid" src="https://images.unsplash.com/photo-1520717178299-4cf2701a5bc0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4> Projet dans les Médias </h4>
-          </div>
-        </div>
-
-        <div class="col-md-4 col-sm-6 portfolio-item">
-          <a class="portfolio-link" data-toggle="modal" href="#portfolioModal3">
-            <div class="portfolio-hover">
-              <div class="portfolio-hover-content">
-                <i class="fas fa-plus fa-3x"></i>
-              </div>
-            </div>
-            <img class="img-fluid" src="https://images.unsplash.com/photo-1522204538344-922f76ecc041?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80" alt="">
-          </a>
-          <div class="portfolio-caption">
-            <h4> Projet dans la Création </h4>
-          </div>
+          <h2 class="section-heading text-uppercase"> C'est parti pour une aventure ! </h2>
+          
+          <a href="/new_project_attendance" class="btn btn-info btn-lg active" role="button" aria-pressed="true">Je m inscris à un projet</a>
+          <hr>
+          <h3 class="section-subheading text-muted">Je choisis mon type de projets selon mes préférences </h3>
         </div>
       </div>
 
       <div class="row">
         <div class="col-lg-12 text-center">
-          <h4 class="section-heading text-uppercase">Voir plus de projets par ici !</h4>
+          <a href="/projects" class="btn btn-white btn-lg active" role="button" aria-pressed="true">Voir plus de projets</a> 
         </div>
       </div>
 
+      <div class="row">
+      <% @projects.each do |project| %>
 
+        <div class="col-md-4"> 
+      
+          <div class="card mb-4 shadow-sm ">
+      
+            <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 348, height: 224 %>   
+      
+            <div class="card-body">
+      
+                <h5 class="card-title"><%= project.title%></h5>
+      
+                <h6 class="card-title"><%= project.start_date.strftime("%d. %B")%></h6>
+      
+                <p class="card-text"><%= project.short_description %></p>
+      
+                <div class="d-flex justify-content-between align-items-center">
+      
+                <%= link_to "En savoir plus", root_path, :class =>"btn btn-sm btn-dark" %>
+      
+                <div class="text-muted"> 
+      
+                <small><%= project.attendees.count%></small>
+      
+                </div>
+      
+                </div>
+      
+            </div>
+      
+          </div>
+      
+        </div>
+      
+      <%end %>
+
+    </div>
     </div>
   </section>
