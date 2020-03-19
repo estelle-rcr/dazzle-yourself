@@ -4,11 +4,12 @@ class StaticController < ApplicationController
     def home
     end
 
-    def index 
+    def homepage
+    end
 
+    def index 
     end 
 
     def secret 
-
     end
 end

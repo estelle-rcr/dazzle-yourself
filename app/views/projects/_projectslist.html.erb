@@ -1,0 +1,28 @@
+
+<div class="album py-5 mt-5 bg-light">
+    <div class="text-center">
+        <h3>- Projets à venir -<h3>
+    </div>
+        <hr>
+    <div class="container">
+        <div class="row">
+                <%= render 'card', projects: @projects %>
+        </div>
+    </div> 
+    <%= render 'smallheroimage' %>
+    <div class="text-center">
+        <h3>- Projets passés -<h3>
+    </div>
+        <hr>
+    <div class="container">
+        <div class="row">
+                <%= render 'card_passed_projects', projects: @projects %>
+        </div>
+    </div> 
+</div>
+
+
+
+
+
+

@@ -6,6 +6,28 @@ header.masthead{
 }
 
 
+.hero-image  {
+    background-image: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+  }
+
+  
+.hero-text {
+  text-align: center;
+  color: white;
+  top: 50%;
+}
+
+hr {
+  display: block;
+  margin-top: 0.5em;
+  margin-bottom: 30px;
+  margin-left: 70px;
+  margin-right: 70px;
+  border-style: inset;
+  border-width: 1px;
+} 
+
+
 
 header.masthead .intro-text {
 	height: 450px;
