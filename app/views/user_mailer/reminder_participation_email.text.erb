@@ -1,0 +1,7 @@
+Prêt.e? Ton aventure démarre bientôt !
+---------------------------------------
+Pendant <%= @project.package.number_of_days %> jours tu vas travailler sur le projet "<%= @project.title %>" avec <%= @project.attendees.length - 1 %> personnes.
+On te donne rendez-vous le <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M")  %>, repose toi bien d'ici là !
+Tu trouveras toutes les informations sur ton profil : https://dazzle-yourself.herokuapp.com/users/<%=@user.id%>
+
+À très vite !

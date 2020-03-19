@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Prêt.e? Ton aventure démarre bientôt !</h1>
+    <p>Pendant <%= @project.package.number_of_days %> jours tu vas travailler sur le projet "<%= @project.title %>" avec <%= @project.attendees.length - 1 %> personnes.</p><br>
+    <p>On te donne rendez-vous le <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M")  %>, repose toi bien d'ici là !
+    <p>Tu trouveras toutes les informations sur ton profil <%= link_to "en cliquant ici", user_url(@user.id) %>.</p>
+
+    <p>À très vite ! </p>
+  </body>
+</html>
