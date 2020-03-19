@@ -4,6 +4,8 @@ class Project < ApplicationRecord
     has_many :attendances
     has_many :attendees, class_name: "User", through: :attendances
 
+    after_update :confirmation_payment
+
 
     validates :title,
     presence: true,
@@ -24,6 +26,12 @@ class Project < ApplicationRecord
 
     def end_date
         self.start_date + (self.package.number_of_days * 86400)
+    end
+
+    def confirmation_payment
+        if self.state = "paid"
+            UserMailer.confirmation_charge_email(self, self.owner).deliver_now
+        end
     end
 
 end
