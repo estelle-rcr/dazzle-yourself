@@ -6,9 +6,9 @@
         <% @projects.all.each do |project| %>
         <div class="col-sm-3">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header"><%= project.title%><br></div>
+                <div class="card-header"><%= project.attendance.title%><br></div>
                 <div class="card-body">
-                    <h4 class="card-title"><%= project.start_date%></h4>
+                    <h4 class="card-title"><%= project.attendance.start_date%></h4>
                 </div>
             </div>
         </div>
