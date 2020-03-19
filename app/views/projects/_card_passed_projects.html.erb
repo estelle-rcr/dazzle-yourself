@@ -1,6 +1,6 @@
 
 <% @projects.each.with_index(1) do |project| %>
-  <% if project.start_date > Time.now %>
+  <% if project.start_date < Time.now %>
   <div class="col-md-4"> 
     <div class="card mb-4 shadow-sm ">
       <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 348, height: 224 %>   
