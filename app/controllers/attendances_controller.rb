@@ -1,5 +1,6 @@
 class AttendancesController < ApplicationController
 before_action :project_published
+before_action :authenticate_user!
 
   def new
     @project = Project.find(params[:project_id])
