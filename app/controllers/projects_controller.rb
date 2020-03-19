@@ -2,12 +2,11 @@ class ProjectsController < ApplicationController
 before_action :my_project, only: [:edit, :update]
 
   def index
-    @projects = Project.all
+    @project = Project.all
   end
 
   def show
-    @projects = Project.find(params[:id])
-
+    @project = Project.find(params[:id])
   end
 
   
