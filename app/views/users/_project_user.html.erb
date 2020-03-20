@@ -1,14 +1,14 @@
 
 <div class="container bootstrap snippet m-5">
 <h2>Les projets auxquels je participe :</h2>
-<% if @projects != nil %>
+<% if @attendances %>
     <div class="row">
-        <% @projects.all.each do |project| %>
+        <% @attendances.each do |attendance| %>
         <div class="col-sm-3">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header"><%= project.attendance.title%><br></div>
+                <div class="card-header"><%= attendance.project.title.capitalize%><br></div>
                 <div class="card-body">
-                    <h4 class="card-title"><%= project.attendance.start_date%></h4>
+                    <h4 class="card-title"><%= attendance.project.start_date.strftime("le %d/%m/%Y à %I:%M")%></h4>
                 </div>
             </div>
         </div>
@@ -20,3 +20,5 @@
 <% end%>
 
 </div>
+
+ 
