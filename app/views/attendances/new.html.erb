@@ -1,24 +1,32 @@
-<%= form_tag url_for(action: 'create'), method: "post" do %>
-        <article>
-          <%= hidden_field_tag :amount, @amount %>
-          <% if flash[:error].present? %>
-            <div id="error_explanation">
-              <p><%= flash[:error] %></p>
-            </div>
+<br>
+<br>
+<div class="container my-5 text-center">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <%= form_tag url_for(action: 'create'), method: "post" do %>
+      <article>
+        <%= hidden_field_tag :amount, @amount %>
+        <% if flash[:error].present? %>
+        <div id="error_explanation">
+          <p><%= flash[:error] %></p>
+        </div>
 
-          <% end %>
-          <label class="amount">
-            <h4>Total: <%= @amount.to_f / 100%> €</h4>
-          </label>
-        </article>
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                data-description="Payez votre commande"
-                data-email=<%= current_user.email %>
-                data-label="Payer par carte"
-                data-currency= 'eur'
-                data-amount=<%= @amount%>
-                data-locale="auto">
-    
-                </script>
-      <% end %>
+        <% end %>
+        <label class="amount">
+          <h4>Total: <%= @amount.to_f / 100%> €</h4>
+        </label>
+      </article>
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+      data-description="Payez votre commande"
+      data-email=<%= current_user.email %>
+      data-label="Payer par carte"
+      data-currency= 'eur'
+      data-amount=<%= @amount%>
+      data-locale="auto">
+
+    </script>
+    <% end %>
+    </div>
+  </div>
+</div>
