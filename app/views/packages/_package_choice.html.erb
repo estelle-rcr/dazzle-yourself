@@ -1,0 +1,21 @@
+<br>
+<br>
+<br>
+<div class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+	<h1 class="section-heading text-uppercase">Choisissez votre package</h1>
+	<p class="section-subheading text-muted">Des formules adaptées aux meilleurs prix pour vous aider à mener à bien vos projets.</p>
+  </div>
+<br>
+  <div class="card-deck mb-3 text-center">
+ <% @packages.each do |package| %>
+	  <%= render 'package_card', package: package %>
+		<%end %>
+  </div> 
+
+</div>
+<br>
+<%= yield %>  
+
+<br>
+<br>
