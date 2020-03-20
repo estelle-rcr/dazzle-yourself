@@ -7,10 +7,9 @@ class StaticController < ApplicationController
   end
 
   def homepage
+	  @packages = Package.all
   end
   
-  def index
-	@packages = Package.all
-  end
+
 
 end
