@@ -20,26 +20,18 @@
             </div>
         </div>
         <div class="form-group">
-            <div class="col-xs-6">
-              <%= label_tag 'Mes compétences :' %>
-              <%= text_field_tag :skill, @skill_setup_primary.skill.title, class:'form-control' %>
-            </div>
-        </div>
-          <div class="form-group">
-            <div class="col-xs-6">
-              <%= label_tag 'Mes compétences :' %>
-              <%= text_field_tag :skill, @skill_setup_secondary.skill.title, class:'form-control' %>
-            </div>
-        </div>
-        <div class="form-group">
             <div class="col-xs-12">
                   <br>
                   <%= submit_tag "Modifier mes informations personnelles", class:"btn btn-dark" %>
                   <hr>
-                  <%= link_to "Modifier mes compétences", edit_user_path(@user.id), class:"btn btn-dark" %>
             </div>
         </div>
       <% end %>
-  </div>    
-      
-      
+  </div>     
+<h3>Vos compétences :</h3>
+
+<h6>Compétence principale: </h6>
+<%= render 'primary_skill_form'%>
+
+<h6>Compétence secondaire: </h6>
+<%= render 'secondary_skill_form'%>
