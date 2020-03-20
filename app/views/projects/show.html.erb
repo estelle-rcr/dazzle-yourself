@@ -51,7 +51,7 @@
 										<p><%= @project.package.price_attendee.to_f / 100 %> €</p>
 										<br>
 									
-									<%= button_to "S'inscrire à ce projet", new_project_attendance_path(project.id), class:"btn btn-primary"%>
+									<%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), class:"btn btn-primary"%>
 									
 									<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
 									
