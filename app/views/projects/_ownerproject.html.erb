@@ -7,16 +7,20 @@
       <td> <%= @project.title.capitalize %> </td>
     </tr>
 
-    <tr>
+     <tr>
       <th scope="row"> <h5> Nom des participants et <br> leurs compétences </h5> </th>
       <td> <% @project.attendees.each do |participant|%>
-        <% if @project.attendees.length > 0 %>
-          <p><%= participant.first_name %> <%=participant.last_name.capitalize %>
-            <% if participant.skills.length > 0 %>
-              <%= SkillSetup.find_by(user: participant, primary: true).skill.title %> </p>
-        <% else %>
-          <p> Aucun participant n'est inscrit à votre projet pour le moment. </p>
-        <% end %>
+        <% if @project.attendees.length > 0  %>
+          <p> 
+          <%= participant.first_name %> <%=participant.last_name.capitalize %> - 
+            <% else %>
+                <p> Aucun participant pour le moment </p>
+            <% end %>
+        <% if participant.skills.length > 0 %>
+          <%= SkillSetup.find_by(user: participant, primary: true).skill.title %>
+          </p>
+          <% else %>
+              <p> Aucune compétence renseignée </p>
         <% end %>
         <% end %>
       </td>
