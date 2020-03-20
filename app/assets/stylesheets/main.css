@@ -6,6 +6,16 @@
   width: 100%;
 }
 
+.hero-image {
+  background-image: url("https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80");
+}
+
+.hero-text {
+  text-align: center;
+  color: white;
+  top: 50%;
+}
+
 
 hr {
   display: block;
@@ -16,7 +26,6 @@ hr {
   border-style: inset;
   border-width: 1px;
 } 
-
 
 
 header.masthead .intro-text {
@@ -33,3 +42,12 @@ header.masthead .intro-text {
   background-image:none !important;
   background-color: #007bff !important;
 }
+
+.navbar{
+  height: 65px;
+}
+
+.nav-link{
+  margin-right: 20px;
+}
+

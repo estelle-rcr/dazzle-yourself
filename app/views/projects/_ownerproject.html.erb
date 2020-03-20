@@ -1,0 +1,55 @@
+<h2> Mon espace - Porteur de Projet </h2>
+<table class="table shadow p-3 mb-5 bg-white rounded">
+
+  <tbody>
+    <tr>
+      <th scope="row"> <h5> Nom de mon projet </h5> </th>
+      <td> <%= @project.title.capitalize %> </td>
+    </tr>
+
+     <tr>
+      <th scope="row"> <h5> Nom des participants et <br> leurs compétences </h5> </th>
+      <td> <% @project.attendees.each do |participant|%>
+        <% if @project.attendees.length > 0  %>
+          <p> 
+          <%= participant.first_name %> <%=participant.last_name.capitalize %> - 
+            <% else %>
+                <p> Aucun participant pour le moment </p>
+            <% end %>
+        <% if participant.skills.length > 0 %>
+          <%= SkillSetup.find_by(user: participant, primary: true).skill.title %>
+          </p>
+          <% else %>
+              <p> Aucune compétence renseignée </p>
+        <% end %>
+        <% end %>
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row"> <h5> Nombre de participants </h5> </th>
+      <td> <%= @project.attendees.length.to_i %> </td>
+    </tr>
+
+    <tr>
+      <th scope="row"> <h5> Dates de mon projet </h5> </th>
+      <td>
+        <p>Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %> </p>
+        <p>Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %> </p>
+      </td>
+    </tr>
+
+    <tr>
+      <th scope="row"> <h5> Etat de mon projet ---> <%= @project.state %> </h5> </th>
+      <td>  
+      <% if @project.state == "draft" ||  @project.state == "submitted" %>
+          <p><%= button_to "Modifier mon projet", edit_project_path(@project.id), method: 'get', class:"btn btn-secondary" %></p>
+        <% else %>
+          <p> Votre projet a été déjà publié <p>
+        <% end %>
+      </td>
+    </tr>
+
+  </tbody>
+
+</table>

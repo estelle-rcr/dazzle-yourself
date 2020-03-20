@@ -70,3 +70,4 @@ gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'stripe'
 
+gem "font-awesome-rails"

@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   
   def show
-    @user = User.find(params[:id])
     @user = current_user 
     @attendances = Attendance.where(attendee: current_user) 
-    @projects = Project.where(owner: current_user) 
+    @projects = Project.where(owner: current_user)
+    @skills = Skill.all
     @skill_setup_primary = SkillSetup.find_by(user: current_user, primary: true)
     @skill_setup_secondary = SkillSetup.find_by(user: current_user, primary: false)
   end
