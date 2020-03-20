@@ -1,46 +1,43 @@
 <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink">
-<div class="container">
-  <a class="navbar-brand js-scroll-trigger" href="#page-top">Dazzle Yourself</a>
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-    Menu
-    <i class="fas fa-bars"></i>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarResponsive">
-    <ul class="navbar-nav text-uppercase mr-auto">
-      <li class="nav-item">
-        <li><%= link_to "Participer à un projet", projects_path, class:"nav-link" %></li>
-      </li>
-      <li class="nav-item">
-        <li><%= link_to "Proposer un projet", new_project_path, class:"nav-link"%></li>
-      </li>
-      <li class="nav-item">
-        <li><%= link_to "Contact", root_path, class:"nav-link"%></li>
-      </li>
-    </ul>
-
-    <span class="navbar-nav ml-auto">
-
-      <% if user_signed_in? %>
-            <li class="mx-5 nav-item dropdown" style="color: white; font-weight: 700; font-size: 14px;"><i class="fas fa-user", style="margin-right: 8px; color: white;"></i>
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MON ESPACE</a>
-            <ul class="dropdown">
-              <li><%= link_to "Mon profil", user_path(current_user.id)%></li>
-              <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete%></li>
-            </ul>
-            </li>
-            <%else%>
-            <li class="mx-5" style="color: white; font-weight: 600;"><i class="fa fa-user", style="margin-right: 8px;"></i>SE CONNECTER</a>
-              <ul class="dropdown">
-                <li><%= link_to "S'inscrire", new_user_registration_path %></li>
-                <li><%= link_to "J'ai déjà un compte", new_user_session_path %></li>
-              </ul>
-            </li>
+  <div class="container">
+    <%= link_to root_path do %> 
+    <img src="https://mcusercontent.com/2544e20caf820906596eccdf0/images/fbd9f5cd-a905-4438-a5ae-74c3ae74bca9.png" height="88px">
+    <%end%>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      Menu
+      <i class="fas fa-bars"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav text-uppercase mr-auto">
+        <li class="nav-item">
+          <li><%= link_to "Participer à un projet", projects_path, class:"nav-link" %></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "Proposer un projet", new_project_path, class:"nav-link"%></li>
+        </li>
+        <li class="nav-item">
+          <li><%= link_to "Contact", root_path, class:"nav-link"%></li>
+        </li>
+      </ul>
+      <span class="navbar-nav ml-auto">
+        <div class="dropdown">
+          <% if user_signed_in? %>
+          <a class="nav-link dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user", style="margin-right: 12px;color: white;"></i>MON ESPACE</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to "Mon profil", user_path(current_user.id), class:"dropdown-item"%></li>
+            <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
           </div>
-          <%end%>
-    </span>
-
+          <%else%>
+          <a class="nav-link dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user", style="margin-right: 12px;color: white;"></i>SE CONNECTER</a>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <li><%= link_to "S'inscrire", new_user_registration_path, class:"dropdown-item" %></li>
+            <li><%= link_to "J'ai déjà un compte", new_user_session_path, class:"dropdown-item" %></li>
+          </div>
+        </div>
+        <%end%>
+      </span>
+    </div>
   </div>
-</div>
 </nav>
 
 

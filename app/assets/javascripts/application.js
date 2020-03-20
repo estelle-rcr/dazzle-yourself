@@ -12,6 +12,8 @@
 //
 //= require rails-ujs
 //= require activestorage
+//= require jquery
+//= require bootstrap
+//= require jquery.easing
+//= require jqBootstrapValidation
 //= require agency
-//= require_tree .
- 
