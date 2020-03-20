@@ -9,7 +9,6 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @skill_setup_primary = SkillSetup.find_by(user: attendee, primary: true)
   end
 
   
