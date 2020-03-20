@@ -6,6 +6,7 @@ class StaticController < ApplicationController
     end
 
     def homepage
+      render layout: "layouts/application_homepage"
     end
 
 
