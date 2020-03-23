@@ -62,4 +62,12 @@ class Project < ApplicationRecord
     end
   end
 
+  def full?
+    if self.attendees.length.to_i >= self.attendees_goal.to_i
+      return true
+    else
+      return false
+    end
+  end
+
 end

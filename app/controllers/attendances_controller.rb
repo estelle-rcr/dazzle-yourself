@@ -1,13 +1,14 @@
 class AttendancesController < ApplicationController
-before_action :project_published
-before_action :authenticate_user!
+  before_action :project_published
+  before_action :authenticate_user!
+  before_action :project_full, only: [:new, :create]
 
   def new
     @project = Project.find(params[:project_id])
     @amount = @project.package.price_attendee
   end
 
-    def create
+  def create
     @project = Project.find(params[:project_id])
     @amount = @project.package.price_attendee
 
@@ -23,8 +24,8 @@ before_action :authenticate_user!
       currency: 'eur',
     })
 
-@attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, price_attendee: @amount)
-@attendance.pay!
+    @attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, price_attendee: @amount)
+    @attendance.pay!
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
@@ -39,7 +40,14 @@ before_action :authenticate_user!
       flash[:error] ="Vous n'êtes pas autorisé à consulter cette page"
       redirect_to root_path
     end
+  end
 
+  def project_full
+    @project = Project.find(params[:project_id])
+    unless !@project.full?
+      flash[:error] ="Ce projet est complet"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 end
