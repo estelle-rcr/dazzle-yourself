@@ -17,3 +17,4 @@
 //= require jquery.easing
 //= require jqBootstrapValidation
 //= require agency
+//= require scripts
