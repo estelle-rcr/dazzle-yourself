@@ -4,7 +4,7 @@ class Project < ApplicationRecord
   has_many :attendances
   has_many :attendees, class_name: "User", through: :attendances
 
-  after_update :confirmation_email
+  # after_update :confirmation_email
 
 
   validates :title,

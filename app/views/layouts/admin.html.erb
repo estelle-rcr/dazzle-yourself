@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin - Dazzle Yourself</title>
+  <html lang="fr">
+  <%= csrf_meta_tags %>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= csp_meta_tag %>
+
+
+  <%= stylesheet_link_tag 'styles', media: 'all' %>
+
+
+</head>
+<body>
+  <body>
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading"></div>
+              <%= link_to "Accueil", admin_root_path, class:"nav-link collapsed" %>
+              <div class="sb-sidenav-menu-heading">Gestion</div>
+              <%= link_to "Gérer les projets", admin_projects_path, class:"nav-link collapsed" %>                              
+              <%= link_to "Gérer les utilisateurs", admin_users_path, class:"nav-link collapsed" %>                            
+            </div>
+          </div>
+          <div class="sb-sidenav-footer">
+            <div class="small">Logged in as:</div>
+            someone
+          </div>
+        </nav>
+      </div>
+      
+      <div id="layoutSidenav_content">
+        <main>
+          <div class="container-fluid">
+            <%= yield %>
+
+          </main>
+        </div>
+        
+      </body>
+      <script src="https://kit.fontawesome.com/d714c2541d.js" crossorigin="anonymous"></script>
+      </html>
+

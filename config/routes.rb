@@ -3,6 +3,10 @@ Rails.application.routes.draw do
   
   devise_for :users
 
+
+  root to: 'static#home'
+  get 'homepage', to:'static#homepage'
+
   resources :users do
     resources :skill_setups
   end
@@ -12,8 +16,9 @@ Rails.application.routes.draw do
     resources :attendances, path: 'inscription'
   end
 
-  root to: 'static#home'
-
-  get 'homepage', to:'static#homepage'
+    namespace :admin do
+    root 'admin#index'
+    resources :users, :projects, :project_submissions
+  end
 
 end
