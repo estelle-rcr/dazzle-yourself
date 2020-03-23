@@ -1,7 +1,35 @@
-<br>
-<br>
-<div class="container my-5 text-center">
-  <div class="row">
+<% if user_signed_in? %>
+<div class="container my-5">
+  <table class="table table-borderless">
+    <thead>
+      <h5>Récapitulatif de la réservation</h5>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="col-4">Projet : </th>
+        <td >"<%=@project.title.capitalize %>"</td>
+      </tr>
+      <tr>
+        <th scope="row">Date de début :</th>
+        <td><%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></td>
+      </tr>
+      <tr>
+        <th scope="row">Durée : </th>
+        <td><%= @project.package.number_of_days %> jours</td>
+      </tr>
+      <tr>
+        <th scope="row">Porteur du projet : </th>
+        <td><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize[0] %>.</td>
+      </tr>
+      <tr>
+        <th scope="row">Prix de l'inscription : </th>
+        <td><%= @project.package.price_attendee.to_f / 100 %>€</td>
+      </tr>
+
+    </tbody>
+  </table>
+
+  <div class="row col-8">
     <div class="col-md-6 offset-md-3">
       <%= form_tag url_for(action: 'create'), method: "post" do %>
       <article>
@@ -12,9 +40,6 @@
         </div>
 
         <% end %>
-        <label class="amount">
-          <h4>Total: <%= @amount.to_f / 100%> €</h4>
-        </label>
       </article>
       <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
       data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -27,6 +52,9 @@
 
     </script>
     <% end %>
-    </div>
   </div>
 </div>
+</div>
+<% else%>
+<p> Veuillez vous connecter pour vous inscrire </p>
+<%end%>
