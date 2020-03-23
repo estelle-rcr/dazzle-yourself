@@ -2,9 +2,9 @@ class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :my_project, only: [:edit, :update]
 
-    def index
-       @projects = Project.all   
-    end
+  def index
+    @projects = Project.all   
+  end
 
 
   def show
@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
-    @project.update(start_date: @start_date, state: "draft")
+    @project.update(start_date: @start_date)
 
     if @project.save
       flash[:success] = "Le projet a été créé !"
@@ -42,9 +42,11 @@ def update
   @project = Project.find(params[:id])
   @project.update(project_params)
   @start_date = Time.parse(params[:project].to_s)
+  @project.update(start_date: @start_date)
 
   if params[:publish] == "Soumettre mon projet"
-    @project.update(start_date: @start_date, state: "submitted", submit_date: Time.now)
+    @project.submit_date = Time.zone.now
+    @project.submit!
     if @project.save
       flash[:alert] = "Pour que le projet soit publié, le paiement doit être effectué"
       redirect_to new_project_charge_path(@project.id)
@@ -53,7 +55,6 @@ def update
      render :edit
    end
  else
-  @project.update(start_date: @start_date)
   if @project.save
     flash[:success] = "Le projet a été modifié !"
     redirect_to project_path(@project.id)
