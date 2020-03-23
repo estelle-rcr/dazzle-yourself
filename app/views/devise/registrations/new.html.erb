@@ -1,56 +1,50 @@
-  <div class="center-card">
+  <div class="center-card mt-5">
     <div class="container text-center my-4 items-align-center">
      <div class="flex-row flex-direction">
       <div class="col-lg-10 col-xl-9 mx-auto">
         <div class="card card-signin flex-row my-5">
-          <div class="card-img-left2 d-none d-md-flex">
-            
-         </div>
-         <div class="card-body my-4">
-          <h2>Créer un compte</h2>
-          <br>
+          <div class="card-body my-4">
+          <h2 class="mb-4 text-primary"><i class="fas fa-user-circle" style="margin-right: 1rem;"></i>Créer un compte</h2>
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= render "devise/shared/error_messages", resource: resource %>
-
-          <div class="field">
-            <%= f.label :first_name %><br />
-            <%= f.text_field  :first_name, autofocus: true, autocomplete: "Nom" %>
+          <div class="row my-4">
+            <div class="col-lg-6 d-flex justify-content-end">
+              <div class="field">
+              <%= f.label :first_name %><br />
+              <%= f.text_field  :first_name, placeholder: "Prénom", autofocus: true, autocomplete: "Prénom", class: "smallform"%>
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex justify-content-start">
+              <div class="field">
+                <%= f.label :last_name %><br />
+                <%= f.text_field  :last_name, placeholder: "Nom", autofocus: true, autocomplete: "Nom", class: "smallform" %>
+              </div>
+            </div>
           </div>
-          <br>
-          <div class="field">
-            <%= f.label :last_name %><br />
-            <%= f.text_field  :last_name, autofocus: true, autocomplete: "Prénom" %>
-          </div>
-          <br>
-          <div class="field">
+          <div class="field my-4">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, placeholder: "adresse@domaine.fr", autocomplete: "email", class: "regularform" %>
           </div>
-          <br>
-          <div class="field">
-            <%= f.label :password %>
+          <div class="field my-4">
+            <%= f.label :password %> <br/>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <p class="small m-0 p-0"><%= @minimum_password_length %> caractères, un symbole et une majuscule requis</p>
             <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, placeholder: "ex: $Jh56sd8?L", autocomplete: "new-password", class: "regularform"  %>
           </div>
-          <br>
-          <div class="field">
+          <div class="field my-4">
             <%= f.label :password_confirmation %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, placeholder: "$Jh56sd8?L", autocomplete: "new-password", class: "regularform"  %>
           </div>
-
-          <div class="actions">
-            <br>
-            <%= f.submit "Créer mon compte" %>
+          <div class="actions my-4">
+            <%= f.submit "Créer mon compte", class: "btn btn-primary" %>
           </div>
           <% end %>
-          <br>
-
+          <hr>
+          <div class="my-4">
           <p> Vous avez déjà un compte ?</p>
           <%= render "devise/shared/links" %>
-
-
+          </div>
         </div>
       </div>
     </div>
