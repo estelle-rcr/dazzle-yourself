@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   has_many :attendances
   has_many :attendees, class_name: "User", through: :attendances
 
-  after_update :confirmation_email
+  # after_update :confirmation_email
 
   validates :title,
   presence: true,
@@ -20,44 +20,29 @@ class Project < ApplicationRecord
   numericality: { greater_than: 1, less_than: 6 }
 
 
- aasm column: :state do
-  state :draft, initial: true
-  state :submitted
-  state :paid
-  state :published
-  state :finished
+  aasm column: :state do
+    state :draft, initial: true
+    state :submitted
+    state :paid
+    state :published
+    state :finished
 
-  event :submit do
-    transitions from: :draft, to: :submitted
+    event :submit do
+      transitions from: :draft, to: :submitted
+    end
+    event :pay do
+      transitions from: :submitted, to: :paid
+    end
+    event :publish do
+      transitions from: :paid, to: :published
+    end
+    event :unpublish do
+      transitions from: :published, to: :paid
+    end
+    event :end do
+      transitions from: :published, to: :finished
+    end
   end
-  event :pay do
-    transitions from: :submitted, to: :paid
-  end
-  event :publish do
-    transitions from: :pay, to: :published
-  end
-  event :end do
-    transitions from: :published, to: :finished
-  end
-end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
   def end_date

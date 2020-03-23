@@ -22,7 +22,7 @@ class ChargesController < ApplicationController
       currency: 'eur',
     })
 
-    @project.update(state: "paid")
+    @project.pay!
 
 
   rescue Stripe::CardError => e
