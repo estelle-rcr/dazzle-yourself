@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+	<h1 class="section-heading text-uppercase">Choisissez votre package</h1>
+	<p class="section-subheading text-muted">Selon vos besoins choisissez la durée de votre projet.</p>
+  </div>
+<br>
+  <div class="card-deck mb-3 text-center">
+ <% @packages.each do |package| %>
+	  <%= render 'package_card', package: package %>
+		<%end %>
+  </div> 
+
+</div>
+

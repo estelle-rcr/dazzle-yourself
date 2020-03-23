@@ -28,17 +28,17 @@ class Project < ApplicationRecord
       self.start_date + (self.package.number_of_days * 86400)
     end
 
-    # def confirmation_email
-    #   if self.state == "paid"
-    #     UserMailer.confirmation_charge_email(self, self.owner).deliver_now
-    #   elsif self.state == "published" 
-    #     UserMailer.project_published_email(self, self.owner).deliver_now
-    #     UserMailer.reminder_participation_email(self, self.owner).deliver_later(wait_until: (self.start_date - 259200))
+    def confirmation_email
+      if self.state == "paid"
+        UserMailer.confirmation_charge_email(self, self.owner).deliver_now
+      elsif self.state == "published" 
+        UserMailer.project_published_email(self, self.owner).deliver_now
+        UserMailer.reminder_participation_email(self, self.owner).deliver_later(wait_until: (self.start_date - 259200))
 
-    #     self.attendees.each do |attendee|
-    #       UserMailer.reminder_participation_email(self, attendee).deliver_later(wait_until: (self.start_date - 259200))
-    #     end
-    #   end
-    # end
+        self.attendees.each do |attendee|
+          UserMailer.reminder_participation_email(self, attendee).deliver_later(wait_until: (self.start_date - 259200))
+        end
+      end
+    end
 
   end
