@@ -1,24 +1,19 @@
-<div class="container bootstrap snippet m-5">
-<p>Compétence principale : A quel métier vos compétences correspondent-elles le plus ? </p>
-
+<div class="container bootstrap snippet my-4">
 <% if @user.skills.length == 0 %>
-
+	<p>A quel métier vos compétences correspondent-elles le plus ? </p>
 	<%= form_tag(user_skill_setups_path(@user.id), :action => "create", :method => "post") do %>
 		<%= hidden_field_tag :primary, true %>
 		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true )%>
-		<%= submit_tag "Enregistrer les modifications", class: "btn btn-dark"%>
+		<%= submit_tag "Enregistrer", class: "btn btn-primary mx-4"%>
 	<%end%>	
 
 <% else %>
-
-<p>Vous avez défini la compétence principale suivante : <%= @skill_setup_primary.skill.title %></p>
-
+<p>Vous avez choisi la compétence : <span class ="text-primary font-weight-bold"><%=@skill_setup_primary.skill.title%></span></p>
 	<%= form_tag(user_skill_setup_path(@user.id, @skill_setup_primary.id), :action => "update", :method => "patch") do %>
 		<%= hidden_field_tag :primary, true %>
-		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true)%>
-		<%= submit_tag "Enregistrer les modifications", class: "btn btn-dark"%>
+		<%= select_tag(:skill_id, options_for_select(@skills.map {|skill| [skill.title, skill.id] }), :include_blank => true, :prompt => @skill_setup_primary.skill.title )%>
+		<%= submit_tag "Modifier", class: "btn btn-dark mx-4"%>
 	<%end%>
 
 <% end %>
-
 </div>
