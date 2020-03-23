@@ -1,3 +1,7 @@
+header{
+  margin-left: 0;
+}
+
 
 .footer{
   position: fixed;
@@ -27,12 +31,6 @@ hr {
   border-width: 1px;
 } 
 
-
-header.masthead .intro-text {
-	height: 450px;
-	padding: 80px;
-}
-
 .page-section {
   padding: 10px 0;
 }
@@ -51,3 +49,9 @@ header.masthead .intro-text {
   margin-right: 20px;
 }
 
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+  display: flex;
+  align-items: center;
+}
