@@ -38,7 +38,7 @@ hr {
 .stripe-button-el span {
 
   background-image:none !important;
-  background-color: #007bff !important;
+  background-color: #fed136 !important;
 }
 
 .navbar{
@@ -49,9 +49,34 @@ hr {
   margin-right: 20px;
 }
 
+
 .vertical-center {
   min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 100vh; /* These two lines are counted as one :-)       */
   display: flex;
   align-items: center;
+}
+.headline {
+  color:#fed136;
+  text-align: center;
+}
+
+.price {
+  font-weight: 700;
+}
+
+.grey-box {
+  background-color: #ebebeb81;
+  border-radius: 0.25rem;
+}
+
+.yellow-box {
+  background-color: #fed136;
+  border-radius: 0.25rem;
+  border: 0.5px solid #fed136;
+  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+
 }

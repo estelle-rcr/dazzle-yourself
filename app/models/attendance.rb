@@ -6,20 +6,20 @@ class Attendance < ApplicationRecord
 
 
 
-  aasm column: :state do
-    state :pending, initial: true
-    state :paid
-    state :cancelled
 
-    event :pay do
-      transitions from: :pending, to: :paid
-    end
-    event :cancel do
-      transitions from: :paid, to: :cancelled
-    end
+aasm column: :state do
+  state :pending, initial: true
+  state :paid
+  state :cancelled
 
+  event :pay do
+    transitions from: :pending, to: :paid
+  end
+  event :cancel do
+    transitions from: :paid, to: :cancelled
   end
 
+end
 
 
   def confirmation_send
