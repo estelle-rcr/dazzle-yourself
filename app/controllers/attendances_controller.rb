@@ -23,7 +23,8 @@ before_action :authenticate_user!
       currency: 'eur',
     })
 
-@attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, state: "paid", price_attendee: @amount)
+@attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, price_attendee: @amount)
+@attendance.pay!
 
   rescue Stripe::CardError => e
     flash[:error] = e.message
