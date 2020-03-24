@@ -11,17 +11,14 @@ end
 
 def update
   @project = Project.find(params[:id])
-  if @project.state == "paid"
-    @project.update(state: "published")
-  end
+  @project.publish!
   redirect_back(fallback_location: admin_root_path)
 end
 
 def destroy
   @project = Project.find(params[:id])
-  if @project.state == "published"
-    @project.update(state: "paid")
-  end
+  @project.unpublish!
   redirect_back(fallback_location: admin_root_path)
 end
+
 end
