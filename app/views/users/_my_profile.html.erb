@@ -1,9 +1,9 @@
-<div class="container bootstrap snippet my-5">
+<div class="container bootstrap snippet mt-4 mb-5">
   <br>
-  <div class="row m-5">
+  <div class="row m-4">
   <div class="col-sm-12"><h1>Bienvenue sur votre page de profil <%= @user.first_name.capitalize %></h1></div>
   </div>
-  <div class="row my-5">
+  <div class="row mt-2 mb-5">
     <div class="col-sm-4">
     <%= render 'edit_picture', user: @user %>
     </div>
@@ -15,7 +15,7 @@
               <li class="nav-item" role="presentation"><a href="#myorders" aria-controls="myorders" class="btn btn-light" data-toggle="tab">Mes paiements</a></li>
         </ul>
         <div class="tab-content">
-           <div role="tabpanel" class="tab-pane active" id="settings">
+           <div role="tabpanel" class="tab-pane active fade-in" id="settings">
             <%= render 'edit_form', user: @user %>
            </div>
 
