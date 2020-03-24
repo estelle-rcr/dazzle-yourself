@@ -4,9 +4,6 @@ class Attendance < ApplicationRecord
   belongs_to :attendee, foreign_key: 'attendee_id', class_name: "User"
   # after_create :confirmation_send
 
-
-
-
 aasm column: :state do
   state :pending, initial: true
   state :paid
@@ -24,6 +21,7 @@ end
 
   def confirmation_send
     UserMailer.confirmation_participation_email(self.project, self.attendee).deliver_now
+    UserMailer.new_participation_email(self.project, self.project.owner, self.attendee).deliver_now
   end
 
 
