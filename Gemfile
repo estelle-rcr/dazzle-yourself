@@ -73,3 +73,4 @@ gem 'stripe'
 gem "font-awesome-rails"
 gem 'image_processing'
 gem 'aasm'
+gem "aws-sdk-s3", require: false
