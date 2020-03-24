@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   root to: 'static#home'
   get 'homepage', to:'static#homepage'
+  get 'myproject', to:'projects#ongoing_project'
 
   resources :users do
     resources :skill_setups

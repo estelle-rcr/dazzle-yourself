@@ -1,0 +1,61 @@
+<div class="container bootstrap snippet m-5">
+	<br>
+	<div class="row m-5">
+		<div class="col-sm-12"><h1>Suivez l'avancée de votre projet !</h1></div>
+	</div>
+	<div class="row m-5">
+		<div class="col-sm-4"><!--left col-->
+			<div class="card" style="width: 18rem;">
+				<img class="card-img-top" src="..." alt="Card image cap">
+				<div class="card-body">
+					<h5 class="card-title"><%=@project.title%></h5>
+					<p class="card-text"><%= @project.short_description %></p>
+				</div>
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">A commencé le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></li>
+					<li class="list-group-item">Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M")%></li>
+					<li class="list-group-item">Porteur du projet : <%= @project.owner.first_name %></li>
+				</ul>
+				<div class="card-body">
+					<%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link"  %>
+				</div>
+			</div>
+		</div><!--/col-3-->
+		<div class="col-sm-8"><!--right col--><!--nav items-->
+			<ul class="nav nav-tabs">
+				<li class="nav-item active">
+					<a class="nav-link " data-toggle="tab" href="#intro">Introduction</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link " data-toggle="tab" href="#group">Mon groupe</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link " data-toggle="tab"  href="#resources">Ressources</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link " data-toggle="tab"  href="#chat">Discussion</a>
+				</li>
+			</ul>
+			<div class="tab-content"><!--first tab pane-->
+				<div class="tab-pane active" id="intro">
+					<h3>C'est parti !</h3>
+					<p>Le porteur du projet va commencer par tous vous contacter afin d'organiser un premier call pour vous pitcher son projet.</p>
+					<p>Tu trouveras dans les ressources nos conseils pour réussir ce projet, nos outils favoris pour collaborer en remote, les étapes clés de la construction d'un projet...</p>
+				</div><!--/tab-pane-->
+				<div class="tab-pane " id="group">
+					<p>coucou mon groupe</p>
+				</div><!--/tab-pane-->
+
+				<div class="tab-pane " id="resources"> 
+					<p>coucou mes ressources</p>
+				</div><!--/tab-pane-->
+
+				<div class="tab-pane " id="chat">
+					<p>coucou la discussion</p>
+				</div><!--/tab-pane-->
+			</div><!--/tab-content-->
+		</div><!--/col-9-->
+	</div><!--/row-->
+
+</div>
+
