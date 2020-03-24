@@ -24,10 +24,12 @@ before_action :add_skill, only: [:new]
       currency: 'eur',
     })
 
-    @attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, state: "paid", price_attendee: @amount)
-      rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to new_charge_path
+@attendance = Attendance.create(project: @project, attendee: current_user, stripe_customer_id: customer.id, price_attendee: @amount)
+@attendance.pay!
+
+  rescue Stripe::CardError => e
+    flash[:error] = e.message
+    redirect_to new_charge_path
   end
 
   private

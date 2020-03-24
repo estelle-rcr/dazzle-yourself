@@ -6,11 +6,8 @@
               <h1 class="mt-1 mb-1 text-light"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
             </div>
         </div>
-      </div>
-    </div>
-  </div>
 <div class="row my-2">
-  <div class="col-sm-4 p-4">
+  <div class="col-md-4 p-4">
     <div class="text-center grey-box m-4 p-4">
       <h5><i class="fas fa-user-cog" style="margin-right: 8px;"></i> Ses compétences :</h5>
       <% if @skill_setup_primary %>
@@ -23,7 +20,7 @@
       <%end%>
     </div>
   </div>
-  <div class="col-sm-8 p-4 ">
+  <div class="col-md-8 p-4 ">
     <div class="px-5 pt-2 pb-5 mr-4">
       <h5 class='my-4'>Les projets que ce membre a proposé :</h5>
       <% if @projects[0] %>
