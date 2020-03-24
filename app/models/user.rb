@@ -11,40 +11,18 @@ class User < ApplicationRecord
   # after_create :welcome_send
 
 
-
-
   def welcome_send
     UserMailer.welcome_email(self).deliver_now
   end
 
   def ongoing_project
-    projects_as_attendee = Attendance.where(attendee: self, state: "paid")
-    projects_as_owner = Project.where(owner: self, state: "published")
-    projects = []
+    projects_as_attendee = Attendance.where(attendee: self, state: "paid").map {|a| a.project}
+    projects_as_owner = Project.where(owner: self, state: "published").map {|p| project}
+    projects = projects_as_attendee + projects_as_owner
 
-
-    if projects_as_attendee.length > 0
-      projects_as_attendee.each do |attendance|
-        projects << attendance.project
-      end
-    end
-
-    if projects_as_owner.length > 0
-      projects_as_owner.each do |project|
-        projects << project
-      end
-    end
-
-    ongoing_projects = []
     if projects.length > 0
-      projects.each do |project|
-        if project.start_date <= Time.zone.now && project.end_date >= Time.zone.now
-          ongoing_projects << project
-        end
-      end
-      return ongoing_projects[0]
+      projects.map {|project| project.ongoing? ? project : nil }.compact
     end
-
   end
   
 end

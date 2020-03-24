@@ -47,9 +47,8 @@ class Project < ApplicationRecord
 
 
 
-def self.ongoing
-    projects = self.where(state: "published")
-    projects.map { |project| project.start_date <= Time.zone.now && project.end_date >= Time.zone.now ? project : nil} 
+def ongoing?
+    self.start_date <= Time.zone.now && self.end_date >= Time.zone.now
 end
 
   def end_date

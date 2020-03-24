@@ -63,8 +63,7 @@ end
 
 
 def ongoing_project
-  @project = current_user.ongoing_project
-  
+  @project = current_user.ongoing_project[0]
 end
 
 
