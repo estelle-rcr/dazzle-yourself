@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :skills, through: :skill_setups
   has_many :attendances
   has_many :projects 
+  has_one_attached :avatar
 
   # after_create :welcome_send
 
@@ -14,6 +15,9 @@ class User < ApplicationRecord
     UserMailer.welcome_email(self).deliver_now
   end
 
-  
+  def thumbnail
+    return self.avatar.variant(resize: "200x200!")
+  end
+
 end
 
