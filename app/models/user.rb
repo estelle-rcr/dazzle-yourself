@@ -15,26 +15,29 @@ class User < ApplicationRecord
   end
 
   
-  def is_available(project)
+  def is_available?(project)
     attendee_projects = Attendance.where(attendee: self)
     owner_projects = Project.where(owner: self)
-    project_dates = (project.start_date..project.end_date)
+    project_dates = (project.start_date.strftime("%d/%m/%Y").to_datetime..project.end_date.strftime("%d/%m/%Y").to_datetime)
 
     unavailable_dates = []
 
-    attendee_projects.each do |project_a|
-      unavailable_dates << (project_a.start_date..project_a.end_date)
+    attendee_projects.each do |attendance|
+      (attendance.project.start_date.strftime("%d/%m/%Y").to_datetime..attendance.project.end_date.strftime("%d/%m/%Y").to_datetime).each do |date|
+        unavailable_dates << date
+      end
     end
 
-    owner_projects.each do |project_b|
-      unavailable_dates << (project_b.start_date..project_b.end_date)
+    owner_projects.each do |project_o|
+      (project_o.start_date.strftime("%d/%m/%Y").to_datetime..project_o.end_date.strftime("%d/%m/%Y").to_datetime).each do |date|
+        unavailable_dates << date
+      end
     end
 
-
-    if(project_dates & unavailable_dates).empty? 
-      return true
-    else
+    if project_dates.any? {|project_date| unavailable_dates.include?(project_date) }
       return false
+    else
+      return true
     end
 
   end

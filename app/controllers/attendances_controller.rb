@@ -1,7 +1,9 @@
 class AttendancesController < ApplicationController
   before_action :project_published
   before_action :authenticate_user!
-  before_action :project_full, only: [:new, :create]
+  before_action :project_full
+  before_action :available
+
 
   def new
     @project = Project.find(params[:project_id])
@@ -46,6 +48,14 @@ class AttendancesController < ApplicationController
     @project = Project.find(params[:project_id])
     unless !@project.full?
       flash[:error] ="Ce projet est complet"
+      redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def available
+  @project = Project.find(params[:project_id])
+  unless current_user.is_available?(@project)
+      flash[:error] ="Vous êtes déjà inscrit à un projet sur ces dates"
       redirect_back(fallback_location: root_path)
     end
   end
