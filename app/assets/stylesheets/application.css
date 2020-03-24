@@ -20,5 +20,5 @@
  *= require heroimagehome
  *= require CTA_attendee
  *= require CTA_owner
-
+ *= require user
  */

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :not_my_profile, only: [:edit, :update]
 
   def show
     @user = User.find(params[:id])
@@ -27,5 +28,16 @@ class UsersController < ApplicationController
         redirect_to @user
       end
   end
+
+
+  private
+
+def not_my_profile
+  @user = User.find(params[:id])
+  unless current_user == @user
+    flash[:error] ="Vous n'êtes pas autorisé à consulter cette page. Voici la page publique du membre."
+      redirect_to @user
+  end
+end
 
 end
