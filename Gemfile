@@ -70,7 +70,7 @@ gem 'letter_opener'
 gem 'dotenv-rails'
 gem 'stripe'
 
-gem "font-awesome-rails"
+gem 'font-awesome-rails'
 gem 'image_processing'
 gem 'aasm'
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
