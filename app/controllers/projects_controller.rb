@@ -6,19 +6,15 @@ class ProjectsController < ApplicationController
     @projects = Project.all   
   end
 
-
   def show
     @project = Project.find(params[:id])
   end
-
   
   def new
     @packages = Package.all
   end
 
-
   def create
-
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
     @project.update(start_date: @start_date)
@@ -30,12 +26,12 @@ class ProjectsController < ApplicationController
      flash.now[:error] = @project.errors.full_messages.to_sentence
      render :new
    end
- end
+  end
 
- def edit
-  @packages = Package.all
-  @project = Project.find(params[:id])
-end
+  def edit
+    @packages = Package.all
+    @project = Project.find(params[:id])
+  end
 
 def update
   @packages = Package.all
@@ -53,22 +49,27 @@ def update
     else
      flash.now[:error] = @project.errors.full_messages.to_sentence
      render :edit
-   end
- else
-  if @project.save
-    flash[:success] = "Le projet a été modifié !"
-    redirect_to project_path(@project.id)
+    end
   else
-   flash.now[:error] = @project.errors.full_messages.to_sentence
-   render :edit
- end
+    if @project.save
+      flash[:success] = "Le projet a été modifié !"
+      redirect_to project_path(@project.id)
+    else
+     flash.now[:error] = @project.errors.full_messages.to_sentence
+     render :edit
+    end
+  end
+end 
+
+
+def ongoing_project
+  @project = current_user.ongoing_project[0]
 end
 
 
-
-end 
-
 private
+
+
 
 def project_params
   params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
