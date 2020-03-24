@@ -8,30 +8,31 @@
     <%= render 'edit_picture', user: @user %>
     </div>
     <div class="col-sm-8">
-        <ul class="nav my-5">
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#settings">Mes informations</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myprojects">Mes projets</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myattendances">Mes sessions</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myorders">Mes paiements</a></li>
+        <ul class="nav nav-tabs my-5">
+              <li class="nav-item active" role="presentation"><a href="#settings" aria-controls="settings" class="btn btn-light" data-toggle="tab">Mes informations</a></li>
+              <li class="nav-item" role="presentation"><a href="#myprojects" aria-controls="myprojects" class="btn btn-light" data-toggle="tab">Mes projets</a></li>
+              <li class="nav-item" role="presentation"><a href="#myattendances" aria-controls="myattendances" class="btn btn-light" data-toggle="tab">Mes sessions</a></li>
+              <li class="nav-item" role="presentation"><a href="#myorders" aria-controls="myorders" class="btn btn-light" data-toggle="tab">Mes paiements</a></li>
         </ul>
         <div class="tab-content">
-           <div class="tab-pane active" id="settings">
+           <div role="tabpanel" class="tab-pane active" id="settings">
             <%= render 'edit_form', user: @user %>
            </div>
 
-           <div class="tab-pane active" id="myprojects"> 
+           <div role="tabpanel" class="tab-pane fade" id="myprojects"> 
             <%= render 'project_user', projects: @projects %>
            </div>
 
-           <div class="tab-pane active" id="myattendances">
+           <div role="tabpanel" class="tab-pane fade" id="myattendances">
            <%= render 'attendance_user', attendances: @attendances %>
            </div>
 
-           <div class="tab-pane active" id="myorders">
-            <h2 class="mx-2">Mes paiements Coming soon </h2>
+           <div role="tabpanel" class="tab-pane fade" id="myorders">
+            <h3 class="mx-2">Mes paiements</h3>
+            <span class="text-uppercase font-weight-light m-4">coming soon </span>
            </div>
         </div>
-      </div><!--/col-8-->
-  </div><!--/row-->
+      </div>
+  </div>
 </div>
 
