@@ -7,6 +7,7 @@ class Project < ApplicationRecord
 
   # after_update :confirmation_email
 
+
   validates :title,
   presence: true,
   length: { in: 3..100}
@@ -45,6 +46,11 @@ class Project < ApplicationRecord
   end
 
 
+
+def ongoing?
+    self.start_date <= Time.zone.now && self.end_date >= Time.zone.now
+end
+
   def end_date
     self.start_date + (self.package.number_of_days * 86400)
   end
@@ -61,6 +67,5 @@ class Project < ApplicationRecord
       end
     end
   end
-
 
 end
