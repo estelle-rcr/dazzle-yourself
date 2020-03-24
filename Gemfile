@@ -72,3 +72,4 @@ gem 'stripe'
 
 gem "font-awesome-rails"
 gem 'image_processing'
+gem 'aasm'

@@ -55,20 +55,23 @@
 									
 									<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
 									
-								<% if current_user == @project.owner%>
+									Partager ce projet sur <br> <%= link_to image_tag('https://www.facebook.com/images/fb_icon_325x325.png', height: '60', width: '60'), 'http://www.facebook.com/sharer.php?u=https://dazzle-yourself.herokuapp.com'+request.fullpath, :target => :blank %>
 
-								<%= render 'ownerproject' %>
-								
-									<% if @project.state == "draft" %>
-									<p>Vous n'avez pas encore publié votre projet.</p>
+									
+									<% if current_user == @project.owner%>
 
-									<%= link_to "Editer ou publier le projet", edit_project_path(@project.id)%>
-									<% end %> 
-									<%= link_to "Créer un nouveau projet", new_project_path%>
+									<%= render 'ownerproject' %>
+									
+										<% if @project.state == "draft" %>
+										<p>Vous n'avez pas encore publié votre projet.</p>
 
-								<% end %>
+										<%= link_to "Editer ou publier le projet", edit_project_path(@project.id)%>
+										<% end %> 
+										<%= link_to "Créer un nouveau projet", new_project_path%>
 
-								<% end%>
+									<% end %>
+
+									<% end%>
 
 							</div>
 						</div>
