@@ -6,21 +6,16 @@
   <div class="row m-5">
     <div class="col-sm-4"><!--left col-->
       <div class="text-center m-4 p-3">
-      
         <%if @user.avatar.attached?%>
-  <%= image_tag @user.thumbnail, alt: 'avatar' %>
-<%else%>
-<%= image_tag ("http://ssl.gstatic.com/accounts/ui/avatar_2x.png"), alt="avatar" %>
-<%end%>
-
-        <h5>Mettre à jour l'avatar?</h5>
+          <%= image_tag @user.thumbnail, alt: 'avatar' %>
+        <%else%>
+            <%= image_tag ("http://ssl.gstatic.com/accounts/ui/avatar_2x.png"), alt="avatar" %>
+        <%end%>
+        <h5>Mettre à jour l'image:</h5>
         <%= form_tag user_avatars_path(@user), multipart: true do %>
           <%= file_field_tag :avatar %>
           <%= submit_tag "mettre à jour" %>
         <% end %>
-
-
-
       </div>
     </div><!--/col-3-->
     <div class="col-sm-8"><!--right col--><!--nav items-->
