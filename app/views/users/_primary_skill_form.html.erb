@@ -7,7 +7,7 @@
 		<%= submit_tag "Enregistrer", class: "btn btn-primary mx-4"%>
 	<%end%>	
 
-<% else %>
+<% elsif @user.skills.length == 1 %>
 <p>Vous avez choisi la compétence : <span class ="text-primary font-weight-bold"><%=@skill_setup_primary.skill.title%></span></p>
 	<%= form_tag(user_skill_setup_path(@user.id, @skill_setup_primary.id), :action => "update", :method => "patch") do %>
 		<%= hidden_field_tag :primary, true %>

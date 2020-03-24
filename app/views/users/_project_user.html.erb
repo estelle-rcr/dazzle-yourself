@@ -1,24 +1,23 @@
 
-<div class="container bootstrap snippet m-5">
+<div class="container bootstrap snippet my-5">
 <h2>Les projets dont je suis l'organisateur :</h2>
-<% if @projects %>
-    <div class="row">
+<% if @projects[0] %>
+    <div class="row my-4">
         <% @projects.each do |project| %>
-        <div class="col-sm-3">
+        <div class="col-sm-4 my-2">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header"><%= project.title.capitalize%><br></div>
+                <div class="card-header font-weight-bold"><%= project.title.capitalize%><br></div>
                 <div class="card-body">
-                    <h4 class="card-title"><%= project.start_date.strftime("le %d/%m/%Y à %I:%M")%></h4>
+                    <p class="card-text"><%= project.start_date.strftime("Le %d/%m/%Y à %I:%M")%></p>
                 </div>
             </div>
         </div>
         <% end %>
     </div>
-
-<% else %>
-<p>Vous n'avez proposé aucun projet pour le moment</p>
-<% end%>
-
+    <% else %>
+    <p class="my-5">Vous n'avez proposé aucun projet pour le moment.</p>
+    <% end%>
+    <hr>
 </div>
 
  

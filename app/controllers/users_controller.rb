@@ -1,20 +1,20 @@
 class UsersController < ApplicationController
-  
+
   def show
-    @user = current_user 
+    @user = User.find(params[:id])
+    @attendances = Attendance.where(attendee: @user) 
+    @projects = Project.where(owner: @user)
+    @skill_setup_primary = SkillSetup.find_by(user: @user, primary: true)
+    @skill_setup_secondary = SkillSetup.find_by(user: @user, primary: false)
+  end
+
+  def edit
+    @user = User.find(params[:id])
     @attendances = Attendance.where(attendee: current_user) 
     @projects = Project.where(owner: current_user)
     @skills = Skill.all
     @skill_setup_primary = SkillSetup.find_by(user: current_user, primary: true)
     @skill_setup_secondary = SkillSetup.find_by(user: current_user, primary: false)
-  end
-
-  def edit
-    @user = User.find(params[:id])
-    @skills = Skill.all
-    @skill_setup_primary = SkillSetup.find_by(user: current_user, primary: true)
-    @skill_setup_secondary = SkillSetup.find_by(user: current_user, primary: false)
-    
   end
 
   def update

@@ -1,5 +1,13 @@
 class SkillSetupsController < ApplicationController
 
+  def new
+    @skills = Skill.all
+    @user = current_user
+    @skill_setup_primary = SkillSetup.find_by(user: current_user, primary: true)
+    @skill_setup_secondary = SkillSetup.find_by(user: current_user, primary: false)
+  end
+
+
   def create
     @skill_setup = SkillSetup.create!(
       user: User.find(params[:user_id]),

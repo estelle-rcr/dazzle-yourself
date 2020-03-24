@@ -1,60 +1,62 @@
 <% if user_signed_in? %>
 <div class="container my-5">
-  <table class="table table-borderless">
-    <thead>
-      <h5>Récapitulatif de la réservation</h5>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row" class="col-4">Projet : </th>
-        <td >"<%=@project.title.capitalize %>"</td>
-      </tr>
-      <tr>
-        <th scope="row">Date de début :</th>
-        <td><%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></td>
-      </tr>
-      <tr>
-        <th scope="row">Durée : </th>
-        <td><%= @project.package.number_of_days %> jours</td>
-      </tr>
-      <tr>
-        <th scope="row">Porteur du projet : </th>
-        <td><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize[0] %>.</td>
-      </tr>
-      <tr>
-        <th scope="row">Prix de l'inscription : </th>
-        <td><%= @project.package.price_attendee.to_f / 100 %>€</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-  <div class="row col-8">
-    <div class="col-md-6 offset-md-3">
-      <%= form_tag url_for(action: 'create'), method: "post" do %>
-      <article>
-        <%= hidden_field_tag :amount, @amount %>
-        <% if flash[:error].present? %>
-        <div id="error_explanation">
-          <p><%= flash[:error] %></p>
-        </div>
-
-        <% end %>
-      </article>
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-      data-description="Payez votre commande"
-      data-email=<%= current_user.email %>
-      data-label="Payer par carte"
-      data-currency= 'eur'
-      data-amount=<%= @amount%>
-      data-locale="auto">
-
-    </script>
-    <% end %>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table table-borderless grey-box">
+        <thead>
+          <h5>Récapitulatif de la réservation</h5>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" class="">Projet : </th>
+            <td >"<%=@project.title.capitalize %>"</td>
+          </tr>
+          <tr>
+            <th scope="row">Date de début :</th>
+            <td><%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></td>
+          </tr>
+          <tr>
+            <th scope="row">Durée : </th>
+            <td><%= @project.package.number_of_days %> jours</td>
+          </tr>
+          <tr>
+            <th scope="row">Porteur du projet : </th>
+            <td><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize[0] %>.</td>
+          </tr>
+          <tr>
+            <th scope="row">Prix de l'inscription : </th>
+            <td><%= @project.package.price_attendee.to_f / 100 %>€</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="m-3 p-2"><%= image_tag "development.svg", alt: "Rocket image", width: 290 %></div>
+    </div>
+    <div class="col-md-8 text-center mt-3 mb-5">
+        <%= form_tag url_for(action: 'create'), method: "post" do %>
+        <article>
+          <%= hidden_field_tag :amount, @amount %>
+          <% if flash[:error].present? %>
+          <div id="error_explanation">
+            <p><%= flash[:error] %></p>
+          </div>
+          <% end %>
+        </article>
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+        data-description="Payez votre commande"
+        data-email=<%= current_user.email %>
+        data-label="Payer par carte"
+        data-currency= 'eur'
+        data-amount=<%= @amount%>
+        data-locale="auto">
+      </script>
+      <% end %>
+    </div>
   </div>
-</div>
 </div>
 <% else%>
 <p> Veuillez vous connecter pour vous inscrire </p>
 <%end%>
+</div>

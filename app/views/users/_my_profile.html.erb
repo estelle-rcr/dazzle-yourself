@@ -1,0 +1,37 @@
+<div class="container bootstrap snippet my-5">
+  <br>
+  <div class="row m-5">
+  <div class="col-sm-12"><h1>Bienvenue sur votre page de profil <%= @user.first_name.capitalize %></h1></div>
+  </div>
+  <div class="row my-5">
+    <div class="col-sm-4">
+    <%= render 'edit_picture', user: @user %>
+    </div>
+    <div class="col-sm-8">
+        <ul class="nav my-5">
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#settings">Mes informations</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myprojects">Mes projets</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myattendances">Mes sessions</a></li>
+              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myorders">Mes paiements</a></li>
+        </ul>
+        <div class="tab-content">
+           <div class="tab-pane active" id="settings">
+            <%= render 'edit_form', user: @user %>
+           </div>
+
+           <div class="tab-pane active" id="myprojects"> 
+            <%= render 'project_user', projects: @projects %>
+           </div>
+
+           <div class="tab-pane active" id="myattendances">
+           <%= render 'attendance_user', attendances: @attendances %>
+           </div>
+
+           <div class="tab-pane active" id="myorders">
+            <h2 class="mx-2">Mes paiements Coming soon </h2>
+           </div>
+        </div>
+      </div><!--/col-8-->
+  </div><!--/row-->
+</div>
+

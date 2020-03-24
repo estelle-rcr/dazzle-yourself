@@ -1,0 +1,25 @@
+<div class="container bootstrap snippet my-4 grey-box">
+  <div class="row m-4 p-4">
+    <div class="col-sm-12"><h3>Pour finir, compléter votre profil <%=@user.first_name.capitalize %> !</h3>
+    <p>Compléter votre profil est important pour que les autres utilisateurs puissent connaître ce .</p>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-sm-4">
+      <%= render 'edit_picture', user: @user %>
+    </div>
+        <div class="col-sm-8">
+          <hr>
+          <div class="container bootstrap snippet my-5 mx-4 px-5">
+            <h3 class="my-3">Vos compétences :</h3>
+            <h6>Compétence principale: </h6>
+            <%= render 'users/primary_skill_form'%>
+          
+            <h6>Compétence secondaire: </h6>
+            <%= render 'users/secondary_skill_form'%>
+          </div>
+          <hr>
+        </div>
+      </div>
+  </div>
+</div>

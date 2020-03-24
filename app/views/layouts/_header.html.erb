@@ -21,7 +21,7 @@
           <% if user_signed_in? %>
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user", style="margin-right: 12px;color: white;"></i>MON ESPACE</a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to "Mon profil", user_path(current_user.id), class:"dropdown-item"%></li>
+            <li><%= link_to "Mon profil", edit_user_path(current_user.id), class:"dropdown-item"%></li>
             <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
           </div>
           <%else%>
