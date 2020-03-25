@@ -14,7 +14,7 @@
 
 							<div class="pd-title text-center">
 								<br><h1> Projet : <%= @project.title.capitalize %> </h1>
-								<br>
+								<p class="my-4"><small>Tags: <%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(', ') %></small></p>
 							</div>
 
 							<div class="pd-desc">

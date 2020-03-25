@@ -48,7 +48,7 @@ class User < ApplicationRecord
 
   def ongoing_project
     projects_as_attendee = Attendance.where(attendee: self, state: "paid").map {|a| a.project}
-    projects_as_owner = Project.where(owner: self, state: "published").map {|p| project}
+    projects_as_owner = Project.where(owner: self, state: "published").map {|p| p}
     projects = projects_as_attendee + projects_as_owner
 
     if projects.length > 0
