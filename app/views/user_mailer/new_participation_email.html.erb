@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Une nouvelle personne s'est inscrite à ton projet "<%= @project.title %>", il s'agit de <%= @attendee.first_name %> <%= @attendee.last_name %>, tu retrouveras toutes ses informations dans ton <%= link_to "espace personnel", user_url(@user.id) %> !</h1>
+    <p>Il y a maintenant <%= @project.attendees.length %> inscrits à ton projet.</p>
+    <p>Rendez-vous le <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M")  %> pour le début de l'aventure !</p>
+
+    <p>À très vite ! </p>
+  </body>
+</html>

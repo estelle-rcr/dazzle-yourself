@@ -1,0 +1,34 @@
+<div class="container bootstrap snippet m-5">
+  <br>
+  <div class="row m-5">
+  <table class="table" style="width: 80%;">
+
+    <tbody>
+
+          <h2> Informations sur le projet </h2>
+          <tr class="table-light" >
+            <th scope="row" style="width: 30%" >Nom du projet : </th>
+            <td><%= @project.title %></td>
+          </tr>
+          <tr class="table-light" >
+            <th scope="row" >Description : </th>
+            <td><%= @project.short_description %></td>
+          </tr>
+          <tr class="table-light" >
+            <th scope="row">Etat du projet : </th>
+            <td><%=  @project.state %></td>
+          </tr>
+          <tr class="table-light" >
+            <th scope="row">Dates : </th>
+            <td> Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %>
+            <br> Se termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %></td>
+          </tr>
+    </tbody>
+  </table>
+  </div>
+
+  <div class="col m-5">
+    <%= button_to "Supprimer le projet", admin_project_path(@project.id), class:"btn btn-danger", :method => :delete, data: { confirm: 'Souhaitez-vous supprimer définitivement ce projet?' } %>  
+  </div>
+
+</div>

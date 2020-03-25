@@ -1,1 +1,38 @@
-<p>Gestion des users </p>
+<div class="card mb-4">
+    <div class="card-header"><i class="fas fa-table mr-1"></i>Les utilisateurs</div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Email</th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <td><%= user.id %></td>
+                        <td><%= user.first_name %></td>
+                        <td><%= user.last_name %></td>
+                        <td><%= user.email %></td>
+                        <td><%= button_to "Voir le profil", admin_user_path(user.id), class:"btn btn-dark", method:"get" %></td>
+                    </tr>
+                 <%end%>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    
+
+  
+    
+
+    
+   
+    

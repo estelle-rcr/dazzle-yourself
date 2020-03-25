@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
     # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   
-  devise_for :users
-
+  devise_for :users, controllers: { registrations: 'users/registrations' }
 
   root to: 'static#home'
   get 'homepage', to:'static#homepage'
+  get 'myproject', to:'projects#ongoing_project'
 
   resources :users, only: [:show] do
     resources :avatars, only: [:create]

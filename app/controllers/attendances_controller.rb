@@ -1,9 +1,10 @@
 class AttendancesController < ApplicationController
+
   before_action :project_published
   before_action :authenticate_user!
   before_action :project_full
   before_action :available
-
+  before_action :add_skill, only: [:new]
 
   def new
     @project = Project.find(params[:project_id])
@@ -57,6 +58,14 @@ class AttendancesController < ApplicationController
   unless current_user.is_available?(@project)
       flash[:error] ="Vous êtes déjà inscrit à un projet sur ces dates"
       redirect_back(fallback_location: root_path)
+    end
+  end
+
+  def add_skill
+    @project = Project.find(params[:project_id])
+    unless current_user.skills[0]
+    flash[:alert] = "Vous devez renseigner une compétence principale pour vous inscrire à un projet. Rendez-vous dans votre page profil."
+    redirect_to new_user_skill_setup_path(current_user.id)
     end
   end
 

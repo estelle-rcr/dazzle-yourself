@@ -6,29 +6,30 @@ class ProjectsController < ApplicationController
     @projects = Project.all   
   end
 
-
   def show
     @project = Project.find(params[:id])
   end
-
   
   def new
     @packages = Package.all
   end
 
-
   def create
+
+    @user = current_user
+
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
     @project.update(start_date: @start_date)
 
     if @project.save
       flash[:success] = "Le projet a été créé !"
-      redirect_to project_path(@project.id)
+      redirect_to new_user_skill_setup_path(@user.id)
     else
      flash.now[:error] = @project.errors.full_messages.to_sentence
      render :new
     end
+
   end
 
   def edit
@@ -64,11 +65,20 @@ class ProjectsController < ApplicationController
     end
   end 
 
+
+def ongoing_project
+  @project = current_user.ongoing_project[0]
+end
+
+
 private
 
-  def project_params
-    params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
-  end
+
+
+def project_params
+  params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
+end
+
 
   def my_project
     @project = Project.find(params[:id])
