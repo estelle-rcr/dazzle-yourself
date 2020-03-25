@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:show, :edit, :update, :destroy]
+
 
   def index
     @project = current_user.ongoing_project[0]
@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   end
 
   def show
+@post = Post.find(params[:id])
   end
 
   def new
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
     @post = Post.new(user: current_user, project: @project, title: params[:title], content: params[:content])
 
     if @post.save
-      redirect_to posts_path
+      redirect_to myproject_path(anchor: 'chat')
     else
       render 'new'
     end
@@ -26,27 +27,26 @@ class PostsController < ApplicationController
   end
 
   def edit
+@post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
     @post.update(title: params[:title], content: params[:content])
     if @post.save
-      redirect_to posts_path
+      redirect_to myproject_path(anchor: 'chat')
     else
       render 'edit'
     end
   end
 
   def destroy
-    @post.destroy
-    redirect_to posts_path
-
-  end
-
-  private
-
-  def find_post
     @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to myproject_path(anchor: 'chat')
+
   end
+
+
 
 end

@@ -1,10 +1,7 @@
 
 <div class="row ">
-	<div class="col-md-1"></div>
-	<div class="col-md-6 grey-box px-3">
+	<div class="col-md-12 grey-box px-3">
 		<div class="form-group">
-			<h6 class="mx-4 my-4 px-2 py-2">Poster un commentaire</h6>
-
 			<%= form_tag(post_comments_path(post.id), :action => "create", :method => "post") do %>
 			<div class="field mx-4  px-4">
 				<%= text_area_tag :comment, nil, placeholder:'Commentaire',size: "14x2",class:'form-control smallform'%>
@@ -13,6 +10,9 @@
 				<%= submit_tag "Commenter", class: "btn btn-primary"%>
 			</div>
 			<% end %>
+			<hr>
 		</div>
+
 	</div>
+
 </div>

@@ -66,19 +66,21 @@ class ProjectsController < ApplicationController
   end 
 
 
-def ongoing_project
-  @project = current_user.ongoing_project[0]
-  render layout: "layouts/ongoing_project"
-end
+  def ongoing_project
+    @project = current_user.ongoing_project[0]
+    @posts = Post.where(project: @project).order("created_at DESC")
+    
+    render layout: "layouts/ongoing_project"
+  end
 
 
-private
+  private
 
 
 
-def project_params
-  params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
-end
+  def project_params
+    params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
+  end
 
 
   def my_project
