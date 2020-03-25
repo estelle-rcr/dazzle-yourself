@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   belongs_to :package
   has_many :attendances
   has_many :attendees, class_name: "User", through: :attendances
+  has_one_attached :image
 
   # after_update :confirmation_email
 
@@ -60,6 +61,10 @@ class Project < ApplicationRecord
         UserMailer.reminder_participation_email(self, attendee).deliver_later(wait_until: (self.start_date - 259200))
       end
     end
+  end
+
+  def banner
+    return self.image.variant(resize: "300x300!")
   end
 
 end
