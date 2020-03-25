@@ -1,0 +1,23 @@
+<div class="row ">
+	<div class="col-md-1">
+		<p>auteur</p>
+		<p>A commenté le <%= post.created_at.strftime("%d/%m/%Y à %I:%M") %>
+	</div>
+	<div class="col-md-6 grey-box px-3">
+		<div class="form-group">
+			<div class="field mx-4 my-5 px-4">
+				<%= comment.comment %>
+			</div>
+			<div class="field mx-4 my-5 px-4 row">
+			<% if comment.user == current_user %>
+			<div class="col-10 text-right">
+			<%= button_to 'Modifier', edit_post_path(post.id), method: 'get', class:'btn btn-sm btn-warning'%>
+		</div>
+		<div class="col-2 text-right">
+			<%= button_to 'Supprimer', post_path(post.id), method: :delete, class:'btn btn-sm btn-danger', data: { confirm: "Souhaites-tu vraiment supprimer ce message ?" }%>
+		</div>
+			<% end %>
+		</div>
+		</div>
+	</div>
+</div>

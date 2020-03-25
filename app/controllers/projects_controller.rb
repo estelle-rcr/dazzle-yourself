@@ -68,6 +68,7 @@ class ProjectsController < ApplicationController
 
 def ongoing_project
   @project = current_user.ongoing_project[0]
+  render layout: "layouts/ongoing_project"
 end
 
 
