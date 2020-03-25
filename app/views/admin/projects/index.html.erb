@@ -30,8 +30,9 @@
                             <p> Non publiable </p>
                             <%end%>
                                 
-                        </td>                        
-                        <td><i class="far fa-eye"></i>   <i class="far fa-edit"></i>   <i class="far fa-trash-alt"></i></td>
+                        </td>    
+                        <td><%= button_to "Voir le projet", admin_project_path(project.id), class:"btn btn-dark", method:"get" %></td>                    
+                        
                     </tr>
                     <%end%>
                 </tbody>
