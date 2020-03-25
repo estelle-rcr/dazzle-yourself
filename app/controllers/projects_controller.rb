@@ -9,6 +9,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @user_attendance = Attendance.find_by(attendee: current_user)
   end
 
   
