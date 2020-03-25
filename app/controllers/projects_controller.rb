@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :my_project, only: [:edit, :update]
 
   def index
-    @projects = Project.all   
+    params[:tag] ? @projects = Project.tagged_with(params[:tag]) : @projects = Project.all
   end
 
   def show
@@ -11,20 +11,18 @@ class ProjectsController < ApplicationController
   end
   
   def new
+    @project = Project.new
     @packages = Package.all
   end
 
   def create
-
     @user = current_user
-
-    @project = Project.create(project_params)
+    @project = Project.new(project_params)
     @start_date = Time.parse(params[:project].to_s)
-    @project.update(start_date: @start_date)
-
     if @project.save
       flash[:success] = "Le projet a été créé !"
-      redirect_to new_user_skill_setup_path(@user.id)
+      @project.update(start_date: @start_date)
+      redirect_to @project
     else
      flash.now[:error] = @project.errors.full_messages.to_sentence
      render :new
@@ -73,12 +71,9 @@ end
 
 private
 
-
-
 def project_params
-  params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal)
+  params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
 end
-
 
   def my_project
     @project = Project.find(params[:id])

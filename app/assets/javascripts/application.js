@@ -18,3 +18,7 @@
 //= require jqBootstrapValidation
 //= require agency
 //= require scripts
+//= require jquery_ujs
+//= require popper
+//= require tether
+//= require bootstrap-sprockets

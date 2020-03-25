@@ -3,13 +3,14 @@
     <div class="col-sm-12">
     <h3 class="text-primary mt-4">Pour continuer, compléter votre profil <%=@user.first_name.capitalize %> !</h3>
     <p>Compléter votre profil est important pour que les autres utilisateurs puissent connaître les compétences que vous pouvez apporter.</p>
+    <p>Indiquer au moins une compétence.</p>
     </div>
   </div>
   <hr>
   <div class="row mt-2 mb-5">
     <div class="col-md-7">
       <div class="container bootstrap snippet mt-2 mb-5 mx-4 px-5">
-        <h3 class="mt-2 mb-4">Vos compétences :</h3>
+        <h3 class="mt-2 mb-4"><i class="fas fa-exclamation-triangle" style="margin-right: 8px; color: Tomato;"></i>Vos compétences :</h3>
         <h6>Compétence principale: </h6>
         <%= render 'users/primary_skill_form'%>
         <h6>Compétence secondaire: </h6>

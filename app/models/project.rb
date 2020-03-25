@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   belongs_to :package
   has_many :attendances
   has_many :attendees, class_name: "User", through: :attendances
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   # after_update :confirmation_email
 
@@ -77,5 +79,22 @@ end
     end
   end
 
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).projects
+  end
+
+  def self.tag_counts
+    Tag.select('tags.*, count(taggings.tag_id) as count').joins(:taggings).group('taggings.tag_id')
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
+
+  def tag_list=(names)
+    self.tags = names.split(',').map do |n|
+      Tag.where(name: n.strip).first_or_create!
+    end
+  end
 
 end

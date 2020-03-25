@@ -65,15 +65,33 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# Database management : print tables and generate fake data
 gem 'table_print'
 gem 'faker'
 
-
+# Open emails in local instead of transiting through Sendgrid in development
 gem 'letter_opener'
+
+# Enable to hide private keys for services
 gem 'dotenv-rails'
+
+# Enable payments
 gem 'stripe'
+
+# Handle states for projects
 gem 'aasm'
+
+# Active storage on AWS + gems to resize images
 gem 'ruby-graphviz'
-gem 'font-awesome-rails'
 gem 'image_processing'
 gem 'aws-sdk-s3', require: false
+
+# Gem for font awesome icons
+gem 'font-awesome-rails'
+
+# Gems installing jQuery for tags / filters on projects
+gem 'popper_js', '~> 1.11.1'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.3.3'
+  gem 'rails-assets-chosen'
+end
