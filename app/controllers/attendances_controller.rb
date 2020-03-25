@@ -1,6 +1,7 @@
 class AttendancesController < ApplicationController
 before_action :project_published
 before_action :authenticate_user!
+before_action :add_skill, only: [:new]
 
   def new
     @project = Project.find(params[:project_id])
@@ -40,6 +41,14 @@ before_action :authenticate_user!
       redirect_to root_path
     end
 
+  end
+
+  def add_skill
+    @project = Project.find(params[:project_id])
+    unless current_user.skills[0]
+    flash[:alert] = "Vous devez renseigner une compétence principale pour vous inscrire à un projet. Rendez-vous dans votre page profil."
+    redirect_to new_user_skill_setup_path(current_user.id)
+    end
   end
 
 end

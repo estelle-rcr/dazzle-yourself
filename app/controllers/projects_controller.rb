@@ -15,13 +15,14 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @user = current_user
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
     @project.update(start_date: @start_date)
 
     if @project.save
       flash[:success] = "Le projet a été créé !"
-      redirect_to project_path(@project.id)
+      redirect_to new_user_skill_setup_path(@user.id)
     else
      flash.now[:error] = @project.errors.full_messages.to_sentence
      render :new
