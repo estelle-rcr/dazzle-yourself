@@ -7,11 +7,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csp_meta_tag %>
-
-
-<%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
-<%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
-
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
@@ -21,10 +18,12 @@
   <body>
   <%= render 'layouts/header' %>
   <%= render 'layouts/flash'%>
+  <div class="shadow-sm">
   <%= yield %>
-  <dir class="container p-3 mt-5 mb-2 ">
+ </div>
+  <div class="p-3 mt-3 mb-2">
   <%= render 'layouts/footer'%>
-  </dir>
+  </div>
   </body>
   <script src="https://kit.fontawesome.com/d714c2541d.js" crossorigin="anonymous"></script>
 </html>

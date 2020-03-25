@@ -19,6 +19,13 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: "Ton inscription au projet '#{@project.title}' est confirmée") 
   end
 
+    def new_participation_email(project, user, attendee)
+    @project = project
+    @user = user
+    @attendee = attendee
+    mail(to: @user.email, subject: "Une nouvelle inscription à ton projet '#{@project.title}'") 
+  end
+
   def project_published_email(project, user)
     @project = project
     @user = user

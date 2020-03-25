@@ -20,10 +20,12 @@
   <body>
   <%= render 'layouts/header' %>
   <%= render 'layouts/flash'%>
+  <div class="shadow-sm">
   <%= yield %>
-  <dir class="container p-3 mt-5 mb-2">
+  </div>
+  <div class="p-3 mt-3 mb-2">
   <%= render 'layouts/footer'%>
-  </dir>
+  </div>
   </body>
   <script src="https://kit.fontawesome.com/d714c2541d.js" crossorigin="anonymous"></script>
 </html>

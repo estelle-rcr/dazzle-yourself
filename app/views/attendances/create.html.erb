@@ -1,2 +1,31 @@
+  <table class="table table-borderless">
+    <thead>
+      <h5>Récapitulatif de la réservation</h5>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row" class="col-4">Projet : </th>
+        <td >"<%=@project.title.capitalize %>"</td>
+      </tr>
+      <tr>
+        <th scope="row">Date de début :</th>
+        <td><%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></td>
+      </tr>
+      <tr>
+        <th scope="row">Durée : </th>
+        <td><%= @project.package.number_of_days %> jours</td>
+      </tr>
+      <tr>
+        <th scope="row">Porteur du projet : </th>
+        <td><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize[0] %>.</td>
+      </tr>
+      <tr>
+        <th scope="row">Prix de l'inscription : </th>
+        <td><%= @project.package.price_attendee.to_f / 100 %>€</td>
+      </tr>
+
+    </tbody>
+  </table>
+
 <h3>Votre inscription au projet <%= @project.title %> est validée</h3>
 <p>Votre référence de réservation est #000<% @attendance.id %>, vous retrouverez toutes les informations dans votre espace personnel.</p>

@@ -1,0 +1,8 @@
+Bonne nouvelle !
+----------------------------------
+
+Une nouvelle personne s'est inscrite à ton projet "<%= @project.title %>", il s'agit de <%= @attendee.first_name %> <%= @attendee.last_name %>, tu retrouveras toutes ses informations dans ton <%= link_to "espace personnel", user_url(@user.id) %> !
+Il y a maintenant <%= @project.attendees.length %> inscrits à ton projet.
+Rendez-vous le <%= @project.start_date.strftime("le %d/%m/%Y à %I:%M")  %> pour le début de l'aventure !
+
+À très vite !

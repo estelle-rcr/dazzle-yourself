@@ -1,28 +1,26 @@
 
 <div class="album py-5 mt-5 bg-light">
-    <div class="text-center">
+    <div class="text-center my-3">
         <h3>- Projets à venir -<h3>
     </div>
-    <hr>
-    <div class="container">
-        <div class="row">
-          <% @projects.each do |project| %>
+    <div class="container my-4">
+        <div class="row my-4">
+          <% @projects.sort_by(&:start_date).each do |project| %>
             <% if project.state == "published" %>
               <%= render 'project_card', project: project %>
             <%end %>
           <%end %>
         </div>
     </div>
-
-
-
-    <div class="text-center">
+<div class="mt-5 mb-5" >
+<%= render 'layouts/CTA_owner' %>
+</div>
+    <div class="text-center my-3 mt-5">
       <h3>- Projets passés -<h3>
     </div>
-    <hr>
-    <div class="container">
-        <div class="row">
-          <% @projects.each do |project| %>
+    <div class="container my-4">
+        <div class="row my-4">
+          <% @projects.sort_by(&:start_date).each do |project| %>
             <% if project.state == "finished" %>
               <%= render 'project_card', project: project %>
             <%end %>

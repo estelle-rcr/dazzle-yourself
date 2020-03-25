@@ -7,37 +7,32 @@
            
          </div>
          <div class="card-body my-4">
-          <h2>Se connecter</h2>
+          <h2 class="text-primary"><i class="fas fa-user-circle" style="margin-right: 1rem;"></i>Se connecter</h2>
 
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          
-          <div class="field">
+          <div class="field my-4">
             <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "regularform" %>
           </div>
-
-          <div class="field">
+          <div class="field my-4">
             <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "regularform" %>
           </div>
-
-          <br>
+          <div class="my-4">
           <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :remember_me %>
+            <div class="field my-4">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
           </div>
           <% end %>
-          <br>
-          <div class="actions">
-            <%= f.submit "Connexion" %>
+          <div class="actions my-4">
+            <%= f.submit "Connexion", class: "btn btn-primary" %>
           </div>
           <% end %>
-          <br>
-
+          <div class="my-3">
           <%= render "devise/shared/links" %>
-
-
+          </div>
         </div>
       </div>
     </div>

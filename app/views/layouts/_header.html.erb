@@ -1,4 +1,4 @@
-<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark fixed-top navbar-shrink">
+<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark sticky-top navbar-shrink">
   <div class="container">
     <%= link_to root_path do %> 
     <img src="https://mcusercontent.com/2544e20caf820906596eccdf0/images/fbd9f5cd-a905-4438-a5ae-74c3ae74bca9.png" height="88px">
@@ -15,13 +15,20 @@
         <li class="nav-item">
           <li><%= link_to "Proposer un projet", homepage_path, class:"nav-link"%></li>
         </li>
+        <li ><% if user_signed_in? %>
+        <% if current_user.ongoing_project %>
+        <%= link_to '>> Mon projet', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
+        <% end %>
+        <%end%>
+      </li>
+
       </ul>
       <span class="navbar-nav ml-auto">
         <div class="dropdown">
           <% if user_signed_in? %>
           <a class="nav-link dropdown-toggle" id="dropdownMenuButton" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user", style="margin-right: 12px;color: white;"></i>MON ESPACE</a>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <li><%= link_to "Mon profil", user_path(current_user.id), class:"dropdown-item"%></li>
+            <li><%= link_to "Mon profil", edit_user_path(current_user.id), class:"dropdown-item"%></li>
             <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class:"dropdown-item"%></li>
           </div>
           <%else%>
@@ -36,6 +43,3 @@
     </div>
   </div>
 </nav>
-
-
-
