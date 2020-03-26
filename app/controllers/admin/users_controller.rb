@@ -1,11 +1,13 @@
 class Admin::UsersController < Admin::BaseController
 
   def index
-    @users = User.all
+    @users = User.all.order("created_at DESC")
   end
 
   def show
     @user = User.find(params[:id])
+    @projects_o = Project.where(owner: @user, state: "published") + Project.where(owner: @user, state: "paid") + Project.where(owner: @user, state: "finished")
+    @project_a = Project.where(attendee: @user, state: "paid")
   end
 
   def edit
