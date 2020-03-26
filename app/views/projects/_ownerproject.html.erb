@@ -1,20 +1,20 @@
-<h2> Mon espace - Porteur de Projet </h2>
+<h2 class="my-3"> Mon espace admin</h2>
 <table class="table shadow p-3 mb-5 bg-white rounded">
 
   <tbody>
     <tr>
-      <th scope="row"> <h5> Nom de mon projet </h5> </th>
-      <td> <%= @project.title.capitalize %> </td>
+      <th scope="row" class="text-secondary"> <h6> Nom de mon projet </h6> </th>
+      <td class="text-secondary"> <%= @project.title.capitalize %> </td>
     </tr>
 
     <tr>
-      <th scope="row"> <h5> Nom des participants et <br> leurs compétences </h5> </th>
-      <td> <% @project.attendees.each do |participant|%>
+      <th scope="row" class="text-secondary"> <h6> Nom des participants et <br> leurs compétences </h6> </th>
+      <td class="text-secondary"> <% @project.attendees.each do |participant|%>
         <% if @project.attendees.length > 0  %>
         <p> 
           <%= participant.first_name %> <%=participant.last_name.capitalize %> - 
           <% if participant.skills.length > 0 %>
-          <%= SkillSetup.find_by(user: participant, primary: true).skill.title %>
+          <%= primary_skill(participant) %>
         </p>
         <%end%>
         <% else %>
@@ -26,29 +26,29 @@
     </tr>
 
     <tr>
-      <th scope="row"> <h5> Nombre de participants </h5> </th>
-      <td> <%= @project.attendees.length.to_i %> </td>
+      <th scope="row" class="text-secondary"> <h6> Nombre de participants </h6> </th>
+      <td class="text-secondary"> <%= @project.attendees.length.to_i %> </td>
     </tr>
 
     <tr>
-      <th scope="row"> <h5> Dates de mon projet </h5> </th>
-      <td>
+      <th scope="row" class="text-secondary"> <h6> Dates de mon projet </h6> </th>
+      <td class="text-secondary">
         <p>Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %> </p>
         <p>Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %> </p>
       </td>
     </tr>
 
     <tr>
-      <th scope="row"> <h5> Etat de mon projet ---> <%= @project.state %> </h5> </th>
-      <td>  
-        <% if @project.state == "draft" ||  @project.state == "submitted" %>
-        <p><%= button_to "Modifier mon projet", edit_project_path(@project.id), method: 'get', class:"btn btn-secondary" %></p>
-        <% else %>
-        <p> Votre projet a été déjà publié <p>
-          <% end %>
+      <th scope="row" class="text-secondary"> <h6> Etat de mon projet</h6> </th>
+      <td class="text-secondary">  
+        <p class="mb-3"><%= @project.state %></p>
+        <%if @project.state == "draft" ||  @project.state == "submitted"%>
+          <p><%= button_to "Modifier mon projet", edit_project_path(@project.id), method: 'get', class:"btn btn-secondary" %></p>
+        <%else%>
+          <p> Votre projet a été déjà publié et ne peut plus être modifié.<p>
+        <%end%>
         </td>
       </tr>
 
     </tbody>
-
   </table>

@@ -21,3 +21,8 @@
   height: 160px;
   border-radius: 50%;
 }
+
+.avatar-small {
+  height: 80px;
+  border-radius: 50%;
+}
