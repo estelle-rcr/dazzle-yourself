@@ -32,6 +32,15 @@
           <%= text_area_tag :short_description, @project.short_description, required: true, class:'form-control smallform' %>
         </div>
 
+        <%if @project.image.attached?%>
+          <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
+        <%else%>
+        <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+        <%end%>
+        <div class="my-4">
+					<%= render 'images/images_form', project: @project %>
+        </div>
+
         <% if @project.long_description %>
         <div class="field mx-4 my-5 px-4">
           <%= label_tag 'Description complète (max 1500 caractères) :' %>

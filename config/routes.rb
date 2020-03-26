@@ -13,8 +13,13 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:show] do
-    resources :avatars, only: [:create]
+    resources :avatars, only: [:new, :create]
   end
+
+  resources :projects, only: [:edit] do
+    resources :images, only: [:new, :create]
+  end
+
 
   resources :users do
     resources :skill_setups

@@ -1,0 +1,5 @@
+<p>Ajoute une image pour présenter ton projet:</p>
+<%= form_tag project_images_path(@project), multipart: true do %>
+<%= file_field_tag :image, class: "btn btn-light my-3" %>
+<%= submit_tag "Enregistrer l'image", class: "btn btn-primary my-3" %>
+<% end %>

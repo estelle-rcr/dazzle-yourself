@@ -4,6 +4,7 @@ class Project < ApplicationRecord
   belongs_to :package
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
+  has_one_attached :image
   has_many :taggings
   has_many :tags, through: :taggings
 
@@ -21,8 +22,7 @@ class Project < ApplicationRecord
   validates :attendees_goal,
   presence: true,
   numericality: { greater_than: 1, less_than: 6 }
-
-
+  
   aasm column: :state do
     state :draft, initial: true
     state :submitted
@@ -70,6 +70,9 @@ class Project < ApplicationRecord
     end
   end
 
+  def banner
+    return self.image.variant(resize: "348x224!")
+  end
   
   def full?
     if self.attendees.length.to_i >= self.attendees_goal.to_i

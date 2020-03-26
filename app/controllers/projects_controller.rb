@@ -27,7 +27,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @start_date = Time.new(params[:project]["start_date(1i)"],params[:project]["start_date(2i)"],params[:project]["start_date(3i)"],params[:project]["start_date(4i)"],params[:project]["start_date(5i)"])
     @project.update(start_date: @start_date)
-
     @packages = Package.all
 
     if @project.save
