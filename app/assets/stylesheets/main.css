@@ -78,3 +78,21 @@ hr {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
+
+.chat-section{
+  height: 750px;
+  overflow-y: scroll;
+}
+
+.post-section{
+  max-height: 350px;
+  max-width: 700px;
+  overflow-y: scroll;
+}
+
+.comment-section{
+  max-height: 250px;
+  max-width: 700px;
+  overflow-y: scroll;
+}
+

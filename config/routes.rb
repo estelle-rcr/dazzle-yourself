@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   get 'homepage', to:'static#homepage'
   get 'myproject', to:'projects#ongoing_project'
 
+  resources :posts do
+    resources :comments
+  end
+
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end
