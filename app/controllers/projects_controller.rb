@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
   before_action :my_project, only: [:edit, :update]
 
   def index
-    @projects = Project.all
+    @projects = Project.all  
   end
 
   def show

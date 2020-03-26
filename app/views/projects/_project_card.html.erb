@@ -9,8 +9,9 @@
           <h6 class="card-title"><%= project.start_date.strftime("le %d/%m/%Y à %I:%M")%></h6>
           <p class="card-text"><%= project.short_description.truncate(100) %></p>
           <div class="d-flex justify-content-between align-items-center">
-
+                      
           <%if project.state == "published" %>
+
             <% if project.full? %>
               <p> COMPLET </p>
             <% elsif user_signed_in? %>
