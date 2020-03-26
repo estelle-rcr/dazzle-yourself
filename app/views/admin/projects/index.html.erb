@@ -9,18 +9,20 @@
                         <th>Titre</th>
                         <th>Date de début</th>
                         <th>État</th>
+                        <th># de participants</th>
                         <th>Publication</th>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
-                <% @projects.each do |project| %>
+                    <% @projects.each do |project| %>
                     <tr>
                         <td><%= project.id %></td>
                         <td><%= project.title.capitalize %></td>
                         <td><%= project.start_date.strftime("%d/%m/%Y à %I:%M")%></td>
                         <td><%= project.state %></td>
+                        <td><%= project.attendees.length %></td>
                         <td>
                             <% if project.state == "paid" %>
                             <%= button_to "Valider", admin_project_submission_path(project.id), method:"patch", class:"btn btn-sm btn-warning" %>
@@ -29,9 +31,18 @@
                             <% else %>
                             <p> Non publiable </p>
                             <%end%>
-                                
+
                         </td>    
-                        <td><%= button_to "Voir le projet", admin_project_path(project.id), class:"btn btn-dark", method:"get" %></td>                    
+                        <td> 
+                            <%= link_to admin_project_path(project.id) do %>
+                            <i class="far fa-eye" style="color:black;" ></i> 
+                            <% end %>
+
+                            <%= link_to edit_admin_project_path(project.id), method: 'get' do %>
+                            <i class="far fa-edit" style="color:black;"></i>
+                            <% end %>
+
+                        </td>                    
                         
                     </tr>
                     <%end%>

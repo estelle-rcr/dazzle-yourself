@@ -2,7 +2,7 @@ class Project < ApplicationRecord
   include AASM
   belongs_to :owner, foreign_key: 'owner_id', class_name: "User"
   belongs_to :package
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
   has_many :taggings
   has_many :tags, through: :taggings
@@ -49,9 +49,9 @@ class Project < ApplicationRecord
 
 
 
-def ongoing?
-    self.start_date <= Time.zone.now && self.end_date >= Time.zone.now
-end
+  def ongoing?
+      self.start_date <= Time.zone.now && self.end_date >= Time.zone.now
+  end
 
   def end_date
     self.start_date + (self.package.number_of_days * 86400)

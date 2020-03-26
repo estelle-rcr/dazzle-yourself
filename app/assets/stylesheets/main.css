@@ -2,7 +2,6 @@ header{
   margin-left: 0;
 }
 
-
 .footer{
   position: fixed;
   left: 0;
@@ -80,6 +79,7 @@ hr {
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
 }
 
+
 a[href*="/tags/"] {
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -127,3 +127,21 @@ a[href*="/tags/"]:hover {
   position: relative;
   top: 10px;
 }
+
+.chat-section{
+  height: 750px;
+  overflow-y: scroll;
+}
+
+.post-section{
+  max-height: 350px;
+  max-width: 700px;
+  overflow-y: scroll;
+}
+
+.comment-section{
+  max-height: 250px;
+  max-width: 700px;
+  overflow-y: scroll;
+}
+

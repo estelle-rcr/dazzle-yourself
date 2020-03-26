@@ -58,7 +58,7 @@
         <h5 class='my-4'>Les projets auxquels ce membre a participé :</h5>
         <% if @attendances[0] %>
             <% @attendances.each do |attendance| %>
-            <% if project.state == "published" %>
+            <% if attendance.project.state == "published" %>
             <div class="col-sm-2">
                 <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
                     <div class="card-header"><%= attendance.project.title.capitalize%><br></div>

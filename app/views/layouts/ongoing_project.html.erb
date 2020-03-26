@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DazzleYourself</title>
+    <html lang="fr">
+    <%= csrf_meta_tags %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => "reload" %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => "reload" %>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+      <%= render 'layouts/header' %>
+  <%= render 'layouts/flash'%>
+
+
+<div class="container bootstrap snippet m-5">
+  <br>
+  <div class="row m-5">
+    <div class="col-sm-12"><h1>Suivez l'avancée de votre projet !</h1></div>
+  </div>
+  <div class="row m-5">
+    <div class="col-sm-4"><!--left col-->
+      <div class="card" style="width: 18rem;">
+        <img class="card-img-top" src="..." alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%=@project.title%></h5>
+          <p class="card-text"><%= @project.short_description %></p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">A commencé le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %></li>
+          <li class="list-group-item">Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M")%></li>
+          <li class="list-group-item">Porteur du projet : <%= @project.owner.first_name %></li>
+        </ul>
+        <div class="card-body">
+          <%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link"  %>
+        </div>
+      </div>
+    </div><!--/col-3-->
+    <div class="col-sm-8"><!--right col--><!--nav items-->
+      <ul class="nav nav-tabs">
+        <li class="nav-item active">
+          <a class="nav-link " data-toggle="tab" href="#intro">Introduction</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " data-toggle="tab" href="#group">Mon groupe</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " data-toggle="tab"  href="#resources">Ressources</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link " data-toggle="tab"  href="#chat">Discussion</a>
+        </li>
+      </ul>
+
+<%= yield %>
+    
+    </div><!--/col-9-->
+  </div><!--/row-->
+</div>
+
+  <%= render 'layouts/footer'%>
+  </body>
+  <script src="https://kit.fontawesome.com/d714c2541d.js" crossorigin="anonymous"></script>
+</html>
+  

@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   get 'myproject', to:'projects#ongoing_project'
   get 'tags/:tag', to: 'projects#index', as: :tag
 
+  resources :posts do
+    resources :comments
+  end
+
   resources :users, only: [:show] do
     resources :avatars, only: [:create]
   end

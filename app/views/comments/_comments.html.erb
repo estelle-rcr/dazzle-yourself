@@ -1,0 +1,26 @@
+<div class="row comment-section text-wrap">
+	<div class="col-md-4">
+		<p>Avatar auteur</p>
+		<p>De <%= post.user.first_name.capitalize %> <%= post.user.last_name[0].capitalize %></p>
+	</div>
+
+	<div class="col-md-8 px-3">
+		
+		<div class="form-group">
+			<div class="field mx-4 my-5 px-4 text-wrap">
+				<p><%= comment.comment %></p>
+				<i class="text-muted">Publié le <%= comment.created_at.strftime("%d/%m/%Y à %I:%M") %></i>
+			</div>
+			<div class="field mx-4 my-5 px-4 row">
+				<% if comment.user == current_user %>
+				<div class="col-10 text-right">
+					<%= button_to 'Modifier', edit_post_comment_path(post.id, comment.id), method: 'get', class:'btn btn-sm btn-warning'%>
+				</div>
+				<div class="col-2 text-right">
+					<%= button_to 'Supprimer', post_comment_path(post.id, comment.id), method: :delete, class:'btn btn-sm btn-danger', data: { confirm: "Souhaites-tu vraiment supprimer ce commentaire ?" }%>
+				</div>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

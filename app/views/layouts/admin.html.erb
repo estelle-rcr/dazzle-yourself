@@ -21,7 +21,12 @@
           <div class="sb-sidenav-menu">
             <div class="nav">
               <div class="sb-sidenav-menu-heading"></div>
-              <%= link_to "Accueil", admin_root_path, class:"nav-link collapsed" %>
+              <div class="row">
+                <%= link_to "Dashboard", admin_root_path, class:"nav-link collapsed" %>
+                <% if Project.where(state: "paid").length >= 1 %>
+                <i class="fas fa-bell", style="color: red;"></i>
+                <% end %>
+              </div>
               <div class="sb-sidenav-menu-heading">Gestion</div>
               <%= link_to "Gérer les projets", admin_projects_path, class:"nav-link collapsed" %>                              
               <%= link_to "Gérer les utilisateurs", admin_users_path, class:"nav-link collapsed" %>                            
@@ -29,7 +34,7 @@
           </div>
           <div class="sb-sidenav-footer">
             <div class="small">Logged in as:</div>
-            someone
+            <%= current_user.email %>
           </div>
         </nav>
       </div>
@@ -37,6 +42,8 @@
       <div id="layoutSidenav_content">
         <main>
           <div class="container-fluid">
+
+
             <%= yield %>
 
           </main>

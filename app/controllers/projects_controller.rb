@@ -1,19 +1,25 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :my_project, only: [:edit, :update]
-
+  
   def index
+
     params[:tag] ? @projects = Project.tagged_with(params[:tag]) : @projects = Project.all
     @tags = Tag.all
+
+    @projects = Project.all  
+
   end
 
   def show
     @project = Project.find(params[:id])
+    @user_attendance = Attendance.find_by(attendee: current_user, project: @project)
   end
-  
+   
   def new
     @project = Project.new
     @packages = Package.all
+ 
   end
 
   def create
@@ -21,6 +27,9 @@ class ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @start_date = Time.new(params[:project]["start_date(1i)"],params[:project]["start_date(2i)"],params[:project]["start_date(3i)"],params[:project]["start_date(4i)"],params[:project]["start_date(5i)"])
     @project.update(start_date: @start_date)
+
+    @packages = Package.all
+
     if @project.save
       flash[:success] = "Le projet a été créé !"
       redirect_to @project
@@ -65,15 +74,20 @@ class ProjectsController < ApplicationController
   end 
 
 
-def ongoing_project
-  @project = current_user.ongoing_project[0]
-end
+  def ongoing_project
+    @project = current_user.ongoing_project[0]
+    @posts = Post.where(project: @project).order("created_at DESC")
+    
+    render layout: "layouts/ongoing_project"
+  end
+
 
 private
 
 def project_params
   params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
 end
+
 
   def my_project
     @project = Project.find(params[:id])

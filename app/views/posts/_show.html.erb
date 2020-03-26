@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row post-section">
+		<div class="col-md-12 grey-box px-3">
+			<p>Avatar auteur</p>
+			<p>De <%= post.user.first_name.capitalize %> <%= post.user.last_name[0].capitalize %></p>
+			
+			<div class="form-group">
+				<div class="field mx-4 my-4 px-4">
+					<h6><%= post.title.capitalize %></h6>
+				</div>
+				<div class="field mx-4 my-3 px-4 text-wrap">
+					<%= post.content.capitalize %>
+				</div>
+				<div class="field mx-4 my-3 px-4">
+					<i class="text-muted">Publié le <%= post.created_at.strftime("%d/%m/%Y à %I:%M") %></i>
+				</div>
+				<div class="field mx-4 my-5 px-4 row">
+					<% if post.user == current_user %>
+					<div class="col-10 text-right">
+						<%= button_to 'Modifier', edit_post_path(post.id), method: 'get', class:'btn btn-sm btn-warning'%>
+					</div>
+					<div class="col-2 text-right">
+						<%= button_to 'Supprimer', post_path(post.id), method: :delete, class:'btn btn-sm btn-danger', data: { confirm: "Souhaites-tu vraiment supprimer ce sujet ?" }%>
+					</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<% if post.comments.length > 0 %>
+	<h6><%= post.comments.length %> commentaire(s)</h6>
+	<% post.comments.each do |comment| %>
+	<%= render 'comments/comments', post: post, comment: comment %>
+	<%end%>
+	<%else%>
+	<p>Il n'y a pas encore de commentaires pour ce post.</p>
+	
+	<% end %>
+
+	<%= render 'comments/form', post: post%>
+</div>

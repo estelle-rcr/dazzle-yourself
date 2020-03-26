@@ -46,7 +46,7 @@
 
         <div class="field mx-4 my-5 px-4">
           <%= label_tag "Date de début souhaitée :" %>
-          <%= datetime_select("project", "start_date",order: [:day, :month, :year], start_year: 2020, selected: Date.today) %>
+          <%= datetime_select("project", "start_date",order: [:day, :month, :year], start_year: 2020, selected: @project.start_date) %>
         </div>
 
         <div class="field mx-4 my-5 px-4">
