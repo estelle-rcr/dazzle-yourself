@@ -6,6 +6,7 @@
         <% @attendances.each do |attendance| %>
         <div class="col-sm-3">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+            
                 <div class="card-header"><%= attendance.project.title.capitalize%><br></div>
                 <div class="card-body">
                     <h4 class="card-title"><%= attendance.project.start_date.strftime("le %d/%m/%Y à %I:%M")%></h4>

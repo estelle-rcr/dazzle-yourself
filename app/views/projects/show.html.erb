@@ -5,7 +5,18 @@
 				<div class="col-lg-11">
 
 						<div class="product-pic-zoom text-center">
-						<%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 500, height: 300 %> 
+						<%if @project.image.attached?%>
+						<%= image_tag @project.banner, alt: 'image' %>
+					  <%else%>
+						<p>=== Il n'y a pas encore d'image lié à ce projet ===</p>
+					  <%end%>
+
+					  <h5>Ajoute une image de ton projet:</h5>
+      				  <%= form_tag project_images_path(@project), multipart: true do %>
+       				   <%= file_field_tag :image %>
+         			  <%= submit_tag "mettre à jour" %>
+       				 <% end %>
+				
 						</div>
 
 						<br>

@@ -19,8 +19,7 @@ class Project < ApplicationRecord
   validates :attendees_goal,
   presence: true,
   numericality: { greater_than: 1, less_than: 6 }
-
-
+  
   aasm column: :state do
     state :draft, initial: true
     state :submitted
@@ -64,7 +63,8 @@ class Project < ApplicationRecord
   end
 
   def banner
-    return self.image.variant(resize: "300x300!")
+    return self.image.variant(resize: "348x224!")
   end
+ 
 
 end

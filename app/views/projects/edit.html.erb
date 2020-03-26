@@ -27,6 +27,15 @@
           <%= text_area_tag :short_description, @project.short_description, required: true, class:'form-control' %>
         </div>
 
+        <%if @project.image.attached?%>
+          <%= image_tag @project.banner, alt: 'image' %>
+        <%else%>
+        <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>       
+         <%end%>
+
+         <%= render 'images/images_form', project: @project %>
+
+
         <% if @project.long_description %>
         <div class="my-4">
           <%= label_tag 'Description complète (max 1500 caractères) :' %>
