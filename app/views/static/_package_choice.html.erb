@@ -1,14 +1,74 @@
-<div class="container">
-  <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-	<h1 class="section-heading text-uppercase">Choisissez votre package</h1>
-	<p class="section-subheading text-muted">Selon vos besoins choisissez la durée de votre projet.</p>
+<div class="container team section-bg mt-5 mb-5 text-center">
+
+  <div class="section-title mb-5 mt-5">
+    <h2 data-aos="fade-up ">Nos prix</h2>Selon vos besoins choisissez le package de votre projet:</p>
   </div>
-<br>
-  <div class="card-deck mb-3 text-center">
- <% @packages.each do |package| %>
-	  <%= render 'package_card', package: package %>
-		<%end %>
-  </div> 
+  <br>
+<center>
+  <div class="row">
+
+    <div class="col-md-4 d-flex align-items-center" data-aos="fade-up">
+      <div class="member">
+        <div class="member-img">
+        <div class="img-fluid">
+        </div>
+        </div>
+        <div class="member-info">
+          <h4>EXPRESS : 48 heures</h4>
+          <p> Le package EXPRESS va te permettre de travailler pendant 48 heures sur ton idée pour développer un business plan en équipe:</p>
+          <h6>Travail en remote</h6>
+          <h6>Groupe de max. 5 personnes</h6>
+          <h6>Développe un business plan</h6>
+          <h6>Pitch de 1mn en vidéo à livrer</h6><br><br>
+          <h2>50€</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-stretch" data-aos="fade-up">
+      <div class="member">
+        <div class="member-img">
+        <div class="img-fluid">
+        </div>
+        </div>
+        <div class="member-info">
+          <h4>CLASSIC : 1 semaine</h4>
+          <p> Le package CLASSIC va te permettre de travailler pendant 5 jours pour réaliser une MVP (minimum viable product) avec des experts tech et non-tech:</p>
+          <h6>Travail en remote</h6>
+          <h6>Groupe de max. 5 personnes</h6>
+          <h6>Développe une MVP</h6>
+          <h6>Vidéo qui présente le projet et la MVP</h6><br>
+          <h2>150€</h2>
+          </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 d-flex align-items-stretch" data-aos="fade-up">
+    <div class="member">
+      <div class="member-img">
+      <div class="img-fluid">
+      </div>
+      </div>
+      <div class="member-info">
+        <h4>EXPERT: 2 semaines</h4>
+        <p> Le package EXPERT va te permettre de travailler pendant 10 jours pour développer un site web en équipe.</p>
+        <h6>Travail en remote</h6>
+        <h6>Groupe de max. 5 personnes</h6>
+        <h6>Développe un business plan</h6>
+        <h6>Développe un site web fonctionnel</h6>
+        <h6>Pitche ton site via une courte vidéo</h6>
+        <h6>Gagne un mentorat avec des experts</h6>
+        <h2>300€</h2>
+      </div>
+    </div>
+
+  </div>
+  </div>
 
 </div>
+
+
+
+
+
 
