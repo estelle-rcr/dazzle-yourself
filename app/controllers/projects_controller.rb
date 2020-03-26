@@ -3,17 +3,15 @@ class ProjectsController < ApplicationController
   before_action :my_project, only: [:edit, :update]
   
   def index
-
     params[:tag] ? @projects = Project.tagged_with(params[:tag]) : @projects = Project.all
     @tags = Tag.all
-
-    @projects = Project.all  
-
   end
 
   def show
     @project = Project.find(params[:id])
     @user_attendance = Attendance.find_by(attendee: current_user, project: @project)
+    @skill_primary = SkillSetup.find_by(user: @project.owner, primary: true)
+    @skill_secondary = SkillSetup.find_by(user: @project.owner, primary: false)
   end
    
   def new

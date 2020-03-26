@@ -1,9 +1,7 @@
-
-
 <div class="container mt-5">
 	<div class="row">
 		<div class="col-8">
-      						<div class="product-pic-zoom text-center">
+      	<div class="product-pic-zoom text-center">
 						<%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 500, height: 300 %> 
 						<p class="my-4"><%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(' ') %></p>
 						</div>
@@ -21,15 +19,15 @@
 
 				<div class="container pd-desc p-5 mb-4">
 					<% if @project.state == "published" ||  @project.state == "finished" %>
-					<h4>Le projet en 2 mots </h4>
-					<p><%= @project.short_description %> </p>
+						<h4>Le projet en 2 mots </h4>
+						<p><%= @project.short_description%></p>
 					<br>
-					<h4>Description détaillée du projet </h4>
-					<% if user_signed_in? %>
-					<p><%= @project.long_description %> </p>
-					<%else%>
-					<p><%= link_to 'Connectez-vous', user_session_path%> pour voir cette information.</p>
-					<%end%>
+						<h4>Description détaillée du projet </h4>
+							<%if user_signed_in?%>
+								<p><%= @project.long_description %> </p>
+							<%else%>
+								<p><%= link_to 'Connectez-vous', user_session_path%> pour voir cette information.</p>
+							<%end%>
 					<br>
 					<h4>Projet proposé par : </h4>
 					<p><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </p>
@@ -40,53 +38,53 @@
 					<br>
 					<h4>Places disponibles :  <%= @project.attendees_goal.to_i - @project.attendees.length.to_i %></h4><br>
 					<h4>Participants : </h4>
-					<% if user_signed_in? %> <% @project.attendees.each do |participant|%>
-					<ul>
-						<p><li><%= participant.first_name %> <%=participant.last_name.capitalize %></li></p>
-					</ul>
-					<% end %>
-					<%else%>
-					<p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
-					<%end%>
+						<% if user_signed_in? %> 
+							<% if @project.attendees.length > 0 %>
+								<% @project.attendees.each do |participant|%>
+									<ul>
+										<p><li><%= participant.first_name %><%=participant.last_name.capitalize %></li></p>
+									</ul>
+								<% end %>
+							<% else %>
+							<p>Il n'y a aucun participant pour le moment.</p>
+							<% end %>
+						<%else%>
+							<p>Connectez-vous pour avoir accès à la liste des participants.</p>
+							<p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
+						<%end%>
 					<br>
-					<h4 class="text-primary">Prix :</h4	>
+					<h4 class="text-primary">Prix :</h4>
 					<p><%= @project.package.price_attendee.to_f / 100 %> €</p>
 					<br>
+					<% end %>
 					
-					<% if @project.state = "published" %>
+					<% if @project.state == "published" %>
             <% if @project.full? %>
-              <p> COMPLET </p>
+              <p class="text-uppercase"> Complet</p>
             <% elsif user_signed_in? %>
               <% if current_user.is_available?(@project) == false %>
-                <p>Vous êtes déjà inscrit à un projet sur ces dates</p>
+                <p>Vous êtes déjà inscrit à un projet sur ces dates.</p>
               <% elsif @user_attendance %>
-                <p>Vous êtes inscrit à ce projet</p>
+                <p>Vous êtes inscrit à ce projet.</p>
               <% else %>
                 <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
               <% end %>
 					  <%else%>
 					    <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
-					  <%end%>
+						<%end%>
 					<%elsif @project.state == "finished"%>
-					  <p>Ce projet est terminé.</p>
+						<p class='my-3'>Ce projet est terminé.</p>
+						<p class="my-3"><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary my-4" %></p>
 					<% end %>
-					<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
+						<% if current_user == @project.owner%>
+							<%= render 'ownerproject' %>
+								<% if @project.state == "draft" %>
+									<p class="my-3">Votre projet n'est pas encore publié : vous devez le compléter et acheter un package pour qu'il soit publié.</p>
+									<%= link_to "Editer votre projet", edit_project_path(@project.id), class:"my-3 mx-3"%>
+								<% end %> 
+							<%= link_to "Créer un nouveau projet", new_project_path, class:"my-3 mx-3"%>
+						<% end %>
 
-
-					<% if current_user == @project.owner%>
-
-					<%= render 'ownerproject' %>
-
-					<% if @project.state == "draft" %>
-					<p>Vous n'avez pas encore publié votre projet.</p>
-
-					<%= link_to "Editer ou publier le projet", edit_project_path(@project.id)%>
-					<% end %> 
-					<%= link_to "Créer un nouveau projet", new_project_path%>
-
-					<% end %>
-
-					<% end%>
 
 				</div>
 			</div>
@@ -97,31 +95,33 @@
 				<div class="my-3"><%= image_tag "big-launch.svg", alt: "Rocket image", width: 390 %></div>
 			</div>
 
-			<div class="text-center mb-4 ">
+			<div class="text-center my-4">
 				<h5>Projet proposé par :</h5>
-				<% if @user.avatar.attached? %>
-				<%= image_tag @user.thumbnail, alt: 'avatar' %>
-				<h5><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h5>
-				<%= link_to "Voir le profil ", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
-				<%end%>
-
-				<div class="text-center p-5 font-small mt-4">
-					<h6>Ses compétences :</h6>
-					<% if @skill_setup_primary %>
-					<p><%= @skill_setup_primary.skill.title %></p>
+				<% if @project.owner.avatar.attached? %>
+					<%= image_tag @project.owner.thumbnail, alt: 'avatar', class:"avatar-small img-circle img-thumbnail my-2" %>
 					<% else %>
-					<p>Ce membre n'a pas encore indiqué ses compétences.</p>
-					<% if current_user %>
-					<%= link_to "Modifier", edit_user_path(current_user.id), :class =>"btn btn-sm btn-dark" %>
-					<% end %>
+					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar-small img-circle img-thumbnail my-2" alt="avatar">
 					<%end%>
-					<% if @skill_setup_secondary %>
-					<p><%= @skill_setup_secondary.skill.title %></p>
-					<%end%>
-
-				</div>
+					<h5><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h5>
+					<%= link_to "Voir son profil ", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
 			</div>
-			<div class="text-center">
+
+				<div class="text-center p-5 font-small my-4">
+					<h6>Ses compétences :</h6>
+						<% if @project.owner.skills.length >= 1 %>
+							<p><%= @skill_primary.skill.title %></p>
+						<% else %>
+							<p>Ce membre n'a pas encore indiqué ses compétences.</p>
+							<% if current_user == @project.owner%>
+								<%= link_to "Modifier", edit_user_path(current_user.id), :class =>"btn btn-sm btn-dark" %>
+							<%end%>
+						<%end%>
+						<% if @project.owner.skills.length >= 2 %>
+							<p><%= @skill_secondary.skill.title %></p>
+						<%end%>
+				</div>
+
+			<div class="text-center my-4">
 				<p>Partager ce projet sur </p>
 				<%= link_to image_tag('https://www.facebook.com/images/fb_icon_325x325.png', height: '60', width: '60'), 'http://www.facebook.com/sharer.php?u=https://dazzle-yourself.herokuapp.com'+request.fullpath, :target => :blank %>
 			</div>
