@@ -3,25 +3,28 @@
 	<div class="container">
 		<div class="row">	
 				<div class="col-lg-11">
-
-						<div class="product-pic-zoom text-center">
+						<div class="d-flex justify-content-center mt-1 mb-4">
 						<%if @project.image.attached?%>
-						<%= image_tag @project.banner, alt: 'image' %>
-					  <%else%>
-						<p>=== Il n'y a pas encore d'image lié à ce projet ===</p>
-					  <%end%>
-
-					  <h5>Ajoute une image de ton projet:</h5>
-      				  <%= form_tag project_images_path(@project), multipart: true do %>
-       				   <%= file_field_tag :image %>
-         			  <%= submit_tag "mettre à jour" %>
-       				 <% end %>
-				
+							<%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
+							<div class="product-image text-center">
+								<% if current_user == @project.owner %>
+									<%= link_to "Changer l'image", edit_project_path(@project.id)%>
+								<%end%>
+							</div>
+						<%else%>
+							<img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+							<div class="product-image text-center">
+							<% if current_user == @project.owner %>
+							<%= render 'images/images_form', project: @project %>
+							<%end%>
+							<%end%>
+							</div>
 						</div>
+					</div>
 
 						<br>
 
-						<div class="product-details shadow p-3 mb-5 bg-white rounded">
+						<div class="product-details shadow p-3 mt-3 mb-5 bg-white rounded">
 
 							<div class="pd-title text-center">
 								<br><h1> Projet : <%= @project.title.capitalize %> </h1>

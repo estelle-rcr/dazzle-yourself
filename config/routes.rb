@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects, only: [:edit] do
-    resources :images, only: [:create]
+    resources :images, only: [:new, :create]
   end
 
 

@@ -28,13 +28,13 @@
         </div>
 
         <%if @project.image.attached?%>
-          <%= image_tag @project.banner, alt: 'image' %>
+          <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
         <%else%>
-        <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>       
-         <%end%>
-
-         <%= render 'images/images_form', project: @project %>
-
+        <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+        <%end%>
+        <div class="my-4">
+					<%= render 'images/images_form', project: @project %>
+        </div>
 
         <% if @project.long_description %>
         <div class="my-4">
@@ -65,7 +65,7 @@
         <%= submit_tag "Enregistrer mon brouillon", class: "btn btn-dark btn-secondary"%>
 
         </div>
-      </div>
+      <//div>
       <%end%>
       <%else%>
       <p>Vous avez soumis votre projet à la publication, il n'est plus possible d'y apporter des modifications.</p>

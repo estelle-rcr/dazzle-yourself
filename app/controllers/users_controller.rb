@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   
   def show
-    @user = current_user 
+    @user = User.find(params[:id])
     @attendances = Attendance.where(attendee: current_user) 
     @projects = Project.where(owner: current_user)
     @skills = Skill.all

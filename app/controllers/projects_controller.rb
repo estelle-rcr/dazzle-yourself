@@ -18,7 +18,6 @@ class ProjectsController < ApplicationController
 
 
   def create
-
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
     @project.update(start_date: @start_date)
