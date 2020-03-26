@@ -14,15 +14,24 @@
                 </thead>
 
                 <tbody>
-                <% @users.each do |user| %>
+                    <% @users.each do |user| %>
                     <tr>
                         <td><%= user.id %></td>
                         <td><%= user.first_name %></td>
                         <td><%= user.last_name %></td>
                         <td><%= user.email %></td>
-                        <td><%= button_to "Voir le profil", admin_user_path(user.id), class:"btn btn-dark", method:"get" %></td>
+                        <td>
+                            <%= link_to admin_user_path(user.id) do %>
+                            <i class="far fa-eye" style="color:black;" ></i> 
+                            <% end %>
+                            <%= link_to edit_admin_user_path(user.id), method: 'get' do %>
+                            <i class="far fa-edit" style="color:black;"></i>
+                            <% end %>
+
+                            
+                        </td>
                     </tr>
-                 <%end%>
+                    <%end%>
                 </tbody>
             </table>
         </div>
@@ -30,9 +39,9 @@
 
     
 
-  
+    
     
 
     
-   
+    
     
