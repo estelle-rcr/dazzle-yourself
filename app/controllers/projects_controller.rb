@@ -3,15 +3,11 @@ class ProjectsController < ApplicationController
   before_action :my_project, only: [:edit, :update]
 
   def index
-    @projects = Project.all  
-    @start_date = Time.parse(params[:project].to_s)
-
+    @projects = Project.all   
   end
 
   def show
     @project = Project.find(params[:id])
-    @user_attendance = Attendance.find_by(attendee: current_user)
-    @user = current_user
   end
   
   def new
