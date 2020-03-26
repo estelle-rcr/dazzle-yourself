@@ -1,0 +1,14 @@
+<div class="tab-pane " id="group">
+	<div class="container-fluid">
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">Participants au projet "<%= @project.title %>"</h5>
+
+				<p class="card-text"><%= @project.owner.first_name.capitalize %> : <%= @project.owner.email %> <span class="text-muted">(Porteur du projet)</span> </p>
+				<% @attendees.each do |a| %>
+				<p class="card-text"><%= a.first_name.capitalize %> : <%= a.email %></p>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>
