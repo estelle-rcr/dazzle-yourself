@@ -10,9 +10,10 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user_attendance = Attendance.find_by(attendee: current_user, project: @project)
   end
-  
+   
   def new
     @packages = Package.all
+ 
   end
 
   def create
@@ -22,7 +23,7 @@ class ProjectsController < ApplicationController
     @project = Project.create(project_params)
     @start_date = Time.parse(params[:project].to_s)
     @project.update(start_date: @start_date)
-
+    @packages = Package.all
     if @project.save
       flash[:success] = "Le projet a été créé !"
       redirect_to new_user_skill_setup_path(@user.id)
