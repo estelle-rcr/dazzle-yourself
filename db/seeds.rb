@@ -6,21 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Project.destroy_all
-User.destroy_all
-Package.destroy_all
-Skill.destroy_all
-Attendance.destroy_all
-Tagging.destroy_all
+
+
 ActiveRecord::Base.connection.tables.each do |t|
   ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
 state_list = ["draft", "submitted", "paid", "published", "finished"]
 
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
-end
 
 10.times do 
   User.create!(
