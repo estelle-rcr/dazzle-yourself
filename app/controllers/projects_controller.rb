@@ -3,13 +3,14 @@ class ProjectsController < ApplicationController
   before_action :my_project, only: [:edit, :update]
 
   def index
-    @projects = Project.all   
+    @projects = Project.all
   end
 
   def show
     @project = Project.find(params[:id])
+    @user_attendance = Attendance.find_by(attendee: current_user, project: @project)
   end
-  
+   
   def new
     @packages = Package.all
   end

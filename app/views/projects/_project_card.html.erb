@@ -11,13 +11,11 @@
           <div class="d-flex justify-content-between align-items-center">
 
           <%if project.state == "published" %>
-            <% if @project.full? %>
+            <% if project.full? %>
               <p> COMPLET </p>
             <% elsif user_signed_in? %>
-              <% if current_user.is_available?(@project) == false %>
+              <% if current_user.is_available?(project) == false %>
                 <p>-</p>
-              <% elsif @user_attendance %>
-                <p>>Inscrit</p>
               <%end%>
             <% else %>
                 <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
