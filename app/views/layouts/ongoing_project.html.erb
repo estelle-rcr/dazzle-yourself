@@ -28,7 +28,12 @@
   <div class="row m-5">
     <div class="col-sm-4"><!--left col-->
       <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="..." alt="Card image cap">
+        <%if @project.image.attached?%>
+            <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
+        <%else%>
+          <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+        <%end%>
+      </div>
         <div class="card-body">
           <h5 class="card-title"><%=@project.title%></h5>
           <p class="card-text"><%= @project.short_description %></p>
@@ -39,7 +44,7 @@
           <li class="list-group-item">Porteur du projet : <%= @project.owner.first_name %></li>
         </ul>
         <div class="card-body">
-          <%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link"  %>
+          <%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link", :target => "_blank"  %>
         </div>
       </div>
     </div><!--/col-3-->

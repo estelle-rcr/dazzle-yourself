@@ -66,7 +66,7 @@ end
 
 10.times do 
   Tagging.create!(
-    tag_id: rand(1..18),
-    project_id: rand(1..10),
+    tag: Tag.all.sample,
+    project: Project.all.sample,
     )
 end

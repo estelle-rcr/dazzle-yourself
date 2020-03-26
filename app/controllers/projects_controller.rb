@@ -74,6 +74,7 @@ class ProjectsController < ApplicationController
   def ongoing_project
     @project = current_user.ongoing_project[0]
     @posts = Post.where(project: @project).order("created_at DESC")
+    @attendees = @project.attendees
     
     render layout: "layouts/ongoing_project"
   end
