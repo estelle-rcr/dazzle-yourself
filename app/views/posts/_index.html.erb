@@ -1,0 +1,11 @@
+<h6>Ici, vous pouvez échanger avec les membres de votre groupe.</h6>
+<p>N'hésitez pas à ouvrir un sujet par thématique ! </p>
+<%= button_to 'Ouvrir un nouveau sujet', new_post_path, class:'btn btn-primary my-3', method: 'get'%>
+<h5>Tous les sujets : </h5>
+
+<div class="chat-section">
+<% @posts.each do |post| %>
+<%= render 'posts/show', post: post%>
+<% end %>
+
+</div>

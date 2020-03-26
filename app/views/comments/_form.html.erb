@@ -1,0 +1,18 @@
+
+<div class="row ">
+	<div class="col-md-12 grey-box px-3">
+		<div class="form-group">
+			<%= form_tag(post_comments_path(post.id), :action => "create", :method => "post") do %>
+			<div class="field mx-4  px-4">
+				<%= text_area_tag :comment, nil, placeholder:'Commentaire',size: "14x2",class:'form-control smallform'%>
+			</div>
+			<div class="field mx-4 my-2 px-4">
+				<%= submit_tag "Commenter", class: "btn btn-primary"%>
+			</div>
+			<% end %>
+			<hr>
+		</div>
+
+	</div>
+
+</div>

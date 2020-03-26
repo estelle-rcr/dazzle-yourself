@@ -1,0 +1,18 @@
+
+<div class="row ">
+	<div class="col-md-2"></div>
+	<div class="col-md-10 grey-box px-3">
+		<div class="form-group">
+			<h6 class="mx-4 my-4 px-2 py-2">Modifier un commentaire</h6>
+
+			<%= form_tag(post_comment_path(@post.id, @comment.id), :action => "update", :method => "patch") do %>
+			<div class="field mx-4  px-4">
+				<%= text_area_tag :comment, @comment.comment, placeholder:'Commentaire',size: "14x2",class:'form-control smallform'%>
+			</div>
+			<div class="field mx-4 my-2 px-4">
+				<%= submit_tag "Confirmer la modification", class: "btn btn-primary"%>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

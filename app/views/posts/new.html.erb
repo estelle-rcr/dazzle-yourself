@@ -1,0 +1,19 @@
+
+<div class="row ">
+	<div class="col-md-12 grey-box px-3">
+		<div class="form-group">
+			<h5 class="mx-4 my-4 px-2 py-2">Publier</h5>
+			<%= form_tag url_for(action: 'create'), method: "post" do %>
+			<div class="field mx-4 my-5 px-4">
+				<%= text_field_tag :title, nil, placeholder:'Titre du post', required: true, class:'form-control smallform' %>
+			</div>
+			<div class="field mx-4 my-5 px-4">
+				<%= text_area_tag :content, nil, placeholder:'Votre texte',size: "24x6",class:'form-control smallform'%>
+			</div>
+			<div class="field mx-4 my-5 px-4">
+				<%= submit_tag "Publier", class: "btn btn-primary"%>
+				<%end%>
+			</div>
+		</div>
+	</div>
+</div>
