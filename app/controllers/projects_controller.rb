@@ -4,14 +4,11 @@ class ProjectsController < ApplicationController
 
   def index
     @projects = Project.all  
-    @start_date = Time.parse(params[:project].to_s)
-
   end
 
   def show
     @project = Project.find(params[:id])
-    @user_attendance = Attendance.find_by(attendee: current_user)
-    @user = current_user
+    @user_attendance = Attendance.find_by(attendee: current_user, project: @project)
   end
   
   def new
