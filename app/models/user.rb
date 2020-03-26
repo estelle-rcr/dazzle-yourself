@@ -7,6 +7,8 @@ class User < ApplicationRecord
   has_many :skills, through: :skill_setups
   has_many :attendances, dependent: :destroy
   has_many :projects, through: :attendances
+  has_many :posts
+  has_many :comments
 
   has_one_attached :avatar
 
@@ -47,8 +49,10 @@ class User < ApplicationRecord
   end
 
   def ongoing_project
+
     projects_as_attendee = Attendance.where(attendee: self, state: "paid").map {|a| a.project }.compact
     projects_as_owner = Project.where(owner: self, state: "published").map {|project| project }.compact
+
     projects = projects_as_attendee + projects_as_owner
 
     if projects.length > 0

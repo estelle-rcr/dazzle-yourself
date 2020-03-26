@@ -5,6 +5,8 @@ class Project < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
   has_one_attached :image
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   # after_update :confirmation_email
 
@@ -78,6 +80,14 @@ class Project < ApplicationRecord
     else
       return false
     end
+  end
+
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).projects
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
   end
 
 end

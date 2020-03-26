@@ -1,5 +1,5 @@
 .regularform {
-  width: 55%;
+  width: 60%;
   height: 32px;
   height: calc(1.5em + 0.75rem + 2px);
   padding: 0.375rem 0.75rem;
@@ -85,12 +85,4 @@
   border-radius: 50%;
 }
 
-/* On mouse-over, add a grey background color */
-.form-check-radio:hover input {
-  background-color: #ccc;
-}
 
-/* When the radio button is checked, add a blue background */
-.form-check-radio {
-  background-color: #fed136 !important;
-}

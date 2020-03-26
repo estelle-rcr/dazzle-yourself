@@ -6,6 +6,11 @@ Rails.application.routes.draw do
   root to: 'static#home'
   get 'homepage', to:'static#homepage'
   get 'myproject', to:'projects#ongoing_project'
+  get 'tags/:tag', to: 'projects#index', as: :tag
+
+  resources :posts do
+    resources :comments
+  end
 
   resources :users, only: [:show] do
     resources :avatars, only: [:new, :create]

@@ -11,6 +11,10 @@ User.destroy_all
 Package.destroy_all
 Skill.destroy_all
 Attendance.destroy_all
+Tagging.destroy_all
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
 
 state_list = ["draft", "submitted", "paid", "published", "finished"]
 
@@ -31,7 +35,7 @@ Package.create!(title: "Express : 48 heures", price_attendee: 1500, price_owner:
 Package.create!(title: "Moyen : 5 jours", price_attendee: 3000, price_owner: 4000, number_of_days: 5)
 Package.create!(title: "Long : 7 jours", price_attendee: 4000, price_owner: 5300, number_of_days: 7)
 
-10.times do 
+20.times do 
   Project.create!(
     package: Package.all.sample,
     owner: User.all.sample,
@@ -60,4 +64,11 @@ Skill.create!(title:"Autre")
         project: Project.all.sample,
         price_attendee: rand(1000..5000),
         state: ["paid","pending","cancelled"].sample)
+end
+
+10.times do 
+  Tagging.create!(
+    tag_id: rand(1..18),
+    project_id: rand(1..10),
+    )
 end

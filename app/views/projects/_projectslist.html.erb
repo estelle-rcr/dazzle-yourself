@@ -1,21 +1,40 @@
 
 <div class="album py-5 mt-5 bg-light">
-    <div class="text-center my-3">
-        <h3>- Projets à venir -<h3>
+    <div class="row">
+    <div class="col-md-2">
+    <p class="mx-4 mt-1 mb-1 font-weight-bold text-uppercase"> Trier par </p>
+    <div class="filter-box mt-0 mr-3 mb-5 ml-3 pt-2 pb-4 py-0">
+      <p class="mx-3 mt-2 mb-2 font-weight-bold text-uppercase text-secondary"> Catégories : </p>
+      <% @tags.sort_by(&:name).each do |tag| %>
+          <% if (tag.projects.published.count + tag.projects.finished.count) > 0 %>
+          <p class="mx-4 my-1"><%= link_to "#{tag.name}  (#{(tag.projects.published.count + tag.projects.finished.count) })", tag_path(tag.name), :class =>"tag-filter" %></p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
-    <div class="container my-4">
-        <div class="row my-4">
-          <% @projects.sort_by(&:start_date).each do |project| %>
-            <% if project.state == "published" %>
-              <%= render 'project_card', project: project %>
+    <div class="col-md-10">
+    <div class="my-3 text-center">
+      <h2 class="text-uppercase"> Projets à venir <h2>
+    </div>
+      <div class="container my-4">
+          <div class="row my-4">
+            <% @projects.sort_by(&:start_date).each do |project| %>
+              <% if project.state == "published" %>
+                <%= render 'project_card', project: project %>
+              <%end %>
             <%end %>
-          <%end %>
-        </div>
-    </div>
-
+          </div>
+      </div>
     <hr class="my-5">
-    <div class="text-center my-3">
+    <div class="my-3 text-center">
+      <h2 class="text-uppercase">Projets passés<h2>
+
+<div class="mt-5 mb-5" >
+<%= render 'layouts/CTA_owner' %>
+</div>
+    <div class="text-center my-3 mt-5">
       <h3>- Projets passés -<h3>
+
     </div>
     <div class="container my-4">
         <div class="row my-4">
@@ -25,6 +44,7 @@
             <%end %>
           <%end %>
         </div>
+    </div>
     </div>
 </div>
 
