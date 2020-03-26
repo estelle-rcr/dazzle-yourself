@@ -47,7 +47,12 @@
             <% end %>
           </div>
         <% else %>
-        <p>Ce membre n'a proposé aucun projet pour le moment.</p>
+          <% if @user == current_user %>
+            <p class="text-secondary">Vous n'avez proposé aucun projet pour le moment.</p>
+            <%= render 'layouts/CTA_projectnew' %> 
+            <%else%>
+            <p class="text-secondary">Ce membre n'a proposé aucun projet pour le moment.</p>
+          <%end%>
         <%end%>
         <hr class="my-4">
         <h5 class='my-4'>Les projets auxquels ce membre a participé :</h5>
@@ -66,8 +71,13 @@
           <%end%>
         </div>
       <% else %>
-      <p>Ce membre n'est inscrit à aucun projet pour le moment.</p>
-      <% end%>
+        <% if @user == current_user %>
+          <p class="text-secondary">Vous n'avez participé à aucun projet pour le moment.</p>
+          <%= render 'layouts/CTA_attendee' %> 
+        <%else%>
+          <p class="text-secondary">Ce membre n'a participé à aucun projet pour le moment.</p>
+        <%end%>
+      <%end%>
     </div>
   </div>
 </div>

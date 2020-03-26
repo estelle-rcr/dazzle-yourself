@@ -85,7 +85,7 @@ a[href*="/tags/"] {
   padding: 0.4em 0.8em;
   margin-right: 0.4em;
   font-size: 85%;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   text-align: center;
   white-space: nowrap;
@@ -97,17 +97,33 @@ a[href*="/tags/"] {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   border-radius: 10rem;
   color: #fff;
-  background-color:#fed136;
+  background-color:#343a40;
 }
 
 a[href*="/tags/"]:hover {
   text-decoration: none;
   color: #fff;
-  background-color: #fed136
+  background-color: #fed136;
   font-weight: 900;
 } 
 
 .overlay {
   position: absolute;
+  top: 10px;
+}
+
+.tag-filter {
+  background-color: #fed136 !important;
+  font-weight: 600 !important;
+  font-size: 90%;
+}
+
+.filter-box {
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  position: relative;
   top: 10px;
 }
