@@ -15,10 +15,12 @@
               <p> COMPLET </p>
             <% elsif user_signed_in? %>
               <% if current_user.is_available?(project) == false %>
-                <p>-</p>
+                <p></p>
+              <% else %>
+                <%= button_to "S'inscrire", new_project_attendance_path(project.id), method: 'get', class:"btn btn-primary"%>
               <%end%>
             <% else %>
-                <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
+                <%= button_to "S'inscrire", new_project_attendance_path(project.id), method: 'get', class:"btn btn-primary"%>
             <% end %>
            <%end%>
 
