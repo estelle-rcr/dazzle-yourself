@@ -30,14 +30,15 @@
               <br>
               <h4>Places disponibles :  <%= @project.attendees_goal.to_i - @project.attendees.length.to_i %></h4><br>
               <h4>Participants : </h4>
-                <% if user_signed_in? %> <% @project.attendees.each do |participant|%>
-                <ul>
-                  <p><li><%= participant.first_name %> <%=participant.last_name.capitalize %></li></p>
-                </ul>
-                
-              <%else%>
-                <p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
-              <%end%>
+                <% if user_signed_in? %> 
+                  <% @project.attendees.each do |participant|%>
+                    <ul>
+                      <p><li><%= participant.first_name %> <%=participant.last_name.capitalize %></li></p>
+                    </ul>
+                  <%end%>
+                <%else%>
+                    <p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
+                <%end%>
               <br>
               <h4 class="text-primary">Prix :</h4	>
               <p><%= @project.package.price_attendee.to_f / 100 %> €</p>
