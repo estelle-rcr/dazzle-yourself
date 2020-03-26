@@ -4,6 +4,8 @@ class Project < ApplicationRecord
   belongs_to :package
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
+  has_many :taggings
+  has_many :tags, through: :taggings
 
   # after_update :confirmation_email
 
@@ -77,5 +79,12 @@ class Project < ApplicationRecord
     end
   end
 
+  def self.tagged_with(name)
+    Tag.find_by!(name: name).projects
+  end
+
+  def tag_list
+    tags.map(&:name).join(', ')
+  end
 
 end
