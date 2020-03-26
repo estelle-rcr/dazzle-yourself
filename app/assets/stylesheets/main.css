@@ -4,9 +4,9 @@ header{
 
 .footer{
   position: fixed;
-  left: 0;
   bottom: 0;
   width: 100%;
+  
 }
 
 .hero-image {
@@ -95,3 +95,4 @@ hr {
   max-width: 700px;
   overflow-y: scroll;
 }
+
