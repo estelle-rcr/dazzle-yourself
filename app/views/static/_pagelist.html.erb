@@ -15,10 +15,8 @@
 
     <div class="row">
       <% @projects[0...3].each do |project| %>
-        <% if project.state == "published" %>
           <%= render 'projects/project_card', project: project %>
         <% end %>
-      <% end %>
     </div>
   </div>
   <%= render 'layouts/CTA_attendee' %>

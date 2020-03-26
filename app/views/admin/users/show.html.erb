@@ -1,11 +1,11 @@
-<div class="container bootstrap snippet m-5">
+<div class="container bootstrap snippet m-6">
   <br>
-  <div class="row m-5">
+  <div class="row m-6">
 
-  <table class="table" style="width: 80%;">
+    <table class="table" style="width: 80%;">
 
       <tbody>
-      
+
         <h2> Informations sur le participant </h2>
         <tr class="table-light" >
           <th scope="row" style="width: 20%" >Prénom : </th>
@@ -27,15 +27,32 @@
           <th scope="row">Compte créé le : </th>
           <td><%=  @user.created_at %></td>
         </tr>
+        <tr class="table-light" >
+          <th scope="row">Projets proposés et validés :</th>
+          <td>
+            <% if @projects_o %>
+              <%= @projects_o.length %>
+            <%end%>
+          </td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row">Projets effectués :</th>
+          <td>
+            <% if @projects_a %>
+            <%= @projects_a.length %>
+
+            <%end%>
+          </td>
+        </tr>
         
       </tbody>
-  </table>
+    </table>
   </div>
   
-  <div class="col m-5">
+
     <%= button_to "Modifier les informations de l'utilisateur", edit_admin_user_path(@user.id), class:"btn btn-dark", method:"get" %>
     <br> 
-    <%= button_to "Supprimer l'utilisateur", admin_user_path(@user.id), class:"btn btn-danger", method:"delete", data: { confirm: 'Souhaitez-vous supprimer définitivement ce ?' } %>
-  </div>
+    <%= button_to "Supprimer l'utilisateur", admin_user_path(@user.id), class:"btn btn-danger", method:"delete", data: { confirm: 'Souhaitez-vous supprimer définitivement ce ?' } %><br>
+      <%= button_to "Retour à la liste des utilisateurs", admin_users_path, class:"btn btn-info", method:'get' %>  
 
-  </div>
+</div>
