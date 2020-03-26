@@ -1,53 +1,74 @@
-<div class="container bootstrap snippet m-5">
-  <br>
-  <div class="row m-5">
-  <div class="col-sm-12"><h1>Bienvenue sur votre page de profil <%= @user.first_name %></h1></div>
-  </div>
-  <div class="row m-5">
-    <div class="col-sm-4"><!--left col-->
-      <div class="text-center m-4 p-3">
-        <%if @user.avatar.attached?%>
-          <%= image_tag @user.thumbnail, alt: 'avatar', class: "rounded-circle" %>
-        <%else%>
-        <p>=== Il n'y a pas encore d'avatar lié à cet utilisateur ===</p>    
-            <%end%>
-        <h5>Mettre à jour l'image:</h5>
-        <%= form_tag user_avatars_path(@user), multipart: true do %>
-          <%= file_field_tag :avatar %>
-          <%= submit_tag "mettre à jour" %>
+<div class="row mt-0">
+  <div class="col-lg-12">
+        <div class="jumbotron-user jumbotron-user-fluid mt-0 px-5">
+            <div class="mx-5 my-5 pt-0 px-5 d-flex justify-content-start align-items-center">
+              <% if @user.avatar.attached? %>
+              <%= image_tag @user.thumbnail, alt: 'avatar' %>
+              <% else %>
+              <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail m-4" alt="avatar">
+              <%end%>
+              <h1 class="mt-1 mb-1 text-light"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
+            </div>
+        </div>
+<div class="row my-2">
+  <div class="col-md-4 p-4">
+    <div class="text-center grey-box m-4 p-4">
+      <h5><i class="fas fa-user-cog" style="margin-right: 8px;"></i> Ses compétences :</h5>
+      <% if @skill_setup_primary %>
+      <p><%= @skill_setup_primary.skill.title %></p>
+      <% else %>
+      <p>Ce membre n'a pas encore indiqué ses compétences.</p>
+        <% if current_user %>
+        <%= link_to "Modifier", edit_user_path(current_user.id), :class =>"btn btn-sm btn-dark" %>
         <% end %>
-      </div>
-    </div><!--/col-3-->
-    <div class="col-sm-8"><!--right col--><!--nav items-->
-        <ul class="nav mb-5">
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#settings">Mes informations</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myprojects">Mes projets</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myattendances">Mes sessions</a></li>
-              <li class="nav-item active"><a class="btn btn-light" data-toggle="tab" href="#myorders">Mes paiements</a></li>
-        </ul>
-        <div class="tab-content"><!--first tab pane-->
-           <div class="tab-pane active" id="settings">
-            <%= render 'edit', user: @user %>
-           </div><!--/tab-pane-->
-
-           <div class="tab-pane active" id="myprojects"> 
-            <%= render 'project_user', projects: @projects %>
-             
-           </div><!--/tab-pane-->
-
-           <div class="tab-pane active" id="myattendances">
-           <%= render 'attendance_user', attendances: @attendances %>
-           
-           </div><!--/tab-pane-->
-
-           <div class="tab-pane active" id="myorders">
-            <h2>Mes paiements Coming soon </h2> <!--/ici mettre le render des paiements-->
-            
-           </div><!--/tab-pane-->
-
-        </div><!--/tab-content-->
-      </div><!--/col-9-->
-  </div><!--/row-->
-
+      <%end%>
+      <% if @skill_setup_secondary %>
+      <p><%= @skill_setup_secondary.skill.title %></p>
+      <%end%>
+    </div>
+  </div>
+  <div class="col-md-8 p-4 ">
+    <div class="px-5 pt-2 pb-5 mr-4">
+      <h5 class='my-4'>Les projets que ce membre a proposé :</h5>
+      <% if @projects[0] %>
+      <div class="row">
+            <% @projects.each do |project| %>
+            <% if project.state == "published" %>
+              <div class="col-sm-4">
+                  <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                      <div class="card-header">Projet : <%= project.title.capitalize%><br></div>
+                      <div class="card-body">
+                          <p class="card-text"><%= project.start_date.strftime("Le %d/%m/%Y à %I:%M")%></p>
+                          <%= link_to "Voir le projet", project_path(project.id), :class =>"btn btn-sm btn-dark" %>
+                      </div>
+                  </div>
+              </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% else %>
+        <p>Ce membre n'a proposé aucun projet pour le moment.</p>
+        <%end%>
+        <hr class="my-4">
+        <h5 class='my-4'>Les projets auxquels ce membre a participé :</h5>
+        <% if @attendances[0] %>
+            <% @attendances.each do |attendance| %>
+            <% if attendance.project.state == "published" %>
+            <div class="col-sm-2">
+                <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
+                    <div class="card-header"><%= attendance.project.title.capitalize%><br></div>
+                    <div class="card-body">
+                        <p class="card-text"><%= attendance.project.start_date.strftime("Le %d/%m/%Y à %I:%M")%></p>
+                    </div>
+                </div>
+            </div>
+            <%end%>
+          <%end%>
+        </div>
+      <% else %>
+      <p>Ce membre n'est inscrit à aucun projet pour le moment.</p>
+      <% end%>
+    </div>
+  </div>
 </div>
 

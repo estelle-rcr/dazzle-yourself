@@ -1,6 +1,6 @@
-<div class="container bootstrap snippet m-5">
+<div class="container bootstrap snippet my-5">
 <%= form_tag url_for(action: 'update'), method: "patch", id:"editForm", authenticity_token: true do %>
-        <h2>Compléter mon profil</h2>
+        <h3>Modifier mes informations</h3>
         <div class="form-group">
             <div class="col-xs-6">
               <%= label_tag 'Prénom :' %>
@@ -23,15 +23,17 @@
             <div class="col-xs-12">
                   <br>
                   <%= submit_tag "Modifier mes informations personnelles", class:"btn btn-dark" %>
-                  <hr>
             </div>
         </div>
       <% end %>
   </div>     
-<h3>Vos compétences :</h3>
+  <hr>
+<div class="container bootstrap snippet my-5">
+  <h3 class="my-3">Vos compétences :</h3>
+  <h6>Compétence principale: </h6>
+  <%= render 'primary_skill_form'%>
 
-<h6>Compétence principale: </h6>
-<%= render 'primary_skill_form'%>
-
-<h6>Compétence secondaire: </h6>
-<%= render 'secondary_skill_form'%>
+  <h6>Compétence secondaire: </h6>
+  <%= render 'secondary_skill_form'%>
+</div>
+<hr>

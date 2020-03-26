@@ -1,0 +1,66 @@
+<div class="container bootstrap snippet m-5">
+  <br>
+  <div class="row m-5">
+    <table class="table" style="width: 80%;">
+
+      <tbody>
+
+        <h2> Informations sur le projet </h2>
+
+        <tr class="table-light" >
+          <th scope="row" >Référence : </th>
+          <td>#<%= @project.id %></td>
+        </tr>       
+        <tr class="table-light" >
+          <th scope="row" style="width: 30%" >Nom du projet : </th>
+          <td><%= @project.title %></td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row" >Package : </th>
+          <td><%= @project.package.title %>.<br>
+          Prix porteur de projet: <%= @project.package.price_owner.to_f / 100 %>€<br>
+          Prix participant : <%= @project.package.price_attendee.to_f / 100 %>€. </td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row" >Description : </th>
+          <td><%= @project.short_description %></td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row" >Description longue: </th>
+          <td><%= @project.long_description %></td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row">Etat du projet : </th>
+          <td>
+            <%=  @project.state %>
+              <% if @project.state == "paid" %>
+              <i>L'utilisateur a payé et attend la validation de son project</i>
+              <%= button_to "Valider", admin_project_submission_path(@project.id), method:"patch", class:"btn btn-sm btn-warning" %>
+              <% elsif @project.state == "published" %>
+              <%= button_to "Dépublier", admin_project_submission_path(@project.id), method:"delete", class:"btn btn-sm btn-danger" %>
+              <% end%>
+
+          </td>
+        </tr>
+        <tr class="table-light" >
+          <th scope="row">Dates : </th>
+          <td> Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %>
+            <br> Se termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col m-5">
+      <%= button_to "Modifier le projet", edit_admin_project_path(@project.id), class:"btn btn-warning", method:'get' %>  
+    </div>
+
+    <div class="col m-5">
+      <%= button_to "Supprimer le projet", admin_project_path(@project.id), class:"btn btn-danger", :method => :delete, data: { confirm: 'Souhaitez-vous supprimer définitivement ce projet?' } %> 
+      <br> 
+    
+
+  <%= button_to "Retour à la liste des projets", admin_projects_path, class:"btn btn-info", method:'get' %>  
+</div>
+
+  </div>

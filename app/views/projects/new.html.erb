@@ -41,17 +41,17 @@
         <div class="field mx-4 my-5 px-4 text-center">
         <%= hidden_field_tag :owner_id, current_user.id %>
         <%= submit_tag "Enregistrer mon brouillon", class: "btn btn-primary"%>
+        <%end%>
         </div>
       </div>
     </div>
     <div class="col-md-4">
-      <div class="sticky-top my-5 p-5">
+      <div class="my-5 p-5">
         <div class="my-3"><%= image_tag "big-launch.svg", alt: "Rocket image", width: 390 %></div>
-        <div class="d-flex justify-content-center mt-5 pt-5">
-          <%= submit_tag "Enregistrer mon brouillon", class: "btn btn-primary"%>
-          <%end%>
-        </div>
       </div>
     </div>
   <div class="col-1"></div>
 </div>
+
+</div>
+

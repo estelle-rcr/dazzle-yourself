@@ -2,11 +2,12 @@ class Project < ApplicationRecord
   include AASM
   belongs_to :owner, foreign_key: 'owner_id', class_name: "User"
   belongs_to :package
-  has_many :attendances
+  has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
   has_one_attached :image
 
   # after_update :confirmation_email
+
 
   validates :title,
   presence: true,
@@ -45,6 +46,11 @@ class Project < ApplicationRecord
   end
 
 
+
+  def ongoing?
+      self.start_date <= Time.zone.now && self.end_date >= Time.zone.now
+  end
+
   def end_date
     self.start_date + (self.package.number_of_days * 86400)
   end
@@ -65,6 +71,13 @@ class Project < ApplicationRecord
   def banner
     return self.image.variant(resize: "348x224!")
   end
- 
+  
+  def full?
+    if self.attendees.length.to_i >= self.attendees_goal.to_i
+      return true
+    else
+      return false
+    end
+  end
 
 end

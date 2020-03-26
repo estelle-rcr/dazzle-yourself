@@ -1,0 +1,37 @@
+<div class="container bootstrap snippet mt-4 mb-5">
+  <br>
+  <div class="row m-4">
+  <div class="col-sm-12"><h1>Bienvenue sur votre compte <%= @user.first_name.capitalize %>,</h1></div>
+  </div>
+  <div class="row mt-2 mb-5">
+    <div class="col-sm-4">
+    <%= render 'edit_picture', user: @user %>
+    </div>
+    <div class="col-sm-8">
+        <ul class="nav my-5">
+              <li class="nav-item active" role="presentation"><a href="#settings" aria-controls="settings" class="btn btn-light active" data-toggle="tab">Mes informations</a></li>
+              <li class="nav-item" role="presentation"><a href="#myprojects" aria-controls="myprojects" class="btn btn-light" data-toggle="tab">Mes projets</a></li>
+              <li class="nav-item" role="presentation"><a href="#myattendances" aria-controls="myattendances" class="btn btn-light" data-toggle="tab">Mes sessions</a></li>
+              <li class="nav-item" role="presentation"><a href="#myorders" aria-controls="myorders" class="btn btn-light" data-toggle="tab">Mes paiements</a></li>
+        </ul>
+        <div class="tab-content">
+           <div role="tabpanel" class="tab-pane active fade-in" id="settings">
+            <%= render 'edit_form', user: @user %>
+           </div>
+
+           <div role="tabpanel" class="tab-pane fade" id="myprojects"> 
+            <%= render 'project_user', projects: @projects %>
+           </div>
+
+           <div role="tabpanel" class="tab-pane fade" id="myattendances">
+           <%= render 'attendance_user', attendances: @attendances %>
+           </div>
+
+           <div role="tabpanel" class="tab-pane fade" id="myorders">
+            <%= render 'payment', attendances: @attendances %>
+           </div>
+        </div>
+      </div>
+  </div>
+</div>
+
