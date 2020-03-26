@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 
   def index
     params[:tag] ? @projects = Project.tagged_with(params[:tag]) : @projects = Project.all
+    @tags = Tag.all
   end
 
   def show
@@ -18,10 +19,10 @@ class ProjectsController < ApplicationController
   def create
     @user = current_user
     @project = Project.new(project_params)
-    @start_date = Time.parse(params[:project].to_s)
+    @start_date = Time.new(params[:project]["start_date(1i)"],params[:project]["start_date(2i)"],params[:project]["start_date(3i)"],params[:project]["start_date(4i)"],params[:project]["start_date(5i)"])
+    @project.update(start_date: @start_date)
     if @project.save
       flash[:success] = "Le projet a été créé !"
-      @project.update(start_date: @start_date)
       redirect_to @project
     else
      flash.now[:error] = @project.errors.full_messages.to_sentence
@@ -39,7 +40,7 @@ class ProjectsController < ApplicationController
     @packages = Package.all
     @project = Project.find(params[:id])
     @project.update(project_params)
-    @start_date = Time.parse(params[:project].to_s)
+    @start_date = Time.new(params[:project]["start_date(1i)"],params[:project]["start_date(2i)"],params[:project]["start_date(3i)"],params[:project]["start_date(4i)"],params[:project]["start_date(5i)"])
     @project.update(start_date: @start_date)
 
     if params[:publish] == "Soumettre mon projet"
@@ -67,7 +68,6 @@ class ProjectsController < ApplicationController
 def ongoing_project
   @project = current_user.ongoing_project[0]
 end
-
 
 private
 

@@ -18,7 +18,7 @@ class CreateTags < ActiveRecord::Migration[5.2]
     Tag.create :name => "environnement"
     Tag.create :name => "logement"
     Tag.create :name => "administration"
-    Tag.create :name => "IT / logiciels"
+    Tag.create :name => "logiciels / IT"
     Tag.create :name => "conseil"
     Tag.create :name => "publicité"
     Tag.create :name => "finance"
