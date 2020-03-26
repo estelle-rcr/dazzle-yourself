@@ -1,0 +1,62 @@
+<div class="row mb-5">
+  <div class="col-3"></div>
+  <div class="col-6">
+    <div class="form-group">
+
+
+      <h1>Détails du projet: </h1>
+
+      <%= form_tag url_for(action: 'update'), method: "patch" do %>
+
+      <div class="my-4">
+        <p> Package choisi : <%= @project.package.title %></p>
+        </div>
+
+        <div class="my-4">
+          <%= label_tag 'Modifier le titre (max 100 caractères) :' %>
+          <%= text_field_tag :title, @project.title, required: true, class:'form-control' %>
+        </div>
+
+        <div class="my-4">
+          <%= label_tag 'Modifier la brève description (max 200 caractères) :' %>
+          <%= text_area_tag :short_description, @project.short_description, required: true, class:'form-control' %>
+        </div>
+
+        <% if @project.long_description %>
+          <div class="my-4">
+            <%= label_tag 'Description complète (max 1500 caractères) :' %>
+            <%= text_area_tag :long_description, @project.long_description, required: true, size: "24x10", class:'form-control' %>
+          </div>
+          <%else%>
+          <div class="my-4">
+            <%= label_tag 'Description complète (max 1500 caractères) :' %>
+
+            <%= text_area_tag :long_description,  nil, placeholder:'En détails :',required: true, size: "24x10", class:'form-control' %>
+
+          </div>
+        <%end%>
+
+        <div class="my-4">
+          <%= label_tag "Date de début souhaitée :" %>
+          <%= datetime_select("project", "start_date",order: [:day, :month, :year], start_year: 2020, selected: @project.start_date) %>
+        </div>
+
+        <div class="my-4">
+          <%= label_tag "Nombre maximum de participants souhaité :" %>
+          <%= select_tag(:attendees_goal, options_for_select([['1', 1], ['2', 2], ['3', 3],['4', 4],['5', 5]], @project.attendees_goal ))%>
+        </div>  
+
+        <div class="d-flex justify-content-center">
+        <%= submit_tag "Enregistrer les modifications ", class: "btn btn-dark btn-secondary"%>
+        </div>
+      </div>
+      <%end%>
+
+        
+      <%= button_to "Annuler, retour à la liste des projets", admin_projects_path, class:"btn btn-info", method:'get' %>  
+    
+
+  </div>
+<div class="col-3"></div>
+</div>
+

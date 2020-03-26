@@ -1,7 +1,7 @@
 <!-- Projects Grid -->
 <section class="page-section">
 <div class="bg-light page-section" id="portfolio">
-  <div class="container mt-5 mb-5">
+  <div class="container">
     <div class="row">
       <div class="col-lg-12 text-center">
       <br>  
@@ -15,14 +15,10 @@
 
     <div class="row">
       <% @projects[0...3].each do |project| %>
-        <% if project.state == "published" %>
           <%= render 'projects/project_card', project: project %>
         <% end %>
-      <% end %>
     </div>
   </div>
-  <div class="mt-5 mb-5">
   <%= render 'layouts/CTA_attendee' %>
-  </div>
 </div>
 </section>

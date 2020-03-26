@@ -1,64 +1,64 @@
 
-	<div class="container mt-5">
-		<div class="row">
-			<div class="col-8">
-				<div class="product-details shadow p-3 mb-5 bg-white rounded">
+<section class="product-shop spad page-details">
+	<div class="container">
+		<div class="row">	
+				<div class="col-lg-11">
 
-					<div class="pd-title text-center">
-						<br><h1 class="text-primary"> Projet : <%= @project.title.capitalize %> </h1>
-						<br>
-					</div>
-					<div class="product-pic-zoom text-center">
+						<div class="product-pic-zoom text-center">
 						<%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 500, height: 300 %> 
+
 					</div>
 
 					<div class="container pd-desc p-5 mb-4">
 						<% if @project.state == "published" ||  @project.state == "finished" %>
-						<h4>Le projet en 2 mots </h4>
-						<p><%= @project.short_description %> </p>
+              <h4>Le projet en 2 mots </h4>
+              <p><%= @project.short_description %> </p>
+              <br>
+              <h4>Description détaillée du projet </h4>
+                <% if user_signed_in? %>
+                  <p><%= @project.long_description %> </p>
+                <%else%>
+                  <p><%= link_to 'Connectez-vous', user_session_path%> pour voir cette information.</p>
+                <%end%>
 						<br>
-						<h4>Description détaillée du projet </h4>
-						<% if user_signed_in? %>
-						<p><%= @project.long_description %> </p>
-						<%else%>
-						<p><%= link_to 'Connectez-vous', user_session_path%> pour voir cette information.</p>
-						<%end%>
+              <h4>Projet proposé par : </h4>
+              <p><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </p>
+              <br>
+              <h4>Dates : </h4>
+              <p>Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %> </p>
+              <p>Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %> </p>
+              <br>
+              <h4>Places disponibles :  <%= @project.attendees_goal.to_i - @project.attendees.length.to_i %></h4><br>
+              <h4>Participants : </h4>
+                <% if user_signed_in? %> <% @project.attendees.each do |participant|%>
+                <ul>
+                  <p><li><%= participant.first_name %> <%=participant.last_name.capitalize %></li></p>
+                </ul>
+                
+              <%else%>
+                <p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
+              <%end%>
+              <br>
+              <h4 class="text-primary">Prix :</h4	>
+              <p><%= @project.package.price_attendee.to_f / 100 %> €</p>
+            <%end%>
 						<br>
-						<h4>Projet proposé par : </h4>
-						<p><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </p>
-						<br>
-						<h4>Dates : </h4>
-						<p>Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %> </p>
-						<p>Termine le <%= @project.end_date.strftime("%d/%m/%Y à %I:%M") %> </p>
-						<br>
-						<h4>Places disponibles :  <%= @project.attendees_goal.to_i - @project.attendees.length.to_i %></h4><br>
-						<h4>Participants : </h4>
-						<% if user_signed_in? %> <% @project.attendees.each do |participant|%>
-						<ul>
-							<p><li><%= participant.first_name %> <%=participant.last_name.capitalize %></li></p>
-						</ul>
-						<% end %>
-						<%else%>
-						<p><%= link_to 'Connectez-vous', user_session_path %> pour voir cette information.</p>
-						<%end%>
-						<br>
-						<h4 class="text-primary">Prix :</h4	>
-						<p><%= @project.package.price_attendee.to_f / 100 %> €</p>
-						<br>
-						<% if @project.full? %>
-						<p> COMPLET </p>
-						<% elsif user_signed_in? %>
-						<% if current_user.is_available?(@project) == false %>
-						<p>Vous êtes déjà inscrit à un projet sur ces dates %>
-							<% elsif @user_attendance %>
-							<p>Vous êtes inscrit à ce projet </p>
-							<% elsif %>
-							<%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
+            <% if @project.state = "published" %>
+              <% if @project.full? %>
+                <p> COMPLET </p>
+              <% elsif user_signed_in? %>
+                <% if current_user.is_available?(@project) == false %>
+                  <p>Vous êtes déjà inscrit à un project sur ces dates</p>
+                <% elsif @user_attendance %>
+                  <p>Vous êtes inscrit à ce projet</p>
+                <% end %>
+              <%else%>
+                <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
+              <%end%>
 
-
-							<%else @project.state == "finished"%>
+						<%elsif @project.state == "finished"%>
 							<p>Ce projet est terminé.</p>
-							<% end %>
+						<% end %>
 
 
 							<p><%= button_to "Voir les autres projets", projects_path, method: 'get', class:"btn btn-secondary" %></p>
@@ -66,58 +66,21 @@
 
 							<% if current_user == @project.owner%>
 
-							<%= render 'ownerproject' %>
+							  <%= render 'ownerproject' %>
 
-							<% if @project.state == "draft" %>
-							<p>Vous n'avez pas encore publié votre projet.</p>
+                <% if @project.state == "draft" %>
+                <p>Vous n'avez pas encore publié votre projet.</p>
 
-							<%= link_to "Editer ou publier le projet", edit_project_path(@project.id)%>
-							<% end %> 
+                <%= link_to "Editer ou publier le projet", edit_project_path(@project.id)%>
+                <% end %> 
 							<%= link_to "Créer un nouveau projet", new_project_path%>
 
 							<% end %>
 
-							<% end%>
-
+							
 						</div>
-					</div>
-				</div>
-
-				<div class="col-4">
-					<div class="my-5 p-5 text-center">
-						<div class="my-3"><%= image_tag "big-launch.svg", alt: "Rocket image", width: 390 %></div>
-					</div>
-
-					<div class="text-center mb-4 ">
-						<h5>Projet proposé par :</h5>
-						<% if @user.avatar.attached? %>
-						<%= image_tag @user.thumbnail, alt: 'avatar' %>
-						<h5><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h5>
-						<%= link_to "Voir le profil ", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
-						<%end%>
-
-						<div class="text-center p-5 font-small mt-4">
-							<h6>Ses compétences :</h6>
-							<% if @skill_setup_primary %>
-							<p><%= @skill_setup_primary.skill.title %></p>
-							<% else %>
-							<p>Ce membre n'a pas encore indiqué ses compétences.</p>
-							<% if current_user %>
-							<%= link_to "Modifier", edit_user_path(current_user.id), :class =>"btn btn-sm btn-dark" %>
-							<% end %>
-							<%end%>
-							<% if @skill_setup_secondary %>
-							<p><%= @skill_setup_secondary.skill.title %></p>
-							<%end%>
-						</div>
-					</div>
-					<div class="text-center">
-						<p>Partager ce projet sur </p>
-						<%= link_to image_tag('https://www.facebook.com/images/fb_icon_325x325.png', height: '60', width: '60'), 'http://www.facebook.com/sharer.php?u=https://dazzle-yourself.herokuapp.com'+request.fullpath, :target => :blank %>
 					</div>
 				</div>
 			</div>
 
-		</div>
-
-
+</section>

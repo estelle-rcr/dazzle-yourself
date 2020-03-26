@@ -8,23 +8,26 @@
           <h5 class="card-title"><%= project.title%></h5>
           <h6 class="card-title"><%= project.start_date.strftime("le %d/%m/%Y à %I:%M")%></h6>
           <p class="card-text"><%= project.short_description.truncate(100) %></p>
-
           <div class="d-flex justify-content-between align-items-center">
+
+          <%if project.state == "published" %>
             <% if @project.full? %>
-            <p> COMPLET </p>
+              <p> COMPLET </p>
             <% elsif user_signed_in? %>
-            <% if current_user.is_available?(@project) == false %>
-            <p>Vous êtes déjà inscrit à un projet sur ces dates %>
-             <% elsif @user_attendance %>
-             <p>Vous êtes inscrit à ce projet </p>
-             <% else %>
-             <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
-             <% end %> 
+              <% if current_user.is_available?(@project) == false %>
+                <p>-</p>
+              <% elsif @user_attendance %>
+                <p>>Inscrit</p>
+              <%end%>
+            <% else %>
+                <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
+            <% end %>
+           <%end%>
+
             <%= link_to "En savoir plus", project_path(project.id), :class =>"btn btn-sm btn-dark" %>
             <div class="text-muted"> 
               <small><%= project.attendees.count%> inscrits</small>
             </div>
-
           </div>
       </div>
     </div>
