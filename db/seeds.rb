@@ -44,12 +44,17 @@ Skill.create!(title:"Développeur Front")
 Skill.create!(title:"Développeur Back")
 Skill.create!(title:"Graphiste")
 Skill.create!(title:"Product Manager")
-Skill.create!(title:"Business Developer")
-Skill.create!(title:"Community Manager")
+Skill.create!(title:"Ventes")
+Skill.create!(title:"Social Media Manager")
 Skill.create!(title:"Growth Hacker")
 Skill.create!(title:"SEO Specialist")
-Skill.create!(title:"Communication et marketing")
-Skill.create!(title:"Autre")
+Skill.create!(title:"Marketing")
+Skill.create!(title:"Communication")
+Skill.create!(title:"Customer Success")
+Skill.create!(title:"Operations")
+Skill.create!(title:"Data scientist")
+
+
 
 30.times do
     Attendance.create!(
