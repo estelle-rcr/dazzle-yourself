@@ -40,8 +40,14 @@ hr {
   background-color: #fed136 !important;
 }
 
-.navbar{
-  height: 85px;
+.navbar {
+  height: 70px;
+}
+
+.collapse.show{
+  background-color: #212529;
+  margin-top: 0;
+  padding: 2em;
 }
 
 .nav-link{
@@ -149,4 +155,8 @@ a[href*="/tags/"]:hover {
 
 .no-border {
 border: none;
+}
+
+.shadow-sm {
+  padding-bottom: 70;
 }

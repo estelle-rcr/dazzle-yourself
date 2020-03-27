@@ -5,7 +5,7 @@
               <% if @user.avatar.attached? %>
                 <%= image_tag @user.thumbnail, alt: 'avatar' %>
               <% else %>
-                <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail m-4" alt="avatar">
+                <%= image_tag "http://ssl.gstatic.com/accounts/ui/avatar_2x.png", class:"avatar-small img-circle img-thumbnail my-3", alt:"avatar"%>
               <%end%>
               <h1 class="mt-1 mb-1 text-light"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
               <div class="mx-5 my-1 d-flex justify-content-end">

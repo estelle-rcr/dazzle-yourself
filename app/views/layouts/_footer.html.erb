@@ -1,6 +1,6 @@
 <footer class="page-footer font-small mt-4 pt-4 " >
   
-<div class="container  ">
+<div class="container">
 
   <!-- Grid row -->
   <div class="row text-center">
@@ -11,7 +11,7 @@
       <!-- Content -->
       <h5 class="text-uppercase">FOLLOW US</h5>
       <p>Une question ? N'hésitez pas à nous contacter et à suivre nos actualités sur les réseaux !</p>
-
+      <p>Le site Dazzle Yourself est un projet final réalisé pour le bootcamp The Hacking Project.</p>
     </div>
     <!-- Grid column -->
 
@@ -46,9 +46,6 @@
         <li>
           <%= link_to "Illustrations by WebPixels", "https://webpixels.io/illustrations", target: "_blank", rel: "nofollow" %>
         </li>
-       <li>
-       <p>Le site Dazzle Yourself est le projet final du bootcamp The Hacking Project.</p>
-       </li>
       </ul>
 
     </div>
@@ -58,19 +55,19 @@
     <div class=" text-center">
       <ul class="list-inline social-buttons">
         <li class="list-inline-item text-center">
-          <a href="#">
+          <%= link_to "https://twitter.com/explore" do%>
             <i class="fab fa-twitter"></i>
-          </a>
+          <%end%>
         </li>
         <li class="list-inline-item text-center">
-          <a href="#">
+          <%= link_to "https://www.facebook.com/" do%>
             <i class="fab fa-facebook-f"></i>
-          </a>
+          <%end%>
         </li>
         <li class="list-inline-item text-center">
-          <a href="#">
+          <%= link_to "https://www.linkedin.com/" do%>
             <i class="fab fa-linkedin-in"></i>
-          </a>
+          <%end%>
         </li>
       </ul>
     </div>

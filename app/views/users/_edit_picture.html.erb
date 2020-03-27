@@ -1,12 +1,12 @@
 <div class="text-center m-4 p-3">
 
   <% if @user.avatar.attached? %>
-  <%= image_tag @user.thumbnail, alt: 'avatar', class: "avatar img-circle img-thumbnail" %>
-  <div class="mt-4 mb-4">
-  <%= link_to "Voir votre profil public", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
-  </div>
+    <%= image_tag @user.thumbnail, alt: 'avatar', class: "avatar img-circle img-thumbnail" %>
+    <div class="mt-4 mb-4">
+      <%= link_to "Voir votre profil public", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
+    </div>
   <% else %>
-  <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+    <%= image_tag "http://ssl.gstatic.com/accounts/ui/avatar_2x.png", class:"avatar-small img-circle img-thumbnail my-3", alt:"avatar"%>
   <%end%>
   <h6 class='mt-5 mb-4'>Changer votre photo :</h6>
   <%= form_tag user_avatars_path(@user), multipart: true do %>
