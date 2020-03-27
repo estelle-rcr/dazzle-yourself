@@ -1,5 +1,5 @@
 class Skill < ApplicationRecord
-  has_many :skills_setups, dependent: :destroy
+  has_many :skill_setups, dependent: :destroy
   
   validates :title,
   presence: true,
