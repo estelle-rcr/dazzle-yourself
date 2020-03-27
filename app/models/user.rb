@@ -7,8 +7,8 @@ class User < ApplicationRecord
   has_many :skills, through: :skill_setups
   has_many :attendances, dependent: :destroy
   has_many :projects, through: :attendances
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :avatar
 
