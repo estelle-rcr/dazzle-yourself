@@ -114,7 +114,7 @@
 					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar-small img-circle img-thumbnail my-2" alt="avatar">
 					<%end%>
 					<h5><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h5>
-					<%= link_to "Voir son profil ", user_path(current_user.id), :class =>"btn btn-sm btn-primary" %>
+					<%= link_to "Voir son profil ", user_path(@project.owner.id), :class =>"btn btn-sm btn-primary" %>
 			</div>
 
 				<div class="text-center p-5 font-small my-4">
