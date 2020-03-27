@@ -6,17 +6,22 @@
         <% @attendances.each do |attendance| %>
         <div class="col-sm-4 my-2">
             <div class="card text-dark bg-light mb-4" style="max-width: 20rem;">
+              <%= link_to project_path(attendance.project.id) do %>
                 <div class="card-header font-weight-bold"> <h4> <%= attendance.project.title.capitalize%> </h4> </div>
+              <% end %>
                 <div class="card-body">
                     <p class="text"><%=attendance.project.start_date.strftime("Le %d/%m/%Y à %I:%M")%></p>
+                </div>
+                <div class="card-body">
+                <%= button_to "Voir", project_path(attendance.project.id), method: 'get', class:"btn btn-sm btn-secondary"%>
                 </div>
             </div>
         </div>
         <% end %>
     </div>
     <% else %>
-    <p class="my-5">Vous n'êtes inscrit à aucun projet pour le moment.</p>
-    <% end%>
+        <p class="my-5">Vous n'êtes inscrit à aucun projet pour le moment.</p>
+        <% end%>
     <hr>
 </div>
 

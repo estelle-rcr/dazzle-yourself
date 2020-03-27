@@ -1,34 +1,30 @@
 <div class="container mt-5">
 	<div class="row">
-		<div class="col-8">
-      	<div class="product-pic-zoom text-center">
-						<%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 500, height: 300 %> 
-						<p class="my-4"><%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(' ') %></p>
-						</div>
-
-						<br>
-			<div class="product-details shadow p-3 mb-5 bg-white rounded">
-
+		<div class="col-lg-12 mb-4 pb-4">
+			<div class="d-flex justify-content-center my-4">
+				<%if @project.image.attached?%>
+					<%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
+					<div class="product-image text-center my-4">
+						<% if current_user == @project.owner %>
+							<%= link_to "Changer l'image", edit_project_path(@project.id)%>
+						<%end%>
+					</div>
+				<%else%>
+					<img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+					<div class="product-image text-center my-4">
+						<% if current_user == @project.owner %>
+							<%= render 'images/images_form', project: @project %>
+						<%end%>
+					</div>
+				<%end%>
+			</div>
+		</div>
+		<div class="col-8">			
+			<div class="product-details shadow p-3 mt-4 mb-5 bg-white rounded">
 				<div class="pd-title text-center">
-					<br><h1 class="text-primary"> Projet : <%= @project.title.capitalize %> </h1>
-					<br>
+					<h1 class="text-primary my-4"> Projet : <%= @project.title.capitalize %> </h1>
+					<p class="my-4"><%= raw @project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(' ') %></p>
 				</div>
-        <div class="d-flex justify-content-center mt-1 mb-4">
-          <%if @project.image.attached?%>
-            <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
-            <div class="product-image text-center">
-              <% if current_user == @project.owner %>
-                <%= link_to "Changer l'image", edit_project_path(@project.id)%>
-              <%end%>
-            </div>
-          <%else%>
-            <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
-            <div class="product-image text-center">
-            <% if current_user == @project.owner %>
-              <%= render 'images/images_form', project: @project %>
-            <%end%>
-          <%end%>
-         </div>
 
 				<div class="container pd-desc p-5 mb-4">
 					<% if @project.state == "published" ||  @project.state == "finished" %>
@@ -93,25 +89,21 @@
 							<%= render 'ownerproject' %>
 								<% if @project.state == "draft" %>
 									<p class="my-3">Votre projet n'est pas encore publié : vous devez le compléter et acheter un package pour qu'il soit publié.</p>
-									<%= link_to "Editer votre projet", edit_project_path(@project.id), class:"my-3 mx-3"%>
+									<%= link_to "Editer votre projet", edit_project_path(@project.id), class:"btn btn-sm btn-primary my-3 mx-3"%>
 								<% end %> 
-							<%= link_to "Créer un nouveau projet", new_project_path, class:"my-3 mx-3"%>
+							<%= link_to "Créer un nouveau projet", new_project_path, class:"btn btn-sm btn-secondary my-3 mx-3"%>
 						<% end %>
 				</div>
 			</div>
 		</div>
 
 		<div class="col-4">
-			<div class="my-5 p-5 text-center">
-				<div class="my-3"><%= image_tag "big-launch.svg", alt: "Rocket image", width: 390 %></div>
-			</div>
-
 			<div class="text-center my-4">
 				<h5>Projet proposé par :</h5>
 				<% if @project.owner.avatar.attached? %>
-					<%= image_tag @project.owner.thumbnail, alt: 'avatar', class:"avatar-small img-circle img-thumbnail my-2" %>
+					<%= image_tag @project.owner.thumbnail, alt: 'avatar', class:"avatar-small img-circle img-thumbnail my-3" %>
 					<% else %>
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar-small img-circle img-thumbnail my-2" alt="avatar">
+					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar-small img-circle img-thumbnail my-3" alt="avatar">
 					<%end%>
 					<h5><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h5>
 					<%= link_to "Voir son profil ", user_path(@project.owner.id), :class =>"btn btn-sm btn-primary" %>

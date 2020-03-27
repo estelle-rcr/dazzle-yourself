@@ -6,13 +6,15 @@
         <% @projects.each do |project| %>
         <div class="col-sm-6 my-2">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                <div class="card-header font-weight-bold"> <h4> <%= project.title.capitalize%> </h4> </div>
+                <%= link_to edit_project_path(project.id) do %>
+                  <div class="card-header font-weight-bold"> <h4> <%= project.title.capitalize%> </h4> </div>
+                <% end %>
                 <div class="card-body">
-                    <p class="card-text"><%= project.start_date.strftime("Le %d/%m/%Y à %I:%M")%></p>
-                    <p class="card-text"> Etat du projet : <%= project.state%></p>
+                  <p class="card-text"><span class="font-weight-bold">Date :</span> <%= project.start_date.strftime("%d/%m/%Y à %I:%M")%></p>
+                  <p class="card-text"><span class="font-weight-bold">Etat du projet :</span> <%= project.state%></p>
                 </div>
                 <div class="card-body">
-                <%= button_to "Terminer le projet", edit_project_path(project.id), method: 'get', class:"btn btn-sm btn-secondary"%>
+                <%= button_to "Poursuivre", edit_project_path(project.id), method: 'get', class:"btn btn-sm btn-secondary"%>
                 </div>
             </div>
         </div>

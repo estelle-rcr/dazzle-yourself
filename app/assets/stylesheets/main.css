@@ -151,3 +151,7 @@ a[href*="/tags/"]:hover {
   background-color: #212529;
   padding: 1rem 3rem;
 }
+
+.no-border {
+border: none;
+}
