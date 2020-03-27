@@ -17,7 +17,7 @@
         </li>
         <li ><% if user_signed_in? %>
         <% if current_user.ongoing_project %>
-        <%= link_to '>> Mon projet', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
+        <%= link_to '>> PROJET EN COURS', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
         <% end %>
         <%end%>
       </li>

@@ -8,6 +8,9 @@ class StaticController < ApplicationController
     @packages = Package.all
   end
   
+  def aboutus
+  end
+  
 end
 
 
