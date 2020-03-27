@@ -2,7 +2,7 @@ class Attendance < ApplicationRecord
   include AASM
   belongs_to :project
   belongs_to :attendee, foreign_key: 'attendee_id', class_name: "User"
-  # after_create :confirmation_send
+  after_create :confirmation_send
 
 aasm column: :state do
   state :pending, initial: true
