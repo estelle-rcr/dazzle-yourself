@@ -1,8 +1,8 @@
 
   <div class="col-md-4 my-4"> 
-    <div class="card mb-4 shadow-sm", style="height: 100%;">
+    <div class="card mb-4 shadow-sm h-100">
       <%= link_to project_path(project.id) do %>
-      <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", width: 348, height: 224 %>   
+      <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", class:"w-100"  %>   
       <%end%>
       <p class="my-0 mx-3 overlay"><small><%= raw project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(' ') %></small></p>
       <div class="card-body">

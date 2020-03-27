@@ -5,7 +5,7 @@ class Project < ApplicationRecord
   has_many :attendances, dependent: :destroy
   has_many :attendees, class_name: "User", through: :attendances
   has_one_attached :image
-  has_many :taggings
+  has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
   # after_update :confirmation_email

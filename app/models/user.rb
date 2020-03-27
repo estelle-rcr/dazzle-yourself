@@ -5,10 +5,10 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable
   has_many :skill_setups, dependent: :destroy
   has_many :skills, through: :skill_setups
-  has_many :attendances, dependent: :destroy
+  has_many :attendances, foreign_key: 'attendee_id', dependent: :destroy
   has_many :projects, through: :attendances
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :avatar
 

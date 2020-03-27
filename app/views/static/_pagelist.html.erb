@@ -1,7 +1,9 @@
 <!-- Projects Grid -->
 <section class="page-section">
   <div class=" page-section" id="portfolio">
+
     <div class="container my-4">
+
       <div class="row">
         <div class="col-lg-12 text-center">
           <br>  
@@ -11,14 +13,19 @@
       </div>
 
       <div class="row">
-        <% @projects[0...3].each do |project| %>
-        <% if project.state == "published" %>
-        <%= render 'projects/project_card', project: project %>
+        <% i = 0 %>
+        <% @projects.each do |project| %>
+
+          <% if project.state == "published" && i < 3 %>
+            <%= render 'projects/project_card', project: project %>
+            <% i+= 1 %>
+          <% end %>
+
         <% end %>
-        <% end %>
+
       </div>
     </div>
-    <div class="mt-5 mb-5">
+    <div class="mt-3 mb-0">
       <%= render 'layouts/CTA_attendee' %>
     </div>
   </div>
