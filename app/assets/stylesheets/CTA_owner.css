@@ -17,6 +17,7 @@
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
     margin: 30px;
+
 } 
 
 .cta-o:focus {
