@@ -71,7 +71,7 @@ class Project < ApplicationRecord
   end
 
   def banner
-    return self.image.variant(resize: "348x224!")
+    return self.image.variant(resize: "7700x433!")
   end
   
   def full?
