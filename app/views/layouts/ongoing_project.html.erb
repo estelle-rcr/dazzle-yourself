@@ -20,13 +20,13 @@
   <%= render 'layouts/flash'%>
 
 
-<div class="container bootstrap snippet m-5">
+<div class="container bootstrap snippet mx-5 mt-3 mb-5">
   <br>
-  <div class="row m-5">
+  <div class="row m-4">
     <div class="col-sm-12"><h1>Suivez l'avancée de votre projet !</h1></div>
   </div>
-  <div class="row m-5">
-    <div class="col-sm-4"><!--left col-->
+  <div class="row m-4">
+    <div class="col-md-4 shadow p-4">
       <div class="card" style="width: 18rem;">
         <%if @project.image.attached?%>
           <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4", width: '250' %>
@@ -49,8 +49,7 @@
           <%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link", :target => "_blank"  %>
         </div>
       </div>
-    </div><!--/col-3-->
-    <div class="col-sm-8"><!--right col--><!--nav items-->
+    <div class="col-md-8 pt-4 pl-5">
       <ul class="nav nav-tabs">
         <li class="nav-item active">
           <a class="nav-link " data-toggle="tab" href="#intro">Introduction</a>
@@ -67,9 +66,8 @@
       </ul>
 
 <%= yield %>
-    
-    </div><!--/col-9-->
-  </div><!--/row-->
+    </div>
+  </div>
 </div>
 
   <%= render 'layouts/footer'%>
