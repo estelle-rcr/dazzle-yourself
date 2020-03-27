@@ -16,7 +16,7 @@
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
   </head>
   <body>
-      <%= render 'layouts/header' %>
+  <%= render 'layouts/header' %>
   <%= render 'layouts/flash'%>
 
 
@@ -49,6 +49,9 @@
           <%= link_to 'Le projet en détails', project_path(@project.id), class:"card-link", :target => "_blank"  %>
         </div>
       </div>
+    </div>
+ 
+
     <div class="col-md-8 pt-4 pl-5">
       <ul class="nav nav-tabs">
         <li class="nav-item active">
@@ -69,6 +72,7 @@
     </div>
   </div>
 </div>
+
 
   <%= render 'layouts/footer'%>
   </body>
