@@ -6,6 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Project.destroy_all
+Attendance.destroy_all
+Tagging.destroy_all
+Skill.destroy_all
+Package.destroy_all
+User.destroy_all
+Skill.destroy_all
 
 
 ActiveRecord::Base.connection.tables.each do |t|
@@ -64,7 +71,7 @@ Skill.create!(title:"Data scientist")
         state: ["paid","pending","cancelled"].sample)
 end
 
-10.times do 
+30.times do 
   Tagging.create!(
     tag: Tag.all.sample,
     project: Project.all.sample,

@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update]
   before_action :my_project, only: [:edit, :update]
+  before_action :ongoing, only: [:ongoing_project]
   
   def index
     params[:tag] ? @projects = Project.tagged_with(params[:tag]) : @projects = Project.all
@@ -75,16 +76,15 @@ class ProjectsController < ApplicationController
     @project = current_user.ongoing_project[0]
     @posts = Post.where(project: @project).order("created_at DESC")
     @attendees = @project.attendees
-    
     render layout: "layouts/ongoing_project"
   end
 
 
 private
 
-def project_params
-  params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
-end
+  def project_params
+    params.permit(:owner_id, :package_id, :title, :short_description, :long_description, :attendees_goal, :tag_list, :tag, { tag_ids: [] }, :tag_ids)
+  end
 
 
   def my_project
@@ -92,6 +92,13 @@ end
     unless current_user == @project.owner
       flash[:error] ="Vous n'êtes pas autorisé à consulter cette page"
       redirect_to root_path
+    end
+  end
+
+  def ongoing
+    unless user_signed_in? && current_user.ongoing_project
+      flash[:alert] ="Aucun projet en cours, n'hésitez pas à vous inscrire !"
+      redirect_to projects_path
     end
   end
 

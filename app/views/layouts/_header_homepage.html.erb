@@ -1,4 +1,4 @@
-<nav id="mainNav" class="navbar navbar-expand-lg navbar-dark sticky-top navbar-shrink">
+<nav style id="mainNav" id="colorNavbar" class="navbar navbar-expand-lg navbar-dark sticky-top navbar-shrink">
   <div class="container">
     <%= link_to root_path do %> 
     <img src="https://mcusercontent.com/2544e20caf820906596eccdf0/images/fbd9f5cd-a905-4438-a5ae-74c3ae74bca9.png" height="88px">
@@ -7,21 +7,22 @@
       Menu
       <i class="fas fa-bars"></i>
     </button>
-    <div class="collapse navbar-collapse bg-menu" id="navbarResponsive">
+    <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav text-uppercase mr-auto">
         <li class="nav-item">
+        <li class="nav-item">
+        <li><%= link_to "Home", root_path, class:"nav-link" %></li>
+      </li>
           <li><%= link_to "Participer à un projet", projects_path, class:"nav-link" %></li>
         </li>
         <li class="nav-item">
-          <li><%= link_to "Proposer un projet", homepage_path, class:"nav-link"%></li>
+          <li><%= link_to "Créer un projet", new_project_path, class:"nav-link"%></li>
         </li>
         <li ><% if user_signed_in? %>
-
         <% if current_user.ongoing_project %>
-          <%= link_to '>> PROJET EN COURS', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
-
+        <%= link_to '>> Mon projet', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
         <% end %>
-      <%end%>
+        <%end%>
       </li>
       
 

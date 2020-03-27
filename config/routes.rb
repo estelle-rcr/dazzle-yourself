@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'homepage', to:'static#homepage'
   get 'myproject', to:'projects#ongoing_project'
   get 'tags/:tag', to: 'projects#index', as: :tag
+  get 'aboutus', to:'static#aboutus'
 
   resources :posts do
     resources :comments
