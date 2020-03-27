@@ -11,11 +11,6 @@ Tagging.destroy_all
 Package.destroy_all
 Skill.destroy_all
 
-
-ActiveRecord::Base.connection.tables.each do |t|
-  ActiveRecord::Base.connection.reset_pk_sequence!(t)
-end
-
 state_list = ["draft", "submitted", "paid", "published", "finished"]
 
 
