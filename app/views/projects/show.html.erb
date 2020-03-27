@@ -39,7 +39,7 @@
 							<%end%>
 					<br>
 					<h4>Projet proposé par : </h4>
-					<p><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </p>
+					<p><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name[0].capitalize %> </p>
 					<br>
 					<h4>Dates : </h4>
 					<p>Commence le <%= @project.start_date.strftime("%d/%m/%Y à %I:%M") %> </p>
@@ -51,7 +51,7 @@
 							<% if @project.attendees.length > 0 %>
 								<% @project.attendees.each do |participant|%>
 									<ul>
-										<p><li><%= participant.first_name %><%=participant.last_name.capitalize %></li></p>
+										<p><li><%= participant.first_name.capitalize %> <%=participant.last_name[0].capitalize %></li></p>
 									</ul>
 								<% end %>
 							<% else %>
@@ -71,10 +71,11 @@
             <% if @project.full? %>
               <p class="text-uppercase"> Complet</p>
             <% elsif user_signed_in? %>
-              <% if current_user.is_available?(@project) == false %>
-                <p>Vous êtes déjà inscrit à un projet sur ces dates.</p>
-              <% elsif @user_attendance %>
+               <% if @user_attendance %>
                 <p>Vous êtes inscrit à ce projet.</p>
+              <% elsif current_user.is_available?(@project) == false %>
+                <p>Vous êtes déjà inscrit à un projet sur ces dates.</p>
+
               <% else %>
                 <%= button_to "S'inscrire à ce projet", new_project_attendance_path(@project.id), method: 'get', class:"btn btn-primary"%>
               <% end %>
