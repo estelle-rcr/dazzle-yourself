@@ -13,7 +13,7 @@ Connectez-vous à ce compte > login : thp@yopmail.com - password : password
 
 Pour les paiements, vous pouvez payer sur Stripe : N° carte : 4242 4242 4242 4242 Expiration : 01/22 CVC : 123
 
-   ## Made by : ##
+   ## :woman: Made by : ##
 
    * :woman: Bénédicte Diumula
    * :woman: Charlotte Favier
