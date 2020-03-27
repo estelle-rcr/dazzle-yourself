@@ -3,10 +3,10 @@
 <h3>Les projets dont je suis l'organisateur :</h3>
 <% if @projects[0] %>
     <div class="row my-4">
-        <% @projects.each do |project| %>
+        <% @projects.sort_by(&:start_date).each do |project| %>
         <div class="col-sm-6 my-2">
             <div class="card text-dark bg-light mb-3" style="max-width: 20rem;">
-                <%= link_to edit_project_path(project.id) do %>
+                <%= link_to project_path(project.id) do %>
                   <div class="card-header font-weight-bold"> <h4> <%= project.title.capitalize%> </h4> </div>
                 <% end %>
                 <div class="card-body">
