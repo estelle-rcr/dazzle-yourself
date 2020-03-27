@@ -5,6 +5,16 @@
         <% if @project.state == "draft" %>
         <h1 class="headline m-4 px-2 py-2">Modifier votre projet </h1>
         <h5 class="mx-4 my-4 px-2 py-2">Après la publication, il ne sera plus possible de modifier votre projet.</h5>
+        <div class="field mx-4 my-5 px-4">
+          <%if @project.image.attached?%>
+            <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
+          <%else%>
+            <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4" style="width: 500px;">
+          <%end%>
+          <div class="my-4">
+            <%= render 'images/images_form', project: @project %>
+          </div>
+        </div>
         <%= form_tag url_for(action: 'update'), method: "patch" do %>
         <div class="field mx-4 my-5 px-4">
           <p><span class="font-weight-bold mr-3">Vous avez choisi le package :</span> <%= @project.package.title %></p>
@@ -27,17 +37,6 @@
           <div class="field mx-4 my-5 px-4">
             <%= label_tag 'Modifier votre brève description (max 200 caractères) :' %>
             <%= text_area_tag :short_description, @project.short_description, required: true, class:'form-control smallform' %>
-          </div>
-
-          <div class="field mx-4 my-5 px-4">
-            <%if @project.image.attached?%>
-              <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4" %>
-            <%else%>
-            <img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
-            <%end%>
-            <div class="my-4">
-              <%= render 'images/images_form', project: @project %>
-            </div>
           </div>
 
           <% if @project.long_description %>
@@ -63,8 +62,8 @@
           </div>  
 
           <div class="mx-4 my-5 px-4 d-flex justify-content-center">
-          <%= submit_tag "Soumettre mon projet", name: "publish", class: "btn btn-dark btn-primary mx-2"%>
-          <%= submit_tag "Enregistrer mon brouillon", class: "btn btn-dark btn-secondary mx-2"%>
+          <%= submit_tag "Enregistrer mon brouillon", name: "save", class: "btn btn-dark btn-primary mx-2"%>
+          <%= submit_tag "Soumettre mon projet", name: "publish", class: "btn btn-dark btn-secondary mx-2"%>
           </div>
         </div>
         <%end%>
