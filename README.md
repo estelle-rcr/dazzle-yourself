@@ -15,8 +15,8 @@ Pour les paiements, vous pouvez payer sur Stripe : N° carte : 4242 4242 4242 42
 
    ## :woman: Made by : ##
 
-   * :woman: Bénédicte Diumula
-   * :woman: Charlotte Favier
-   * :woman: Carolin Labinski
-   * :woman: Estelle Recuero
-   * :woman: Ialy Rambeloson
+   * Bénédicte Diumula
+   * Charlotte Favier
+   * Carolin Labinski
+   * Estelle Recuero
+   * Ialy Rambeloson
