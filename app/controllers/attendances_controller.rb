@@ -64,7 +64,7 @@ class AttendancesController < ApplicationController
   def add_skill
     @project = Project.find(params[:project_id])
     unless current_user.skills[0]
-    flash[:alert] = "Vous devez renseigner une compétence principale pour vous inscrire à un projet. Rendez-vous dans votre page profil."
+    flash[:alert] = "Vous devez renseigner une compétence principale pour vous inscrire à un projet."
     redirect_to new_user_skill_setup_path(current_user.id)
     end
   end

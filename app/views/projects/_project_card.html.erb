@@ -5,7 +5,7 @@
         <%if project.image.attached?%>
           <%= image_tag project.banner, alt: 'project image', class:"w-100" %>
         <%else%>
-          <%= image_tag ('https://images.unsplash.com/photo-1531297484001-80022131f5a1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1607&q=80'), alt: "runstart", class:"w-100"  %>   
+          <%= image_tag ('photo-1531297484001-80022131f5a1'), alt: "runstart", class:"w-100"  %>   
         <%end%>
       <%end%>
       <p class="my-0 mx-3 overlay"><small><%= raw project.tags.map(&:name).map { |t| link_to t, tag_path(t) }.join(' ') %></small></p>
