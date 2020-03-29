@@ -30,10 +30,8 @@
       <div class="card" style="width: 18rem;">
         <%if @project.image.attached?%>
           <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4", width: '250' %>
-          image_tag("icon.png", size: "16x10", alt: "Edit Entry")
         <%else%>
-          <%= image_tag("https://www.northviewapts.com/images/no-image.jpg", class:"my-4 mx-4", alt: "placeholder",width: '250')
- %>
+          <%= image_tag("https://dazzle-yourself.s3.eu-west-3.amazonaws.com/no-image.jpg", class:"my-4 mx-4", alt: "placeholder",width: '250')%>
         <%end%>
       
         <div class="card-body">

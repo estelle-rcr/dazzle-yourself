@@ -10,7 +10,7 @@
 						<%end%>
 					</div>
 				<%else%>
-					<img src="https://www.northviewapts.com/images/no-image.jpg" alt="placeholder" class="my-4 mx-4">
+					<%= image_tag("https://dazzle-yourself.s3.eu-west-3.amazonaws.com/no-image.jpg", class:"my-4 mx-4", alt: "placeholder")%>
 					<div class="product-image text-center my-4">
 						<% if current_user == @project.owner %>
 							<%= render 'images/images_form', project: @project %>
@@ -102,7 +102,7 @@
 				<% if @project.owner.avatar.attached? %>
 					<%= image_tag @project.owner.thumbnail, alt: 'avatar', class:"avatar-small img-circle img-thumbnail my-3" %>
 					<% else %>
-					<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar-small img-circle img-thumbnail my-3" alt="avatar">
+						<%= image_tag "http://ssl.gstatic.com/accounts/ui/avatar_2x.png", class:"avatar-small img-circle img-thumbnail my-3", alt:"avatar"%>
 					<%end%>
 					<h6 class="text-secondary"><%= @project.owner.first_name.capitalize %> <%= @project.owner.last_name.capitalize %> </h6>
 					<%= link_to "Voir son profil ", user_path(@project.owner.id), :class =>"btn btn-sm btn-primary" %>
