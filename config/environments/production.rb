@@ -95,5 +95,5 @@ Rails.application.configure do
 
   config.secret_key_base = ENV['SECRET_KEY_RAILS']
 
-  RAILS_ENV=production bundle exec rake assets:precompile
+  config.assets.initialize_on_precompile = false
 end
