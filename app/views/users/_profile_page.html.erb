@@ -3,9 +3,9 @@
         <div class="jumbotron-user jumbotron-user-fluid mt-0">
             <div class="mx-5 my-5 pt-0 px-5 d-flex justify-content-start align-items-center">
               <% if @user.avatar.attached? %>
-                <%= image_tag @user.thumbnail, alt: 'avatar' %>
+                <%= image_tag url_for(@user.thumbnail), alt: 'avatar' %>
               <% else %>
-                <%= image_tag "avatar_2x.png", class:"avatar-small img-circle img-thumbnail my-3", alt:"avatar"%>
+                <%= image_tag asset_path("avatar_2x.png"), class:"avatar-small img-circle img-thumbnail my-3", alt:"avatar"%>
               <%end%>
               <h1 class="mt-1 mb-1 text-light"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></h1>
               <div class="mx-5 my-1 d-flex justify-content-end">

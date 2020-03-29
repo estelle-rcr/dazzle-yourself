@@ -29,9 +29,9 @@
     <div class="col-md-4 shadow p-4">
       <div class="card" style="width: 18rem;">
         <%if @project.image.attached?%>
-          <%= image_tag @project.banner, alt: 'project image', class:"my-4 mx-4", width: '250' %>
+          <%= image_tag url_for(@project.banner), alt: 'project image', class:"my-4 mx-4", width: '250' %>
         <%else%>
-          <%= image_tag("no-image.jpg", class:"my-4 mx-4", alt: "placeholder",width: '250')%>
+          <%= image_tag asset_path("no-image.jpg"), class:"my-4 mx-4", alt: "placeholder",width: '250'%>
         <%end%>
       
         <div class="card-body">

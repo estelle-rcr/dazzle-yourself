@@ -10,7 +10,7 @@ header{
 }
 
 .hero-image {
-  background-image: url("photo-1522071820081-009f0129c71c");
+  background-image: url(asset_path("photo-1522071820081-009f0129c71c"));
 }
 
 .hero-text {
