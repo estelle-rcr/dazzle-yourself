@@ -16,7 +16,7 @@ class SkillSetupsController < ApplicationController
       )
 
     if @skill_setup.save
-      flash[:success] = "Compétence principale actualisée !"
+      flash[:success] = "Compétence actualisée !"
       redirect_to user_path(current_user.id)
     end
 
@@ -33,7 +33,7 @@ class SkillSetupsController < ApplicationController
     end
 
     if @skill_setup_primary.save || @skill_setup_secondary.save
-      flash[:success] = "Compétence principale actualisée !"
+      flash[:success] = "Compétence actualisée !"
       redirect_to user_path(current_user.id)
 
     end

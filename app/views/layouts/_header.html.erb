@@ -15,11 +15,17 @@
         <li class="nav-item">
           <li><%= link_to "Proposer un projet", homepage_path, class:"nav-link"%></li>
         </li>
-        <li ><% if user_signed_in? %>
-        <% if current_user.ongoing_project %>
-          <%= link_to '>> PROJET EN COURS', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
-        <% end %>
-      <%end%>
+
+        <li >
+
+        <% if user_signed_in? %>
+          <% if attendance(current_user) == true || ownership(current_user) == true %>
+            <% if current_user.ongoing_project != nil %>
+              <%= link_to '>> PROJET EN COURS', myproject_path, class:"btn btn-sm btn-warning nav-link", method:'get' %>
+            <% end %>
+          <% end %>
+        <%end%>
+
       </li>
       
 

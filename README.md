@@ -1,24 +1,35 @@
-# README
+#  :rocket: DAZZLE YOURSELF :rocket: 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ > Plonge-toi dans l'univers start-up ! :rocket:
+ 
+ ## :point_right: https://dazzle-yourself.herokuapp.com 
 
-Things you may want to cover:
+ ## Présentation : 
+ Dazzle Yourself est un site de mise en relation entre les entrepreneurs et les profils tech. La plateforme leur permet de développer un projet à distance pendant un laps de temps donné.
+ 
+ 
+ ## Dashboard Administrateur
 
-* Ruby version
+Dans le Dashboard Admin, vous pouvez gérer la validation des projets et des participants.
 
-* System dependencies
+Pour y accéder : https://dazzle-yourself.herokuapp.com/admin
 
-* Configuration
+Connectez-vous à ce compte > login : thp@yopmail.com - password : password
 
-* Database creation
+Pour les paiements, vous pouvez payer sur Stripe : N° carte : 4242 4242 4242 4242 Expiration : 01/22 CVC : 123
 
-* Database initialization
+ ## Dashboard Projets
+ 
+ Dès que le projet commence, vous pouvez également accéder à un dashboard où vous trouverez toutes les informations utiles autour de votre projet.
+ Pour y accéder : https://dazzle-yourself.herokuapp.com/myproject
+ 
+ 
+ ## :woman: Auteurs du projet : 
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+   * Bénédicte Diumula
+   * Charlotte Favier
+   * Carolin Labinski
+   * Estelle Recuero
+   * Ialy Rambeloson
+   
+   ### Mentor de notre projet : Titouan Dessus

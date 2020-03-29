@@ -96,7 +96,8 @@ private
   end
 
   def ongoing
-    unless user_signed_in? && current_user.ongoing_project
+    unless user_signed_in? && (attendance(current_user) == true || ownership(current_user) == true) && current_user.ongoing_project != nil
+
       flash[:alert] ="Aucun projet en cours, n'hésitez pas à vous inscrire !"
       redirect_to projects_path
     end
