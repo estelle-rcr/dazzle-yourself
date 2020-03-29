@@ -96,5 +96,3 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
   gem 'rails-assets-chosen'
 end
-
-gem 'webpacker', '~> 4.x'
