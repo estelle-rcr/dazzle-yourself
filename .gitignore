@@ -33,3 +33,12 @@
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
+
+.browserslistrc
+app/javascript/
+babel.config.js
+bin/webpack
+bin/webpack-dev-server
+config/webpack/
+config/webpacker.yml
+postcss.config.js
