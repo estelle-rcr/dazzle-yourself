@@ -8,7 +8,7 @@ class Project < ApplicationRecord
   has_many :taggings, dependent: :destroy
   has_many :tags, through: :taggings
 
-  after_update :confirmation_email
+  # after_update :confirmation_email
 
 
   validates :title,
