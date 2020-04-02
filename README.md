@@ -2,6 +2,8 @@
 
  > Plonge-toi dans l'univers start-up ! :rocket:
  
+ > Ce projet a été réalisé en tant que projet de fin de session à The_Hacking_project bootcamp.
+ 
  ## :point_right: https://dazzle-yourself.herokuapp.com 
 
  ## Présentation : 
