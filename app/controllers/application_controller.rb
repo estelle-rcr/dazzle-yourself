@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 	before_action :configure_devise_parameters, if: :devise_controller?
 	include SkillSetupsHelper
+  include ProjectsHelper
   include ApplicationHelper
 
 	def configure_devise_parameters

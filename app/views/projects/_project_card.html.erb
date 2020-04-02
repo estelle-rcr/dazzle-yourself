@@ -19,11 +19,13 @@
             <% if project.full? %>
               <p> COMPLET </p>
             <% elsif user_signed_in? %>
-              <% if current_user.is_available?(project) == false %>
+              <% if attendance(project) == true %>
+                <h6>Déjà inscrit !</h6>
+              <% elsif current_user.is_available?(project) == false %>
                 <p></p>
               <% else %>
                 <%= button_to "S'inscrire", new_project_attendance_path(project.id), method: 'get', class:"btn btn-primary"%>
-              <%end%>
+              <% end %>
             <% else %>
                 <%= button_to "S'inscrire", new_project_attendance_path(project.id), method: 'get', class:"btn btn-primary"%>
             <% end %>
